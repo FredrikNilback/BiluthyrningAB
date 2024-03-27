@@ -13,6 +13,6 @@ public class BiluthyrningAbApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BiluthyrningAbApplication.class, args);
-		
+
 	}
 }

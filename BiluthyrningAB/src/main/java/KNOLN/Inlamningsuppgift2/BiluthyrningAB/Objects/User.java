@@ -1,7 +1,11 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="User")
 public class User {
