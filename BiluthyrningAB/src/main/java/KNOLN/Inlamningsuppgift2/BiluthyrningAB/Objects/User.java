@@ -10,25 +10,25 @@ import lombok.Setter;
 @Table(name="User")
 public class User {
     @Id
-    private String Email;
+    private String email;
     @Column
-    private String Password;
+    private String password;
     @Column
-    private String Salt;
+    private String salt;
     @Column
-    private String UserName;
+    private String userName;
     @Column
-    private String TelephoneNumber;
+    private String telephoneNumber;
     @Column
-    private String Address;
+    private String address;
 
-    public User(String Email, String Password, String Salt, String UserName, String TelephoneNumber, String Address) {
-        this.Email = Email;
-        this.Password = Password;
-        this.Salt = Salt;
-        this.UserName = UserName;
-        this.TelephoneNumber = TelephoneNumber;
-        this.Address = Address;
+    public User(String email, String password, String salt, String userName, String telephoneNumber, String address) {
+        this.email = email;
+        this.password = password;
+        this.salt = salt;
+        this.userName = userName;
+        this.telephoneNumber = telephoneNumber;
+        this.address = address;
     }
 
 }
