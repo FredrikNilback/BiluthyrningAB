@@ -1,16 +1,15 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
 
-@AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "Contracts")
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +19,24 @@ public class Contract {
     private String licensePlate;
 
     @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-    private String Email;
+    private String email;
 
-    @Column
+    @Column(nullable = false,name = "Start Date")
     private LocalDate startDate;
 
-    @Column
+    @Column(nullable = false, name = "End Date")
     private LocalDate endDate;
 
-    @Column
+    @Column(nullable = false, name = "Total Cost")
     private int totalCost;
 
+    public Contract(int contractId, String licensePlate, String email, LocalDate startDate, LocalDate endDate, int totalCost) {
+        this.contractId = contractId;
+        this.licensePlate = licensePlate;
+        this.email = email;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalCost = totalCost;
+    }
 }
+
