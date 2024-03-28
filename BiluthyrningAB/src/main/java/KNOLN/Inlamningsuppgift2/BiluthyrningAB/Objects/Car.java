@@ -13,23 +13,23 @@ public class Car {
 
     @Id
     private String licensePlate;
-    @Column(nullable = false, unique = false, name = "model")
+    @Column
     private String carName;
-    @Column(nullable = false, unique = true, name = "brand")
+    @Column
     private CarBrand carBrand;
-    @Column(nullable = false, unique = false, name="milage")
+    @Column
     private int milage;
-    @Column(nullable = false, unique = false, name="automatic")
+    @Column
     private boolean automatic;
-    @Column(nullable = false, unique = false, name ="seat")
+    @Column
     private int carSeats;
-    @Column(nullable = false, unique = false, name="year")
+    @Column(nullable = false)
     private int carYear;
-    @Column(nullable = false, unique = true, name = "engine")
+    @Column
     private  EngineType engineType;
-    @Column(nullable = false, unique = true, name = "type")
+    @Column
     private CarType carType;
-    @Column(nullable = false, unique = false, name = "price_per_day")
+    @Column
     private float pricePerDay;
 
 
@@ -48,16 +48,19 @@ public class Car {
         this.pricePerDay = pricePerDay;
     }
 
+    public Car(){
+
+    }
 
     // Alla Enum funktioner, lägg in element pö on pö.
     public enum EngineType{
         Bensin, Diesel, Electric
     }
     public enum CarBrand{
-
+        Volvo
     }
     public enum CarType{
-
+        Combi
     }
 
 }
