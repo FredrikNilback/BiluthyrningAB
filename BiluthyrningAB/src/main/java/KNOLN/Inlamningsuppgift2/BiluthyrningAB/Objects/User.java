@@ -35,4 +35,15 @@ public class User {
 
     }
 
+    //getters & setters
+
+    public String getUserName() {
+        return userName;
+    }
+    public String getSalt() {
+        return salt;
+    }
+    public String getPassword() {
+        return password;
+    }
 }

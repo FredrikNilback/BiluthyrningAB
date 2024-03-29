@@ -29,6 +29,23 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
+    @PostMapping("loginUser")
+    public ResponseEntity<String> loginUser(String email, String password) {
+        User user = userService.getUserByEmail(email);
+        if (user == null) {
+            return new ResponseEntity<>("User not found.", HttpStatus.NOT_FOUND);
+        }
+
+        String combinedPassword = password + user.getSalt();
+        String hashedPassword = hashPassword(combinedPassword);
+
+        if (hashedPassword.equals(user.getPassword())) {
+            return new ResponseEntity<>(("Login successful. \nWelcome back " + user.getUserName() + "!"), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Incorrect password.", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
     private String saltMaker(){
         Random random = new Random();
         char[] saltChars = new char[5];
