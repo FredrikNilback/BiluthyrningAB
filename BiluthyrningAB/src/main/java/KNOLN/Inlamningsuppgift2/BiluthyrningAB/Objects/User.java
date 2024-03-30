@@ -40,10 +40,39 @@ public class User {
     public String getUserName() {
         return userName;
     }
+    public void setUserName(String name) {
+        this.userName = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
     public String getSalt() {
         return salt;
     }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

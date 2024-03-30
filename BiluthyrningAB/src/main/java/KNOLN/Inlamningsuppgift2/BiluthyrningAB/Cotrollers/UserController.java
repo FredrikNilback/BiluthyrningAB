@@ -46,18 +46,67 @@ public class UserController {
         }
     }
 
+    @PutMapping("updateUserName")
+    public ResponseEntity<User> updateUserName(String email, String newUserName) {
+        User updatedUser = userService.updateUserUserName(email, newUserName);
+        if (updatedUser != null) {
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("updateAddress")
+    public ResponseEntity<User> updateAddress(String email, String newAddress) {
+        User updatedUser = userService.updateUserAddress(email, newAddress);
+        if (updatedUser != null) {
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("updateTelephoneNumber")
+    public ResponseEntity<User> updateTelephoneNumber(String email, String newTelephoneNumber) {
+        User updatedUser = userService.updateUserTelephoneNumber(email, newTelephoneNumber);
+        if (updatedUser != null) {
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("updatePassword")
+    public ResponseEntity<User> updatePassword(String email, String newPassword) {
+        String newSalt = saltMaker();
+        User updatedUser = userService.updateUserSalt(email, newSalt);
+
+        if (updatedUser != null) {
+            String newHashedPassword = hashPassword(newPassword + newSalt);
+            updatedUser.setPassword(newHashedPassword);
+            updatedUser = userService.addUser(updatedUser);
+
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     private String saltMaker(){
         Random random = new Random();
         char[] saltChars = new char[5];
         for (int i = 0; i < 5; ++i) {
             saltChars[i] = (char)(random.nextInt(126 - 32 + 1) + 32);
         }
-        String salt = new String(saltChars);
 
-        return salt;
+        return new String(saltChars);
     }
 
-    public static String hashPassword(String password) {
+    private static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
