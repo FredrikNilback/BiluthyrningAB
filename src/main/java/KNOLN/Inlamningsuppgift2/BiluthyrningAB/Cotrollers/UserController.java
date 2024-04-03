@@ -96,6 +96,18 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("deleteUser")
+    public ResponseEntity<String> deleteUser(String email) {
+        User userToDelete = userService.getUserByEmail(email);
+
+        if (userToDelete != null) {
+            userService.deleteUser(userToDelete);
+            return new ResponseEntity<>("User deleted successfully.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User not found.", HttpStatus.NOT_FOUND);
+        }
+    }
+
     private String saltMaker(){
         Random random = new Random();
         char[] saltChars = new char[5];

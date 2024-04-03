@@ -60,4 +60,11 @@ public class UserService {
         }
         return null;
     }
+
+    public void deleteUser(String email) {
+        User user = repo.findByEmail(email);
+        if (user != null) {
+            repo.delete(user);
+        }
+    }
 }
