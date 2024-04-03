@@ -13,29 +13,68 @@ public class Car {
 
     @Id
     private String licensePlate;
-    @Column(nullable = false, unique = false, name = "model")
+    @Column
     private String carName;
-    @Column(nullable = false, unique = true, name = "brand")
+    @Column
     private CarBrand carBrand;
-    @Column(nullable = false, unique = false, name="milage")
-    private int milage;
-    @Column(nullable = false, unique = false, name="automatic")
+    @Column(nullable = true)
+    private Integer milage;
+    @Column
     private boolean automatic;
-    @Column(nullable = false, unique = false, name ="seat")
-    private int carSeats;
-    @Column(nullable = false, unique = false, name="year")
-    private int carYear;
-    @Column(nullable = false, unique = true, name = "engine")
+    @Column(nullable = true)
+    private Integer carSeats;
+    @Column(nullable = true)
+    private Integer carYear;
+    @Column
     private  EngineType engineType;
-    @Column(nullable = false, unique = true, name = "type")
+    @Column
     private CarType carType;
-    @Column(nullable = false, unique = false, name = "price_per_day")
-    private float pricePerDay;
+    @Column(nullable = true)
+    private Double pricePerDay;
 
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public CarBrand getCarBrand() {
+        return carBrand;
+    }
+
+    public Integer getMilage() {
+        return milage;
+    }
+
+    public boolean isAutomatic() {
+        return automatic;
+    }
+
+    public Integer getCarSeats() {
+        return carSeats;
+    }
+
+    public Integer getCarYear() {
+        return carYear;
+    }
+
+    public EngineType getEngineType() {
+        return engineType;
+    }
+
+    public CarType getCarType() {
+        return carType;
+    }
+
+    public Double getPricePerDay() {
+        return pricePerDay;
+    }
 
     public Car(String licensePlate, String carName, CarBrand carBrand,
                int milage, boolean automatic, int carSeats, int carYear,
-               EngineType engineType, CarType carType, float pricePerDay) {
+               EngineType engineType, CarType carType, Double pricePerDay) {
         this.licensePlate = licensePlate;
         this.carName = carName;
         this.carBrand = carBrand;
@@ -48,16 +87,20 @@ public class Car {
         this.pricePerDay = pricePerDay;
     }
 
+    public Car(){
+
+    }
 
     // Alla Enum funktioner, lägg in element pö on pö.
     public enum EngineType{
         Bensin, Diesel, Electric
     }
     public enum CarBrand{
-
+        Volvo
     }
     public enum CarType{
-
+        Combi
     }
+
 
 }

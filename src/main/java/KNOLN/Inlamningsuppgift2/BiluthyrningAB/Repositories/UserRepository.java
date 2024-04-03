@@ -7,4 +7,5 @@ import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.*;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
+    User findByEmail(String email);
 }
