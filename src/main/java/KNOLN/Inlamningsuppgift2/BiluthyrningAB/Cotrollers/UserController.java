@@ -18,8 +18,9 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("addUser")
-    public ResponseEntity<User> addUser(String email, String password, String confirmPassword,
-                                        String name, String telephoneNumber, String address) {
+    public ResponseEntity<User> addUser(@RequestParam String email, @RequestParam String password,
+                                        @RequestParam String confirmPassword, @RequestParam String name,
+                                        @RequestParam String telephoneNumber, @RequestParam String address) {
 
         String salt = saltMaker();
         String combinedPassword = (password + salt);
