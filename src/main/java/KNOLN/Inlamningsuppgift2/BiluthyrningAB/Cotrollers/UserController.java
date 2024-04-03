@@ -18,15 +18,23 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("addUser")
-    public ResponseEntity<User> addUser(String email, String password,
+    public ResponseEntity<User> addUser(String email, String password, String confirmPassword,
                                         String name, String telephoneNumber, String address) {
 
         String salt = saltMaker();
         String combinedPassword = (password + salt);
+        String combinedConfirmPassword = (confirmPassword + salt);
         String hashedPassword = hashPassword(combinedPassword);
-        User user = new User(email, hashedPassword, salt, name, telephoneNumber, address);
-        User savedUser = userService.addUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+        String hashedConfirmPassword = hashPassword(combinedConfirmPassword);
+
+        if(hashedPassword.equals(hashedConfirmPassword)) {
+            User user = new User(email, hashedPassword, salt, name, telephoneNumber, address);
+            User savedUser = userService.addUser(user);
+            return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PostMapping("loginUser")
@@ -41,7 +49,8 @@ public class UserController {
 
         if (hashedPassword.equals(user.getPassword())) {
             return new ResponseEntity<>(("Login successful. \nWelcome back " + user.getUserName() + "!"), HttpStatus.OK);
-        } else {
+        }
+        else {
             return new ResponseEntity<>("Incorrect password.", HttpStatus.UNAUTHORIZED);
         }
     }
@@ -80,16 +89,22 @@ public class UserController {
     }
 
     @PutMapping("updatePassword")
-    public ResponseEntity<User> updatePassword(String email, String newPassword) {
+    public ResponseEntity<User> updatePassword(String email, String newPassword, String newConfirmPassword) {
         String newSalt = saltMaker();
         User updatedUser = userService.updateUserSalt(email, newSalt);
 
-        if (updatedUser != null) {
+        if(updatedUser != null) {
             String newHashedPassword = hashPassword(newPassword + newSalt);
-            updatedUser.setPassword(newHashedPassword);
-            updatedUser = userService.addUser(updatedUser);
+            String newHashedConfirmPassword = hashPassword(newConfirmPassword + newSalt);
+            if(newHashedPassword.equals(newHashedConfirmPassword)) {
+                updatedUser.setPassword(newHashedPassword);
+                updatedUser = userService.addUser(updatedUser);
 
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+                return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
         }
         else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
