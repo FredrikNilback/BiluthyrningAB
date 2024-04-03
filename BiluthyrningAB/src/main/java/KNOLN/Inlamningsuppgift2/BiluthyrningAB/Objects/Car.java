@@ -17,25 +17,64 @@ public class Car {
     private String carName;
     @Column
     private CarBrand carBrand;
-    @Column
-    private int milage;
+    @Column(nullable = true)
+    private Integer milage;
     @Column
     private boolean automatic;
-    @Column
-    private int carSeats;
-    @Column(nullable = false)
-    private int carYear;
+    @Column(nullable = true)
+    private Integer carSeats;
+    @Column(nullable = true)
+    private Integer carYear;
     @Column
     private  EngineType engineType;
     @Column
     private CarType carType;
-    @Column
-    private float pricePerDay;
+    @Column(nullable = true)
+    private Double pricePerDay;
 
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public CarBrand getCarBrand() {
+        return carBrand;
+    }
+
+    public Integer getMilage() {
+        return milage;
+    }
+
+    public boolean isAutomatic() {
+        return automatic;
+    }
+
+    public Integer getCarSeats() {
+        return carSeats;
+    }
+
+    public Integer getCarYear() {
+        return carYear;
+    }
+
+    public EngineType getEngineType() {
+        return engineType;
+    }
+
+    public CarType getCarType() {
+        return carType;
+    }
+
+    public Double getPricePerDay() {
+        return pricePerDay;
+    }
 
     public Car(String licensePlate, String carName, CarBrand carBrand,
                int milage, boolean automatic, int carSeats, int carYear,
-               EngineType engineType, CarType carType, float pricePerDay) {
+               EngineType engineType, CarType carType, Double pricePerDay) {
         this.licensePlate = licensePlate;
         this.carName = carName;
         this.carBrand = carBrand;
@@ -62,5 +101,6 @@ public class Car {
     public enum CarType{
         Combi
     }
+
 
 }
