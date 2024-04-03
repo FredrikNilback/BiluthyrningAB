@@ -72,6 +72,46 @@ public class Car {
         return pricePerDay;
     }
 
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public void setCarBrand(CarBrand carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public void setMilage(Integer milage) {
+        this.milage = milage;
+    }
+
+    public void setAutomatic(boolean automatic) {
+        this.automatic = automatic;
+    }
+
+    public void setCarSeats(Integer carSeats) {
+        this.carSeats = carSeats;
+    }
+
+    public void setCarYear(Integer carYear) {
+        this.carYear = carYear;
+    }
+
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
+    }
+
+    public void setCarType(CarType carType) {
+        this.carType = carType;
+    }
+
+    public void setPricePerDay(Double pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
     public Car(String licensePlate, String carName, CarBrand carBrand,
                int milage, boolean automatic, int carSeats, int carYear,
                EngineType engineType, CarType carType, Double pricePerDay) {

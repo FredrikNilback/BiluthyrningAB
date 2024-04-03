@@ -5,24 +5,32 @@ import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Objects;
+
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @Service
 public class CarService {
     @Autowired
     private CarRepository repo;
 
-    
-
-    public List<Car> searchCars(Car carSearch) {
-        return getCars().stream()
-                .filter(car -> searchByCriteria(car, carSearch))
-                .collect(Collectors.toList());
+    public ArrayList<Car> getCarSeats(Integer carSeats){
+        return repo.getCarSeats(carSeats);
     }
 
+
+    public ArrayList<Car> searchCars(String carName, Car.CarBrand carBrand,
+                                Integer milage, boolean automatic, Integer carSeats, Integer carYear,
+                                Car.EngineType engineType, Car.CarType carType, Double pricePerDay) {
+        return repo.searchCar(carName,  carBrand,
+                milage,  automatic,  carSeats,  carYear,
+                engineType,  carType, pricePerDay);
+    }
+
+
     private boolean searchByCriteria(Car car, Car carSearch) {
-        if (carSearch.getCarName() != null && !car.getCarName().equals(carSearch.getCarName()))
+        if (carSearch.getCarName() != null && !car.getCarName().toString().equals(carSearch.getCarName()))
             return false;
         if (carSearch.getCarBrand() != null && !car.getCarBrand().toString().equals(carSearch.getCarBrand().toString()))
             return false;
@@ -30,13 +38,13 @@ public class CarService {
             return false;
         if (car.isAutomatic() != carSearch.isAutomatic())
             return false;
-        if (carSearch.getCarSeats() != null && car.getCarSeats() != carSearch.getCarSeats())
+        if (carSearch.getCarSeats() != null && !Objects.equals(car.getCarSeats(), carSearch.getCarSeats()))
             return false;
-        if (carSearch.getCarYear() != null && car.getCarYear() != carSearch.getCarYear())
+        if (carSearch.getCarYear() != null && !Objects.equals(car.getCarYear(), carSearch.getCarYear()))
             return false;
-        if (carSearch.getEngineType() != null && !car.getEngineType().equals(carSearch.getEngineType()))
+        if (carSearch.getEngineType() != null && !car.getEngineType().toString().equals(carSearch.getEngineType()))
             return false;
-        if (carSearch.getCarType() != null && !car.getCarType().equals(carSearch.getCarType()))
+        if (carSearch.getCarType() != null && !car.getCarType().toString().equals(carSearch.getCarType()))
             return false;
         if (carSearch.getPricePerDay() != null && car.getPricePerDay() != carSearch.getPricePerDay())
             return false;
@@ -44,8 +52,8 @@ public class CarService {
         return true;
     }
 
-    public  List<Car> getCars(){
-        return repo.findAll();
+    public  ArrayList<Car> getCars(){
+        return (ArrayList<Car>) repo.findAll();
     }
 
 
