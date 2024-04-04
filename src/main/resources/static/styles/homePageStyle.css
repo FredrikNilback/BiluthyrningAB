@@ -1,8 +1,8 @@
 #productdealscontainer{
     display: flex;
-    width: 1045px;
+    width: 1080px;
     height: 200px;
-    margin: 5px 5px;
+    margin: 5px auto;
 } 
 #productscontainer{
     display: flex;
@@ -10,7 +10,8 @@
     height: auto;
     align-items: center;
     overflow: hidden;
-    background-color: rgba(240, 151, 34, 0.123);
+    background-color: rgb(245, 115, 55);
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.267);
     border-radius: 5px;
     margin-right: 5px;
 }
@@ -21,8 +22,8 @@
     width: 0px;
     height: 0px;
     border-style: solid;
-    border-width: 0 22.5px 15px 22.5px;
-    border-color: transparent transparent #eea468 transparent;
+    border-width: 0 30px 20px 30px;
+    border-color: transparent transparent #F59B37 transparent;
 }
 #leftBtn{
     transform: rotate(-90deg);

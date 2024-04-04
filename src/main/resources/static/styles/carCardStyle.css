@@ -5,11 +5,17 @@
     margin: 5px 5px;
     padding: 10px 10px;
     border-radius: 5px;
+    transition: background-color 0.1s;
+}
+
+.productcontainer:hover{
+    background-color: rgb(179, 74, 14);
+    cursor: pointer;
 }
 
 .imgcontainer{
     width: 160px;
-    height: 70%;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -29,4 +35,24 @@
     display: flex;
     justify-content: space-between;
 
+}
+
+#fullInfoPanel{
+    opacity: 0;
+    display: block;
+    background-image: url("/src/main/resources/static/images/Paper.png");
+    background-size: 350px 600px;
+    background-position-x: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 250px;
+    height: 600px;
+    overflow: hidden;
+    padding: 100px 50px;
+    transition: all 0.25s;
+}
+
+
+#fullInfoPanel p{
+    color: rgb(66, 66, 66);
 }

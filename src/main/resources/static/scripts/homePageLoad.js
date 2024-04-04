@@ -1,5 +1,5 @@
 let cars = [];
-cars.push(new car(0,"Volkswagen",105));
+cars.push(new car(0,"Volkswagen",105,"XYZ123","XSupraV2",9053,"Automatic",4,2012));
 cars.push(new car(1,"Toyota",160));
 cars.push(new car(2,"Stellantis",120));
 cars.push(new car(3,"Mercedes",130));
@@ -11,6 +11,8 @@ cars.push(new car(8,"Lamborghini",155));
 cars.push(new car(9,"Lotus",78));
 
 const carGen = new CarGeneration();
+
+
 
 for(let i in cars){
     const car = cars[i];
