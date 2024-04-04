@@ -1,0 +1,102 @@
+body{
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    padding: 40px;
+    background-color:tan;
+    width: 100%;
+    text-align: left;
+    border: 3px solid grey;
+    
+}
+
+.menu-title{
+    margin: 25px;
+}
+
+.content{
+    padding-top: 10px;
+    flex: 1;
+    font-size: large;
+    text-align: left;
+    font-weight: bold;
+}
+.page-layout{
+    display: flex;
+    min-width: 100vh;
+    width: 100%;
+}
+
+/*menu*/
+aside{
+    background-color: tan;
+    width: 215px;
+    height: 100vh;
+    border: 3px solid grey;
+}
+
+
+/*login*/
+#email{
+    width: auto;
+    display: block;
+    margin-top: 5px;
+}
+#password{
+    width: auto;
+    display: block;
+    margin-top: 5px;
+}
+#loginButton{
+    margin-top: 5px;
+}
+
+
+
+/*registration*/
+.input-grid input{
+    width: 100%;
+}
+
+.input-grid{
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+.registrationForm {
+    flex-grow: 1;
+    padding: 15px;
+    max-width: 400px;
+}
+.registrationForm h1{
+    margin-left: 45px;
+}
+.buttonContainer{
+    margin-left: 45px;
+}
+
+
+/*cars*/
+.car{
+    margin-left: 45px;
+}
+
+
+/*cart*/
+.cartForm{
+    flex-grow: 1;
+    padding: 40px;
+    max-width: 400px;
+}
+.cartForm h1{
+    margin-left: 25px;
+}
+#saveCart{
+    margin-left: 40px;
+}
+.saveForm{
+    margin-top: 60px;
+}

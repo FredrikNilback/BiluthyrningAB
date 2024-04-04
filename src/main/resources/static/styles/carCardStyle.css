@@ -1,0 +1,32 @@
+.productcontainer{
+    width: 160px;
+    height: 140px;
+    background-color: rgb(224, 112, 47);
+    margin: 5px 5px;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.imgcontainer{
+    width: 160px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: rgba(126, 61, 1, 0.37);
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.103);
+}
+
+.carimg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.productinfocontainer{
+    display: flex;
+    justify-content: space-between;
+
+}

@@ -15,20 +15,28 @@ public interface CarRepository extends JpaRepository <Car, String> {
 
     @Query(value = "SELECT car FROM Car car WHERE carName = ?1")
     public ArrayList<Car> getCarsByName(String carName);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByCarBrand(Car.CarBrand carBrand);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByMilage(Integer milage);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByAutomatic(Car.Automatic automatic);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsBySeats(Integer carSeats);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByCarYear(Integer carYear);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByEngineType(Car.EngineType engineType);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByCarType(Car.CarType carType);
+
     @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
     public ArrayList<Car> getCarsByPricePerDay(Integer pricePerDay);
 
@@ -42,7 +50,7 @@ public interface CarRepository extends JpaRepository <Car, String> {
             "AND (:engineType IS NULL OR car.engineType = :engineType) " +
             "AND (:carType IS NULL OR car.carType = :carType) " +
             "AND (:pricePerDay IS NULL OR car.pricePerDay = :pricePerDay) ")
-        List<Car> searchCar(@Param("carName") String carName,
+    List<Car> searchCar(@Param("carName") String carName,
                         @Param("carBrand") Car.CarBrand carBrand,
                         @Param("milage") Integer milage,
                         @Param("automatic") Car.Automatic automatic,

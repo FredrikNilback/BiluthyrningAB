@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Registrera dig - Biluthyrning AB</title>
+</head>
+<body>
+<div class="page-layout">
+    <aside>
+        <div class="content">
+            <p class="menu-title">Menyval</p>
+        </div>
+        <h2 id="meny"></h2>
+        <nav>
+            <ul>
+                <li><a href="/">Hem</a></li>
+                <li><a href="car.html">Våra bilar</a></li>
+                <li><a href="#">Extra tillbehör</a></li>
+                <li><a href="#">Om oss</a></li>
+                <li><a href="cart.html">Varukorg</a></li>
+                <li><a href="registrera.html">Ny användare</a></li>
+                <li><a href="#" id="loginLink">Login</a></li>
+                <div id="loginForm" style="display: none;">
+                    <input type="text" placeholder="Email" id="email">
+                    <input type="password" placeholder="Password" id="password">
+                    <button id="loginButton">Logga in</button>
+                </div>
+            </ul>
+        </nav>
+    </aside>
+    <div class="registrationForm">
+        <h1>Registrera dig</h1>
+        <form action="submit_registration.php" method="post">
+            <div class="input-grid">
+                <label for="Email">E-post:</label>
+                <input type="text" name="Email" id="Email" required>
+            </div>
+            <div class="input-grid">
+                <label for="Password">Lösenord:</label>
+                <input type="text" name="Password" id="Password" required>
+            </div>
+            <div class="input-grid">
+                <label for="Name">Name:</label>
+                <input type="text" name="Name" id="Name" required>
+            </div>
+            <div class="input-grid">
+                <label for="TelephoneNumber">Telefonnr:</label>
+                <input type="text" name="TelephoneNumber" id="TelephoneNumber">
+            </div>
+            <div class="input-grid">
+                <label for="Address">Adress:</label>
+                <input type="text" name="Address" id="Address">
+            </div>
+            <div class="buttonContainer">
+                <button type="submit">Registrera!</button>
+            </div>
+        </form>
+    </div> 
+</div>
+<script src="scripts/menu.js"></script>
+</body>
+</html>

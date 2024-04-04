@@ -74,16 +74,8 @@ public class Car {
     public Car(String licensePlate, String carName, CarBrand carBrand,
                int milage, Automatic automatic, int carSeats, int carYear,
                EngineType engineType, CarType carType, Double pricePerDay) {
-        this.licensePlate = licensePlate;
-        this.carName = carName;
-        this.carBrand = carBrand;
-        this.milage = milage;
-        this.automatic = automatic;
-        this.carSeats = carSeats;
-        this.carYear = carYear;
-        this.engineType = engineType;
-        this.carType = carType;
-        this.pricePerDay = pricePerDay;
+
+
     }
 
     public Car(){
