@@ -21,13 +21,11 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("addUser")
+    //public ResponseEntity<String> addUser(@RequestParam String email, @RequestParam String password,
+    //                                    @RequestParam String confirmPassword, @RequestParam String name,
+    //                                    @RequestParam String telephoneNumber, @RequestParam String address) {
     public ResponseEntity<User> addUser(@RequestBody ReqUser req) {
         String email = req.email;
-
-        User checkUser = userService.getUserByEmail(email);
-        if(checkUser != null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
         String password = req.password;
         String confirmPassword = req.confirmPassword;
         String name = req.name;
