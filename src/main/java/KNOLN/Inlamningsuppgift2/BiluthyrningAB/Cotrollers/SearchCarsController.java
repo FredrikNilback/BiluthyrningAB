@@ -5,6 +5,8 @@ import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@RestController
-@RequestMapping("/searchCars")
-public class SearchCarsController extends CarController{
+@Controller
+public class SearchCarsController{
 
     @Autowired
     private CarService carService;
@@ -60,6 +61,7 @@ public class SearchCarsController extends CarController{
         return ResponseEntity.ok(carService.getCarsByPricePerDay(pricePerDay));
     }
 
+    //Här är funktionen som används då man vill söka igenom bilar genom att använda sig av alla kriterierna.
     @GetMapping("/searchAllCars")
     public ResponseEntity<List<Car>> searchCars(
             @RequestParam(value = "carName", required = false) String carName,
@@ -72,10 +74,12 @@ public class SearchCarsController extends CarController{
             @RequestParam(value = "carType", required = false) Car.CarType carType,
             @RequestParam(value = "pricePerDay", required = false) Double pricePerDay) {
 
-
         List<Car> filteredCars = new ArrayList<>();
 
-        for (Car car : getAllCars()){
+        //Loopar igenom alla billar i databasen som hämtas via getAllCars(). Lägger in en boolean match
+        // som är true i början av loopen. Logiken bakom är för om vi söker efter bilar utan att fylla i några
+        //kriterier (alltså att värdena är null) så ska man få med hela listan.
+        for (Car car : carService.getCars()){
             boolean match = true;
 
             if(carName != null && !carName.equals(car.getCarName())){
@@ -112,8 +116,11 @@ public class SearchCarsController extends CarController{
         }
         return new ResponseEntity<>(filteredCars, HttpStatus.OK);
     }
+
+
+    @GetMapping("/searchCars")
+    public String showSearchPage(Model model) {
+        return "searchCars";
+    }
 }
-
-
-
 

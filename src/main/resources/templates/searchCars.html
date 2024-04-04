@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Cars</title>
+</head>
+<body>
+<h1>Search Cars</h1>
+<form th:action="@{/searchAllCars}" method="get">
+    <label for="carName">Car Name:</label>
+    <input type="text" id="carName" name="carName"><br>
+
+    <label for="carBrand">Car Brand:</label>
+    <input type="text" id="carBrand" name="carBrand"><br>
+
+    <label for="milage">Milage:</label>
+    <input type="text" id="milage" name="milage"><br>
+
+    <label for="automatic">Automatic:</label>
+    <input type="checkbox" id="automatic" name="automatic"><br>
+
+    <label for="carSeats">Car Seats:</label>
+    <input type="text" id="carSeats" name="carSeats"><br>
+
+    <label for="carYear">Car Year:</label>
+    <input type="text" id="carYear" name="carYear"><br>
+
+    <label for="engineType">Engine Type:</label>
+    <input type="text" id="engineType" name="engineType"><br>
+
+    <label for="carType">Car Type:</label>
+    <input type="text" id="carType" name="carType"><br>
+
+    <label for="pricePerDay">Price Per Day:</label>
+    <input type="text" id="pricePerDay" name="pricePerDay"><br>
+
+    <button type="submit">Search</button>
+</form>
+
+<h2>Filtered Cars</h2>
+<ul>
+    <li th:each="car : ${filteredCars}">
+        <span th:text="${car.carName}"></span>
+    </li>
+</ul>
+</body>
+</html>

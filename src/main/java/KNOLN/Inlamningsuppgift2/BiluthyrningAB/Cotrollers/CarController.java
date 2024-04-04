@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars")
 public class CarController {
 
     @Autowired
