@@ -10,35 +10,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/*const apiUrl = 'http://localhost:8080';
-
-document.querySelector('.registrationForm form').addEventListener('submit', function(event) {
-    console.log("Form submission triggered");
-    event.preventDefault(); 
-   
-
-    const formData = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        confirmPassword: document.getElementById('confirmPassword').value,
-        name: document.getElementById('name').value,
-        telephoneNumber: document.getElementById('telephoneNumber').value,
-        address: document.getElementById('address').value,
-    };
-
-    fetch(apiUrl + '/users/addUser', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        window.alert("Du är registrerad!");
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});*/

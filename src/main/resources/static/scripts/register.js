@@ -21,12 +21,18 @@ document.querySelector('.registrationForm form').addEventListener('submit', func
         },
         body: JSON.stringify(formData),
     })
-    .then(response => response.json())
+    .then(response => {
+        if(!response.ok){
+            throw new Error("E-post finns redan registrerad")
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Success:', data);
         window.alert("Du är registrerad!");
     })
     .catch((error) => {
         console.error('Error:', error);
+        window.alert("Registrering misslyckades, användaren finns redan");
     });
 });
