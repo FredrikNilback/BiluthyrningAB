@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/styles/style.css">
     <title>Registrera dig - Biluthyrning AB</title>
 </head>
 <body>
@@ -15,16 +15,16 @@
         <h2 id="meny"></h2>
         <nav>
             <ul>
-                <li><a href="/">Hem</a></li>
+                <li><a href="index.html">Hem</a></li>
                 <li><a href="car.html">Våra bilar</a></li>
                 <li><a href="#">Extra tillbehör</a></li>
                 <li><a href="#">Om oss</a></li>
                 <li><a href="cart.html">Varukorg</a></li>
-                <li><a href="registrera.html">Ny användare</a></li>
+                <li><a href="register.html">Ny användare</a></li>
                 <li><a href="#" id="loginLink">Login</a></li>
                 <div id="loginForm" style="display: none;">
-                    <input type="text" placeholder="Email" id="email">
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="text" placeholder="Email" id="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPassword">
                     <button id="loginButton">Logga in</button>
                 </div>
             </ul>
@@ -32,26 +32,30 @@
     </aside>
     <div class="registrationForm">
         <h1>Registrera dig</h1>
-        <form action="submit_registration.php" method="post">
+        <form action="/users/addUser" method="post">
             <div class="input-grid">
-                <label for="Email">E-post:</label>
-                <input type="text" name="Email" id="Email" required>
+                <label for="email">E-post:</label>
+                <input type="text" name="email" id="email" required>
             </div>
             <div class="input-grid">
-                <label for="Password">Lösenord:</label>
-                <input type="text" name="Password" id="Password" required>
+                <label for="password">Lösenord:</label>
+                <input type="password" name="password" id="password" required>
             </div>
             <div class="input-grid">
-                <label for="Name">Name:</label>
-                <input type="text" name="Name" id="Name" required>
+                <label for="confirmPassword">Repetera Lösenord:</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" required>
             </div>
             <div class="input-grid">
-                <label for="TelephoneNumber">Telefonnr:</label>
-                <input type="text" name="TelephoneNumber" id="TelephoneNumber">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
             </div>
             <div class="input-grid">
-                <label for="Address">Adress:</label>
-                <input type="text" name="Address" id="Address">
+                <label for="telephoneNumber">Telefonnr:</label>
+                <input type="text" name="t" id="telephoneNumber">
+            </div>
+            <div class="input-grid">
+                <label for="address">Adress:</label>
+                <input type="text" name="address" id="address">
             </div>
             <div class="buttonContainer">
                 <button type="submit">Registrera!</button>
@@ -59,6 +63,7 @@
         </form>
     </div> 
 </div>
-<script src="scripts/menu.js"></script>
+<script src="/src/main/resources/static/scripts/register.js"></script>
+<script src="/src/main/resources/static/scripts/index.js"></script>
 </body>
 </html>

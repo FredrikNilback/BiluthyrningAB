@@ -73,6 +73,7 @@ aside{
 }
 .registrationForm h1{
     margin-left: 45px;
+    text-decoration: underline;
 }
 .buttonContainer{
     margin-left: 45px;
@@ -80,6 +81,12 @@ aside{
 
 
 /*cars*/
+.ourCars h1{
+    margin-left: 45px;
+    margin-bottom: 60px;
+    text-decoration-line: underline;
+}
+
 .car{
     margin-left: 45px;
 }
