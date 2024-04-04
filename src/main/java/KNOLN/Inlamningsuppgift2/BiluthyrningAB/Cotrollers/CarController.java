@@ -15,13 +15,9 @@ import java.util.List;
 @RequestMapping("/cars")
 public class CarController {
 
-
-
     @Autowired
     private CarService carService;
     private List<Car> carList;
-
-
 
 
 
@@ -34,7 +30,7 @@ public class CarController {
 
     @PostMapping("addCar")
     public String addCar(String licensePlate, String carName, Car.CarBrand carBrand,
-                         int milage, boolean automatic, int carSeats, int carYear,
+                         int milage, Car.Automatic automatic, int carSeats, int carYear,
                          Car.EngineType engineType, Car.CarType carType, Double pricePerDay){
 
         Car car = new Car( licensePlate,  carName,  carBrand,
@@ -50,52 +46,6 @@ public class CarController {
     @GetMapping("carList")
     public ArrayList<Car> getAllCars(){
         return carService.getCars();
-    }
-/*
-    @GetMapping("/search")
-    public ResponseEntity<ArrayList<Car>>getCarSeats(Integer carSeats){
-        return ResponseEntity.ok(carService.getCarSeats(carSeats));
-    }
-
-*/
-@GetMapping("/search")
-public ResponseEntity<ArrayList<Car>> searchCars(
-        @RequestParam(value = "carName", required = false) String carName,
-        @RequestParam(value = "carBrand", required = false) Car.CarBrand carBrand,
-        @RequestParam(value = "milage", required = false) Integer milage,
-        @RequestParam(value = "automatic", required = false) boolean automatic,
-        @RequestParam(value = "carSeats", required = false) Integer carSeats,
-        @RequestParam(value = "carYear", required = false) Integer carYear,
-        @RequestParam(value = "engineType", required = false) Car.EngineType engineType,
-        @RequestParam(value = "carType", required = false) Car.CarType carType,
-        @RequestParam(value = "pricePerDay", required = false) Double pricePerDay) {
-
-
-        // Create a searchCriteria object based on the provided parameters
-        Car searchCriteria = new Car();
-        searchCriteria.setCarName(carName);
-        searchCriteria.setCarBrand(carBrand);
-        searchCriteria.setMilage(milage);
-        searchCriteria.setAutomatic(automatic);
-        searchCriteria.setCarSeats(carSeats);
-        searchCriteria.setCarYear(carYear);
-        searchCriteria.setEngineType(engineType);
-        searchCriteria.setCarType(carType);
-        searchCriteria.setPricePerDay(pricePerDay);
-        // Set other parameters similarly
-
-
-        ArrayList<Car> filteredCars = carService.searchCars(
-                searchCriteria.getCarName(),
-                searchCriteria.getCarBrand(),
-                searchCriteria.getMilage(),
-                searchCriteria.isAutomatic(),
-                searchCriteria.getCarSeats(),
-                searchCriteria.getCarYear(),
-                searchCriteria.getEngineType(),
-                searchCriteria.getCarType(),
-                searchCriteria.getPricePerDay());
-        return ResponseEntity.ok(filteredCars);
     }
 
 

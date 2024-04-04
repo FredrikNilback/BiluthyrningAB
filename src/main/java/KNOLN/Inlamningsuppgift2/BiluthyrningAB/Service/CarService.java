@@ -2,26 +2,29 @@ package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Repositories.CarRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
+import java.util.List;
 
 @Service
 public class CarService {
     @Autowired
     private CarRepository repo;
 
-    public ArrayList<Car> getCarSeats(Integer carSeats){
-        return repo.getCarSeats(carSeats);
-    }
+    public List<Car> getCarsByCarName(String carName){return repo.getCarsByName(carName);}
+    public List<Car> getCarsByCarBrand(Car.CarBrand carBrand){return repo.getCarsByCarBrand(carBrand);}
+    public List<Car> getCarsByMilage(Integer milage){return repo.getCarsByMilage(milage);}
+    public List<Car> getCarsByAutomatic(Car.Automatic automatic){return repo.getCarsByAutomatic(automatic);}
+    public List<Car> getCarsByCarSeats(Integer carSeats){return repo.getCarsBySeats(carSeats);}
+    public List<Car> getCarsByEngineType(Car.EngineType engineType){return repo.getCarsByEngineType(engineType);}
+    public List<Car> getCarsByCarType(Car.CarType carType){return repo.getCarsByCarType(carType);}
+    public List<Car> getCarsByPricePerDay(Integer pricePerDay){return repo.getCarsByPricePerDay(pricePerDay);}
 
 
-    public ArrayList<Car> searchCars(String carName, Car.CarBrand carBrand,
-                                Integer milage, boolean automatic, Integer carSeats, Integer carYear,
+    public List<Car> searchCars(String carName, Car.CarBrand carBrand,
+                                Integer milage, Car.Automatic automatic, Integer carSeats, Integer carYear,
                                 Car.EngineType engineType, Car.CarType carType, Double pricePerDay) {
         return repo.searchCar(carName,  carBrand,
                 milage,  automatic,  carSeats,  carYear,
@@ -29,36 +32,9 @@ public class CarService {
     }
 
 
-    private boolean searchByCriteria(Car car, Car carSearch) {
-        if (carSearch.getCarName() != null && !car.getCarName().toString().equals(carSearch.getCarName()))
-            return false;
-        if (carSearch.getCarBrand() != null && !car.getCarBrand().toString().equals(carSearch.getCarBrand().toString()))
-            return false;
-        if (carSearch.getMilage() != null && car.getMilage() != carSearch.getMilage())
-            return false;
-        if (car.isAutomatic() != carSearch.isAutomatic())
-            return false;
-        if (carSearch.getCarSeats() != null && !Objects.equals(car.getCarSeats(), carSearch.getCarSeats()))
-            return false;
-        if (carSearch.getCarYear() != null && !Objects.equals(car.getCarYear(), carSearch.getCarYear()))
-            return false;
-        if (carSearch.getEngineType() != null && !car.getEngineType().toString().equals(carSearch.getEngineType()))
-            return false;
-        if (carSearch.getCarType() != null && !car.getCarType().toString().equals(carSearch.getCarType()))
-            return false;
-        if (carSearch.getPricePerDay() != null && car.getPricePerDay() != carSearch.getPricePerDay())
-            return false;
-
-        return true;
-    }
-
     public  ArrayList<Car> getCars(){
         return (ArrayList<Car>) repo.findAll();
     }
-
-
-
-
 
 
     public void addCar(Car car){
@@ -67,26 +43,6 @@ public class CarService {
     public void deleteCar(Car car){
         repo.delete(car);
     }
-
-    public Car getCarByBrand(Car.CarBrand carBrand){return repo.findByCarBrand(carBrand);}
-    public Car getCarByCarName(String carName){return repo.findByCarName(carName);}
-    public Car getCarByCarType(Car.CarType carType){
-        return repo.findByCarType(carType);
-    }
-    public Car getCarByEngineType(Car.EngineType engineType){
-        return repo.findByEngineType(engineType);
-    }
-    public Car getCarByCarYear(int carYear){
-        return repo.findByCarYear(carYear);
-    }
-    public Car getCarByCarSeats(int carSeats){
-        return repo.findByCarSeats(carSeats);
-    }
-    public Car getCarAutomatic(boolean automatic){
-        return repo.findByAutomatic(automatic);
-    }
-
-
 
 }
 
