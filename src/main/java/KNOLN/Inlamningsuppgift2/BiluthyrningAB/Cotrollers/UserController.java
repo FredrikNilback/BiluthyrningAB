@@ -1,8 +1,11 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Cotrollers;
 
+import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.ReqUser;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.UserService;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.User;
@@ -18,9 +21,16 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("addUser")
-    public ResponseEntity<User> addUser(@RequestParam String email, @RequestParam String password,
-                                        @RequestParam String confirmPassword, @RequestParam String name,
-                                        @RequestParam String telephoneNumber, @RequestParam String address) {
+    //public ResponseEntity<String> addUser(@RequestParam String email, @RequestParam String password,
+    //                                    @RequestParam String confirmPassword, @RequestParam String name,
+    //                                    @RequestParam String telephoneNumber, @RequestParam String address) {
+    public ResponseEntity<User> addUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        String password = req.password;
+        String confirmPassword = req.confirmPassword;
+        String name = req.name;
+        String telephoneNumber = req.telephoneNumber;
+        String address = req.address;
 
         String salt = saltMaker();
         String combinedPassword = (password + salt);

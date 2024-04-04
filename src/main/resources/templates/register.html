@@ -15,16 +15,16 @@
         <h2 id="meny"></h2>
         <nav>
             <ul>
-                <li><a href="/">Hem</a></li>
+                <li><a href="index.html">Hem</a></li>
                 <li><a href="car.html">Våra bilar</a></li>
                 <li><a href="#">Extra tillbehör</a></li>
                 <li><a href="#">Om oss</a></li>
                 <li><a href="cart.html">Varukorg</a></li>
-                <li><a href="registrera.html">Ny användare</a></li>
+                <li><a href="register.html">Ny användare</a></li>
                 <li><a href="#" id="loginLink">Login</a></li>
                 <div id="loginForm" style="display: none;">
-                    <input type="text" placeholder="Email" id="email">
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="text" placeholder="Email" id="loginEmail">
+                    <input type="password" placeholder="Password" id="loginPassword">
                     <button id="loginButton">Logga in</button>
                 </div>
             </ul>
@@ -39,11 +39,11 @@
             </div>
             <div class="input-grid">
                 <label for="password">Lösenord:</label>
-                <input type="text" name="password" id="password" required>
+                <input type="password" name="password" id="password" required>
             </div>
             <div class="input-grid">
                 <label for="confirmPassword">Repetera Lösenord:</label>
-                <input type="text" name="confirmPassword" id="confirmPassword">
+                <input type="password" name="confirmPassword" id="confirmPassword" required>
             </div>
             <div class="input-grid">
                 <label for="name">Name:</label>
