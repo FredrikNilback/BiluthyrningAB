@@ -1,16 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('loginLink').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        var loginForm = document.getElementById('loginForm');
-        if (loginForm.style.display === "none" || loginForm.style.display === "") {
-            loginForm.style.display = "block";
-        } else {
-            loginForm.style.display = "none";
-        }
-    });
-});
-
-/*const apiUrl = 'http://localhost:8080';
+const apiUrl = 'http://localhost:8080';
 
 document.querySelector('.registrationForm form').addEventListener('submit', function(event) {
     console.log("Form submission triggered");
@@ -41,4 +29,4 @@ document.querySelector('.registrationForm form').addEventListener('submit', func
     .catch((error) => {
         console.error('Error:', error);
     });
-});*/
+});
