@@ -3,7 +3,7 @@ class CarGeneration{
     
     constructor()
     {
-        this.createFullInfo();
+        this.createFullInfo("main");
         console.log("I run constructor")
     }
     carCard(car,locDivParentId)
@@ -42,21 +42,47 @@ class CarGeneration{
         productPrice.textContent = car.getPrice()+"kr/Dag";
         productInfoContainer.appendChild(productPrice);
 
-        productContainer.addEventListener("mouseenter",(event) =>{
+        let onProductPanel = false;
+        const infoPanel = document.getElementById("fullInfoPanel");
+        let onInfoPanel = false;
+
+        productContainer.addEventListener("mouseenter",() =>{
             const infoPanel = document.getElementById("fullInfoPanel");
-            infoPanel.style.opacity = 1;
+            const parentRect = productContainer.getBoundingClientRect();
+            infoPanel.style.bottom = (parentRect.top-250)+"px";
+            infoPanel.style.left = (parentRect.left-40)+"px";
             this.showFullInfo(car);
-            console.log("Entered Div");
+            onProductPanel = true;
+            onInfoPanel = false;
+
+            const timeoutID = setTimeout(()=>{
+                infoPanel.style.opacity = 1;
+            },1)
         });
 
         productContainer.addEventListener("mouseleave",() =>{
-            
-            document.getElementById("fullInfoPanel").style.opacity = 0;
-            console.log("Left Div");
+            onProductPanel = false;
+            setTimeout(()=>{
+                if(onInfoPanel != true){
+                    document.getElementById("fullInfoPanel").style.opacity = 0;
+                }
+            },1);
         });
+
+        infoPanel.addEventListener("mouseenter",()=>{
+            onInfoPanel = true;
+        })
+        infoPanel.addEventListener("mouseleave",()=>{
+            onInfoPanel = false;
+            setTimeout(()=>{
+                if(onProductPanel != true){
+                    document.getElementById("fullInfoPanel").style.opacity = 0;
+                }
+            },1);
+        })
     }
 
-    createFullInfo(){
+    createFullInfo(ParentId){
         const fullInfoPanel = document.createElement("div");
         fullInfoPanel.setAttribute("id","fullInfoPanel");
         const id = document.createElement("p");
@@ -78,7 +104,7 @@ class CarGeneration{
         const carYear = document.createElement("p");
         carYear.setAttribute("id","infoCarYear");
 
-        document.getElementById("main").appendChild(fullInfoPanel);
+        document.getElementById(ParentId).appendChild(fullInfoPanel);
         fullInfoPanel.appendChild(id);
         fullInfoPanel.appendChild(carBrand);
         fullInfoPanel.appendChild(model);
@@ -99,6 +125,6 @@ class CarGeneration{
         document.getElementById("infoMilage").textContent = "Miltal: "+car.getMilage();
         document.getElementById("infoAutomatic").textContent = "Växellåda: "+car.getAutomatic();
         document.getElementById("infoCarSeats").textContent = "Säten: "+car.getCarSeats();
-        document.getElementById("infoCarYear").textContent = "ModellÅr: "+car.getCarYear();
+        document.getElementById("infoCarYear").textContent = "Modell År: "+car.getCarYear();
     }
 }

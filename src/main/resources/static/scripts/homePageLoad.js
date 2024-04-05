@@ -10,6 +10,12 @@ cars.push(new car(7,"Tesla",130));
 cars.push(new car(8,"Lamborghini",155));
 cars.push(new car(9,"Lotus",78));
 
+//Load in cars
+//let carList = JSON.parse()
+//for(let i in carList){
+//    cars.push(new car(carList[i].id))
+//}
+
 const carGen = new CarGeneration();
 
 
