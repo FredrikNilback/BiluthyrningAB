@@ -51,7 +51,9 @@ public class UserController {
     }
 
     @PostMapping("loginUser")
-    public ResponseEntity<User> loginUser(String email, String password) {
+    public ResponseEntity<User> loginUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        String password = req.password;
         User user = userService.getUserByEmail(email);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
