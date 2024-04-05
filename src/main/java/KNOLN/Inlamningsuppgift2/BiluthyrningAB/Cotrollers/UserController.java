@@ -51,20 +51,22 @@ public class UserController {
     }
 
     @PostMapping("loginUser")
-    public ResponseEntity<String> loginUser(String email, String password) {
+    public ResponseEntity<User> loginUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        String password = req.password;
         User user = userService.getUserByEmail(email);
         if (user == null) {
-            return new ResponseEntity<>("User not found.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         String combinedPassword = password + user.getSalt();
         String hashedPassword = hashPassword(combinedPassword);
 
         if (hashedPassword.equals(user.getPassword())) {
-            return new ResponseEntity<>(("Login successful. \nWelcome back " + user.getUserName() + "!"), HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
         else {
-            return new ResponseEntity<>("Incorrect password.", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
