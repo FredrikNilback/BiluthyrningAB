@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = "/profile.html"; 
+                window.location.href = "/src/main/resources/templates/profile.html"; 
             } else {
                 response.text().then(text => alert(text)); 
             }
