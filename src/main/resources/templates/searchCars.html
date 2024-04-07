@@ -6,18 +6,25 @@
 </head>
 <body>
 <h1>Search Cars</h1>
-<form th:action="@{/searchAllCars}" method="get">
+<form id="searchForm" th:action="@{/searchAllCars}" method="get">
     <label for="carName">Car Name:</label>
     <input type="text" id="carName" name="carName"><br>
 
     <label for="carBrand">Car Brand:</label>
-    <input type="text" id="carBrand" name="carBrand"><br>
+    <select id="carBrand" name="carBrand">
+        <option value="">Select Car Brand</option>
+        <option value="Volvo">Volvo</option>
+    </select><br>
 
     <label for="milage">Milage:</label>
     <input type="text" id="milage" name="milage"><br>
 
     <label for="automatic">Automatic:</label>
-    <input type="checkbox" id="automatic" name="automatic"><br>
+    <select id="automatic" name="automatic">
+        <option value="">Select Transmission</option>
+        <option value="Automatic">Automatic</option>
+        <option value="Manual">Manual</option>
+    </select><br>
 
     <label for="carSeats">Car Seats:</label>
     <input type="text" id="carSeats" name="carSeats"><br>
@@ -26,22 +33,27 @@
     <input type="text" id="carYear" name="carYear"><br>
 
     <label for="engineType">Engine Type:</label>
-    <input type="text" id="engineType" name="engineType"><br>
+    <select id="engineType" name="engineType">
+        <option value="">Select Engine Type</option>
+        <option value="Electric">Electric</option>
+        <option value="Bensin">Bensin</option>
+        <option value="Diesel">Diesel</option>
+    </select><br>
 
     <label for="carType">Car Type:</label>
-    <input type="text" id="carType" name="carType"><br>
+    <select name="carType" id="carType">
+        <option value="">Select Car Type</option>
+        <option value="Combi">Combi</option>
+    </select><br>
 
     <label for="pricePerDay">Price Per Day:</label>
     <input type="text" id="pricePerDay" name="pricePerDay"><br>
 
-    <button type="submit">Search</button>
+    <button id="searchCarsButton" type="submit">Search</button>
 </form>
 
-<h2>Filtered Cars</h2>
-<ul>
-    <li th:each="car : ${filteredCars}">
-        <span th:text="${car.carName}"></span>
-    </li>
+
 </ul>
+<script src="scripts/searchParams.js"></script>
 </body>
 </html>

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
+
+
 
 @Controller
 public class SearchCarsController{
@@ -76,9 +79,42 @@ public class SearchCarsController{
 
         List<Car> filteredCars = new ArrayList<>();
 
+
+        Map<String, Object> queryParams = new HashMap<>();
+        if (carName != null && !carName.isEmpty()) {
+            queryParams.put("carName", carName);
+        }
+        if (carBrand != null) {
+            queryParams.put("carBrand", carBrand);
+        }
+        if (milage != null) {
+            queryParams.put("milage", milage);
+        }
+        if (automatic != null) {
+            queryParams.put("automatic", automatic);
+        }
+        if (carSeats != null) {
+            queryParams.put("carSeats", carSeats);
+        }
+        if (carYear != null) {
+            queryParams.put("carYear", carYear);
+        }
+        if (engineType != null) {
+            queryParams.put("engineType", engineType);
+        }
+        if (carType != null) {
+            queryParams.put("carType", carType);
+        }
+        if (pricePerDay != null) {
+            queryParams.put("pricePerDay", pricePerDay);
+        }
+
+
+
         //Loopar igenom alla billar i databasen som hämtas via getAllCars(). Lägger in en boolean match
         // som är true i början av loopen. Logiken bakom är för om vi söker efter bilar utan att fylla i några
         //kriterier (alltså att värdena är null) så ska man få med hela listan.
+
         for (Car car : carService.getCars()){
             boolean match = true;
 
@@ -113,6 +149,7 @@ public class SearchCarsController{
             if (match){
                 filteredCars.add(car);
             }
+
         }
         return new ResponseEntity<>(filteredCars, HttpStatus.OK);
     }
