@@ -1,7 +1,7 @@
 .productcontainer{
     width: 160px;
     height: 140px;
-    background-image: linear-gradient(rgba(155, 73, 29, 0.658),rgba(151, 83, 46, 0.658));
+    background-image: linear-gradient(rgb(180, 117, 62),rgb(197, 121, 54));
     margin: 5px 5px;
     padding: 10px 10px;
     border-radius: 5px;
@@ -46,7 +46,7 @@
     background-size: 220px 350px;
     background-position-x: 50%;
     background-repeat: no-repeat;
-    position: relative;
+    position: absolute;
     width: 150px;
     height: 350px;
     overflow: hidden;

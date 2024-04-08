@@ -1,8 +1,10 @@
+@font-face { font-family: RetroVintage; src: url("/src/main/resources/static/Fonts/RetroVintage-Regular.otf"); } 
 body{
-    background-image: url("https://images.freecreatives.com/wp-content/uploads/2015/03/brick-wall-free-textures-011.jpg");
-    background-size:auto;
-    background-repeat:no-repeat;
-    background-position-x: 50%;
+    font-family: RetroVintage;
     overflow:scroll;
     margin: 0px;
+}
+a{
+    color: black;
+    text-decoration: none;
 }

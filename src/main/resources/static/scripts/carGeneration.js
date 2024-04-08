@@ -49,7 +49,7 @@ class CarGeneration{
         productContainer.addEventListener("mouseenter",() =>{
             const infoPanel = document.getElementById("fullInfoPanel");
             const parentRect = productContainer.getBoundingClientRect();
-            infoPanel.style.bottom = (parentRect.top-250)+"px";
+            infoPanel.style.top = (parentRect.top+parentRect.height)+"px";
             infoPanel.style.left = (parentRect.left-40)+"px";
             this.showFullInfo(car);
             onProductPanel = true;
