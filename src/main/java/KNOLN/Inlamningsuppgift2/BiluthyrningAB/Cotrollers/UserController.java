@@ -51,25 +51,30 @@ public class UserController {
     }
 
     @PostMapping("loginUser")
-    public ResponseEntity<String> loginUser(String email, String password) {
+    public ResponseEntity<User> loginUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        String password = req.password;
         User user = userService.getUserByEmail(email);
         if (user == null) {
-            return new ResponseEntity<>("User not found.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         String combinedPassword = password + user.getSalt();
         String hashedPassword = hashPassword(combinedPassword);
 
         if (hashedPassword.equals(user.getPassword())) {
-            return new ResponseEntity<>(("Login successful. \nWelcome back " + user.getUserName() + "!"), HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
         else {
-            return new ResponseEntity<>("Incorrect password.", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
     @PutMapping("updateUserName")
-    public ResponseEntity<User> updateUserName(String email, String newUserName) {
+    public ResponseEntity<User> updateUserName(@RequestBody ReqUser req) {
+
+        String email = req.email;
+        String newUserName = req.name;
         User updatedUser = userService.updateUserUserName(email, newUserName);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -80,7 +85,10 @@ public class UserController {
     }
 
     @PutMapping("updateAddress")
-    public ResponseEntity<User> updateAddress(String email, String newAddress) {
+    public ResponseEntity<User> updateAddress(@RequestBody ReqUser req) {
+
+        String email = req.email;
+        String newAddress = req.address;
         User updatedUser = userService.updateUserAddress(email, newAddress);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -91,7 +99,10 @@ public class UserController {
     }
 
     @PutMapping("updateTelephoneNumber")
-    public ResponseEntity<User> updateTelephoneNumber(String email, String newTelephoneNumber) {
+    public ResponseEntity<User> updateTelephoneNumber(@RequestBody ReqUser req) {
+
+        String email = req.email;
+        String newTelephoneNumber = req.telephoneNumber;
         User updatedUser = userService.updateUserTelephoneNumber(email, newTelephoneNumber);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -102,7 +113,10 @@ public class UserController {
     }
 
     @PutMapping("updatePassword")
-    public ResponseEntity<User> updatePassword(String email, String newPassword, String newConfirmPassword) {
+    public ResponseEntity<User> updatePassword(@RequestBody ReqUser req) {
+        String email = req.email;
+        String newPassword = req.password;
+        String newConfirmPassword = req.confirmPassword;
         String newSalt = saltMaker();
         User updatedUser = userService.updateUserSalt(email, newSalt);
 
