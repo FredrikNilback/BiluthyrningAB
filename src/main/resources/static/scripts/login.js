@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (response.ok) {
+                alert("Inloggningen lyckades! Välkommen.");
                 window.location.href = "/src/main/resources/templates/profile.html"; 
             } else {
                 response.text().then(text => alert(text)); 
@@ -41,3 +42,22 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Login knappen is not found");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+   const logoutButton = document.getElementById("logoutButton");
+   if(logoutButton){
+      logoutButton.addEventListener("click", function(){
+
+        console.log("User is logging out");
+
+        alert("Du har loggats ut");
+        window.location.href = "/src/main/resources/templates/index.html"; 
+        
+      });
+    }else{
+        console.log("utloggningsknappen hittades inte");
+    }
+});
+
+
+
