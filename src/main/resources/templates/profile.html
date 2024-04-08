@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/style.css">
+    <title>Profil - Biluthyrning AB</title>
+</head>
+<body>
+    <div class="page-layout">
+        <aside>
+            <div class="content">
+                <p class="menu-title">Menyval</p>
+            </div>
+            <h2 id="meny"></h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hem</a></li>
+                    <li><a href="car.html">Våra bilar</a></li>
+                    <li><a href="about.html">Om oss</a></li>
+                    <li><a href="cart.html">Varukorg</a></li>
+                </ul>
+                <button id="logoutButton">Logga ut</button>    
+            </nav>
+        </aside>
+        <div class="profile">
+           <h1>Välkommen till din profil!</h1>
+           <div class="profil-info">
+              <h2>Användaruppgifter:</h2>
+              <form id="updateNameForm">
+                <input type="text" id="nameInput" placeholder="Nytt namn">
+                <button type="submit">Ändra Namn</button>
+              </form>
+            </div>
+        </div>
+        <div id="updateForm" style="display:none;">
+            <input type="text" id="updateValue"/>
+            <button onclick="updateInfo()">Spara</button>
+            <button onclick="cancelUpdate()">Avbryt</button>
+        </div>
+    </div>
+    <script src="/src/main/resources/static/scripts/login.js"></script>
+    <script src="/src/main/resources/static/scripts/profile.js"></script>
+</body>
+</html>

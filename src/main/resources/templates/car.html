@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/styles/style.css">
     <title>Våra Bilar - Biluthyrning AB</title>
 </head>
 <body>
@@ -12,41 +12,42 @@
         <div class="content">
             <p class="menu-title">Menyval</p>
         </div>
-        <h2 id="meny"></h2>
-        <nav>
-            <ul>
-                <li><a href="/">Hem</a></li>
-                <li><a href="car.html">Våra bilar</a></li>
-                <li><a href="#">Extra tillbehör</a></li>
-                <li><a href="#">Om oss</a></li>
-                <li><a href="cart.html">Varukorg</a></li>
-                <li><a href="register.html">Ny användare</a></li>
-                <li><a href="#" id="loginLink">Login</a></li>
-                <div id="loginForm" style="display: none;">
-                    <input type="text" placeholder="Email" id="email">
-                    <input type="password" placeholder="Password" id="password">
-                    <button id="loginButton">Logga in</button>
-                </div>
-            </ul>
-        </nav>
-    </aside>
+    <nav>
+        <ul>
+            <li><a href="index.html">Hem</a></li>
+            <li><a href="car.html">Våra bilar</a></li>
+            <li><a href="about.html">Om oss</a></li>
+            <li><a href="cart.html">Varukorg</a></li>
+            <li><a href="register.html">Ny användare(registrering)</a></li>
+            <li><a href="#" id="loginLink">Login</a></li>
+            <div id="loginForm" style="display: none;">
+                <input type="text" placeholder="Email" id="loginEmail">
+                <input type="password" placeholder="Password" id="loginPassword">
+                <button id="loginButton">Logga in</button>
+            </div>
+        </ul>
+    </nav>
+</aside>
         <main>
+        <div class="ourCars">
+            <h1>Våra Bilar</h1>
+        </div>
             <section class="listOfCars">
                 <article class="car">
                     <h2>Fiat 595</h2>
-                    <img src="scripts/images/Fiat 595a.jpg" alt="Fiat 595">
+                    <img src="/src/main/resources/static/images/Fiat 595a.jpg" alt="Fiat 595">
                     <p>Liten pigg bil för kortare resor. 
                        Till den som uppskattar små bilar med fart i.</p>
                     <button onclick="addToCart('Fiat 595')">Lägg till i varukorgen</button>   
                 </article>
                 <article class="car">
                     <h2>Bentley</h2>
-                    <img src="scripts/images/Bentley.jpg" alt="Bentley">
+                    <img src="/src/main/resources/static/images/Bentley.jpg" alt="Bentley">
                     <p>För den som vill åka ståndsmässigt</p>
                 </article>
                 <article class="car">
                     <h2>Volkswagen buss</h2>
-                    <img src="scripts/images/vwbussa.jpg" alt="VW buss">
+                    <img src="/src/main/resources/static/images/vwbussa.jpg" alt="VW buss">
                     <p>Här har du en bil med hippievibbar. 
                        Perfekt att lasta grejor på taket, och självklart kan du både sova och laga mat i den.</p>
                 </article>
@@ -54,7 +55,8 @@
         </main>
     </div>
     </div>
-    <script src="scripts/car.js"></script>
-    <script src="scripts/menu.js"></script>
+    <script src="/src/main/resources/static/scripts/login.js"></script>
+    <script src="/src/main/resources/static/scripts/car.js"></script>
+    <script src="/src/main/resources/static/scripts/cart.js"></script>
 </body>
 </html>
