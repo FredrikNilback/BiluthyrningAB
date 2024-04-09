@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 @Entity
@@ -19,8 +21,8 @@ public class Car {
     private CarBrand carBrand;
     @Column(nullable = true)
     private Integer milage;
-    @Column
-    private boolean automatic;
+    @Column(nullable = true)
+    private Automatic automatic;
     @Column(nullable = true)
     private Integer carSeats;
     @Column(nullable = true)
@@ -31,6 +33,9 @@ public class Car {
     private CarType carType;
     @Column(nullable = true)
     private Double pricePerDay;
+
+
+
 
     public String getLicensePlate() {
         return licensePlate;
@@ -44,11 +49,9 @@ public class Car {
         return carBrand;
     }
 
-    public Integer getMilage() {
-        return milage;
-    }
+    public Integer getMilage() {return milage;}
 
-    public boolean isAutomatic() {
+    public Automatic isAutomatic() {
         return automatic;
     }
 
@@ -72,35 +75,34 @@ public class Car {
         return pricePerDay;
     }
 
+
     public Car(String licensePlate, String carName, CarBrand carBrand,
-               int milage, boolean automatic, int carSeats, int carYear,
+               int milage, Automatic automatic, int carSeats, int carYear,
                EngineType engineType, CarType carType, Double pricePerDay) {
-        this.licensePlate = licensePlate;
-        this.carName = carName;
-        this.carBrand = carBrand;
-        this.milage = milage;
-        this.automatic = automatic;
-        this.carSeats = carSeats;
-        this.carYear = carYear;
-        this.engineType = engineType;
-        this.carType = carType;
-        this.pricePerDay = pricePerDay;
+
+
     }
 
     public Car(){
 
     }
 
-    // Alla Enum funktioner, lägg in element pö on pö.
+
     public enum EngineType{
-        Bensin, Diesel, Electric
+        Gasoline , Diesel, Electric, Hybrid, CNG
     }
     public enum CarBrand{
-        Volvo
+        Volvo, Fiat, Ford, Bentley, Porsche, Audi, Volkswagen, Bugatti, Königsegg,Toyota, Kia, BMW, Renault, Peugot,
+        Hyundai, Nissan, Opel, Mazda, SEAT, Honda, Tesla, Suzuki, Jeep, Lexus, Chrysler, MercedezBenz,
     }
     public enum CarType{
-        Combi
+        Combi, Convertible, Coupe, SUV, Sedan, Truck, Minivan, SportsCar, Hybrid, Crossover
     }
+
+    public enum Automatic{
+        Automatic, Manual
+    }
+
 
 
 }
