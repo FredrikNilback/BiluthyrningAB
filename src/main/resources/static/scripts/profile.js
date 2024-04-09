@@ -1,15 +1,9 @@
-document.addEventListener("DOMContentLoaded", function(){
-    const apiURL = "http://localhost:8080/users";
+//let user = JSON.parse(localStorage.getItem("userEmail"));
+//document.getElementById("userEmail").textContent = user.email;
 
+document.addEventListener("editUserInfo").addEventListener("click" , function(){
+    document.getElementById("editName").value = document.getElementById("userName").textContent;
+    document.getElementById("editEmail").value = document.getElementById("userEmail").textContent;
+    document.getElementById("editAddress").value = document.getElementById("userAdress").textContent;
     
-
-    const nameForm = document.getElementById("updateNameForm");
-    if(nameForm){
-        nameForm.addEventListener("submit", function(e){
-            e.preventDefault();
-            const newUserName = document.getElementById("nameInput").value;
-            updateUsername(userEmail, newUserName);
-        });
-    }
-})
-
+}
