@@ -31,8 +31,7 @@ public class Contract {
     @Column(nullable = false, name = "Total Cost")
     private int totalCost;
 
-    public Contract(int contractId, String licensePlate, String email, LocalDate startDate, LocalDate endDate, int totalCost) {
-        this.contractId = contractId;
+    public Contract(String licensePlate, String email, LocalDate startDate, LocalDate endDate, int totalCost) {
         this.licensePlate = licensePlate;
         this.email = email;
         this.startDate = startDate;
