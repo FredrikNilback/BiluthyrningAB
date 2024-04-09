@@ -11,20 +11,13 @@
     <input type="text" id="carName" name="carName"><br>
 
     <label for="carBrand">Car Brand:</label>
-    <select id="carBrand" name="carBrand">
-        <option value="">Select Car Brand</option>
-        <option value="Volvo">Volvo</option>
-    </select><br>
+    <input type="text" id="carBrand" name="carBrand"><br>
 
     <label for="milage">Milage:</label>
     <input type="text" id="milage" name="milage"><br>
 
     <label for="automatic">Automatic:</label>
-    <select id="automatic" name="automatic">
-        <option value="">Select Transmission</option>
-        <option value="Automatic">Automatic</option>
-        <option value="Manual">Manual</option>
-    </select><br>
+    <input type="text" id="automatic" name="automatic"><br>
 
     <label for="carSeats">Car Seats:</label>
     <input type="text" id="carSeats" name="carSeats"><br>
@@ -33,18 +26,10 @@
     <input type="text" id="carYear" name="carYear"><br>
 
     <label for="engineType">Engine Type:</label>
-    <select id="engineType" name="engineType">
-        <option value="">Select Engine Type</option>
-        <option value="Electric">Electric</option>
-        <option value="Bensin">Bensin</option>
-        <option value="Diesel">Diesel</option>
-    </select><br>
+    <input type="text" id="engineType" name="engineType"><br>
 
     <label for="carType">Car Type:</label>
-    <select name="carType" id="carType">
-        <option value="">Select Car Type</option>
-        <option value="Combi">Combi</option>
-    </select><br>
+    <input type="text" id="carType" name="carType"><br>
 
     <label for="pricePerDay">Price Per Day:</label>
     <input type="text" id="pricePerDay" name="pricePerDay"><br>
@@ -52,8 +37,9 @@
     <button id="searchCarsButton" type="submit">Search</button>
 </form>
 
+<div id="carListContainer"></div>
 
-</ul>
 <script src="scripts/searchParams.js"></script>
+<script src="scripts/carsTemp.js"></script>
 </body>
 </html>

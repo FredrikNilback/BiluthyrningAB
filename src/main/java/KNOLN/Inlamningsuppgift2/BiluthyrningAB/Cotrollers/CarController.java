@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,6 @@ public class CarController {
         Car car = new Car( licensePlate,  carName,  carBrand,
          milage,  automatic,  carSeats,  carYear,
          engineType,  carType, pricePerDay);
-
         carService.addCar(car);
 
         return "addCar";

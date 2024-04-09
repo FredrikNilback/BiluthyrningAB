@@ -8,14 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
-
 
 
 @Controller
@@ -23,6 +18,7 @@ public class SearchCarsController{
 
     @Autowired
     private CarService carService;
+
 
     @GetMapping("/carName")
     public ResponseEntity<List<Car>> getCarsByCarName(@RequestParam("carName") String carName){
@@ -63,6 +59,8 @@ public class SearchCarsController{
     public ResponseEntity<List<Car>> getCarsByPricePerDay(@RequestParam("pricePerDay") Integer pricePerDay){
         return ResponseEntity.ok(carService.getCarsByPricePerDay(pricePerDay));
     }
+
+
 
     //Här är funktionen som används då man vill söka igenom bilar genom att använda sig av alla kriterierna.
     @GetMapping("/searchAllCars")
@@ -159,5 +157,7 @@ public class SearchCarsController{
     public String showSearchPage(Model model) {
         return "searchCars";
     }
-}
+
+
+ }
 

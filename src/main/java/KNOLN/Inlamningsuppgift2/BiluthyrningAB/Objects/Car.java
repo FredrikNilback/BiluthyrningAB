@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 @Entity
@@ -31,6 +33,9 @@ public class Car {
     private CarType carType;
     @Column(nullable = true)
     private Double pricePerDay;
+
+
+
 
     public String getLicensePlate() {
         return licensePlate;
@@ -82,19 +87,22 @@ public class Car {
 
     }
 
-    // Alla Enum funktioner, lägg in element pö on pö.
+
     public enum EngineType{
-        Bensin, Diesel, Electric
+        Gasoline , Diesel, Electric, Hybrid, CNG
     }
     public enum CarBrand{
-        Volvo
+        Volvo, Fiat, Ford, Bentley, Porsche, Audi, Volkswagen, Bugatti, Königsegg,Toyota, Kia, BMW, Renault, Peugot,
+        Hyundai, Nissan, Opel, Mazda, SEAT, Honda, Tesla, Suzuki, Jeep, Lexus, Chrysler, MercedezBenz,
     }
     public enum CarType{
-        Combi
+        Combi, Convertible, Coupe, SUV, Sedan, Truck, Minivan, SportsCar, Hybrid, Crossover
     }
 
     public enum Automatic{
         Automatic, Manual
     }
+
+
 
 }
