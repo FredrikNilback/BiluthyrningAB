@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 
 let cars = [];
@@ -230,3 +231,5 @@ class CarGeneration{
         document.getElementById("infoCarYear").textContent = "Modell År: "+car.getCarYear();
     }
 }
+=======
+>>>>>>> Stashed changes
