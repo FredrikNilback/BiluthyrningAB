@@ -31,15 +31,27 @@
               <div class="info-item">
                 <p>Namn: <span id="userName"></span></p>
                 <p>E-post: <span id="userEmail"></span></p>
-                <button id=""editUserInfo>Ändra</button>
+                <p>Adress: <span id="userAdress"></span></p>
+                <p>Telephonenumber: <span id="userTelephoneNumber"></span></p>
+                <button id="editUserInfo">Ändra</button>
               </div>
             </div>
         </div>
-        <div id="editUserForm" style="display:none;">
-            <input type="text" id="newUserName" placeholder="Nytt namn"/>
-            <input type="text" id="newUserEmail" placeholder=""Ny e-post>
-            <button onclick="updateUserInfo()">Spara</button>
-            <button onclick="cancelUpdate()">Avbryt</button>
+        <div id="editForm" style="display:none;">
+            <label for="editName">Ny Namn:</label>
+            <input type="text" id="editName">
+            
+            <label for="editEmail">Ny E-post:</label>
+            <input type="email" id="editEmail">
+            
+            <label for="editAddress">Ny Adress:</label>
+            <input type="text" id="editAddress">
+            
+            <label for="editTelephoneNumber">Ny Telephonenumber:</label>
+            <input type="tel" id="editTelephoneNumber">
+            
+            <button onclick="saveChanges()">Spara Ändringar</button>
+            <button onclick="hideEditForm()">Avbryt</button>
         </div>
     </div>
     <script src="/src/main/resources/static/scripts/login.js"></script>
