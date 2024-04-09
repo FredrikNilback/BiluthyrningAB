@@ -7,24 +7,68 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/BiluthyrningAB/src/main/resources/static/styles/carCardStyle.css"
+      href="/src/main/resources/static/styles/carCardStyle.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/BiluthyrningAB/src/main/resources/static/styles/homePageStyle.css"
+      href="/src/main/resources/static/styles/homePageStyle.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/General.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/style.css"
     />
   </head>
   <body>
-    <main>
-      <div id="productdealscontainer">
-        <div id="leftBtn"></div>
-        <div id="productscontainer"></div>
-        <div id="rightBtn"></div>
+    <header>
+      <h1 id="textheader">Välkommen till Biluthyrning AB</h1>
+    </header>
+    <main id="main">
+      <aside>
+        <div class="content">
+          <p class="menu-title">Menyval</p>
+        </div>
+        <nav>
+          <ul id="menulist">
+            <li><a style="cursor: pointer" href="index.html">Hem</a></li>
+            <li><a href="car.html">Våra bilar</a></li>
+            <li><a href="#">Extra tillbehör</a></li>
+            <li><a href="about.html">Om oss</a></li>
+            <li><a href="cart.html">Varukorg</a></li>
+            <li><a href="register.html">Ny användare(registrering)</a></li>
+            <li><a href="#" id="loginLink">Login</a></li>
+            <div id="loginForm" style="display: none">
+              <input type="text" placeholder="Email" id="loginEmail" />
+              <input
+                type="password"
+                placeholder="Password"
+                id="loginPassword"
+              />
+              <button id="loginButton">Logga in</button>
+            </div>
+          </ul>
+        </nav>
+      </aside>
+      <div id="content">
+        <div id="startinfo">
+          <h1 id="bestdealsheader">Dagens Deals!</h1>
+        </div>
+        <div id="productdealscontainer">
+          <div id="leftBtn"></div>
+          <div id="productscontainer"></div>
+          <div id="rightBtn"></div>
+        </div>
       </div>
     </main>
-    <script src="/BiluthyrningAB/src/main/resources/static/scripts/carsTemp.js"></script>
-    <script src="/BiluthyrningAB/src/main/resources/static/scripts/carGeneration.js"></script>
-    <script src="/BiluthyrningAB/src/main/resources/static/scripts/homePageLoad.js"></script>
+    <script src="/src/main/resources/static/scripts/index.js"></script>
+    <script src="/src/main/resources/static/scripts/carsTemp.js"></script>
+    <script src="/src/main/resources/static/scripts/carGeneration.js"></script>
+    <script src="/src/main/resources/static/scripts/homePageLoad.js"></script>
   </body>
 </html>

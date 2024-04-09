@@ -6,10 +6,11 @@ body{
 
 header{
     padding: 40px;
-    background-color:tan;
+    background-color:rgb(180, 117, 62);
     width: 100%;
     text-align: left;
-    border: 3px solid grey;
+    font-family: "RetroVintage",serif;
+    border: 3px solid rgb(110, 72, 39);
     
 }
 
@@ -32,28 +33,38 @@ header{
 
 /*menu*/
 aside{
-    background-color: tan;
+    background-color: rgb(175, 132, 94);
     width: 215px;
     height: 100vh;
-    border: 3px solid grey;
+    border: 3px solid rgb(110, 72, 39);
 }
 
-
-/*login*/
-#email{
-    width: auto;
-    display: block;
-    margin-top: 5px;
-}
-#password{
-    width: auto;
-    display: block;
-    margin-top: 5px;
-}
-#loginButton{
-    margin-top: 5px;
+/*cars*/
+.ourCars h1{
+    margin-left: 45px;
+    margin-bottom: 60px;
+    text-decoration-line: underline;
 }
 
+.car{
+    margin-left: 45px;
+}
+
+/*cart*/
+.cartForm{
+    flex-grow: 1;
+    padding: 40px;
+    max-width: 400px;
+}
+.cartForm h1{
+    margin-left: 25px;
+}
+#saveCart{
+    margin-left: 40px;
+}
+.saveForm{
+    margin-top: 60px;
+}
 
 
 /*registration*/
@@ -80,30 +91,34 @@ aside{
 }
 
 
-/*cars*/
-.ourCars h1{
-    margin-left: 45px;
-    margin-bottom: 60px;
-    text-decoration-line: underline;
+/*profile*/
+.profil-info h2{
+    margin-left: 800px;
 }
-
-.car{
-    margin-left: 45px;
+.info-item{
+    margin-left: 800px;
 }
 
 
-/*cart*/
-.cartForm{
-    flex-grow: 1;
-    padding: 40px;
-    max-width: 400px;
+/*login*/
+#email{
+    width: auto;
+    display: block;
+    margin-top: 5px;
 }
-.cartForm h1{
-    margin-left: 25px;
+#password{
+    width: auto;
+    display: block;
+    margin-top: 5px;
 }
-#saveCart{
+#loginButton{
+    margin-top: 5px;
+}
+
+/*logout*/
+#logoutButton{
     margin-left: 40px;
 }
-.saveForm{
-    margin-top: 60px;
-}
+
+
+
