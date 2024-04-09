@@ -50,7 +50,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("loginUser")
+    @GetMapping("loginUser")
     public ResponseEntity<User> loginUser(@RequestBody ReqUser req) {
         String email = req.email;
         String password = req.password;
@@ -68,6 +68,14 @@ public class UserController {
         else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @GetMapping("getUser")
+    public ResponseEntity<User> getUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        User requestedUser = userService.getUserByEmail(email);
+
+        return new ResponseEntity<>(requestedUser, HttpStatus.OK);
     }
 
     @PutMapping("updateUserName")
