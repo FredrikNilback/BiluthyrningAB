@@ -118,8 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
 function displayCars(cars) {
 
+    let carGen = new CarGeneration();
     const container = document.getElementById('carListContainer');
 
     container.innerHTML = ''; //Rensar containern
@@ -132,6 +135,9 @@ function displayCars(cars) {
     else{
     cars.forEach(car => {
 
+        carGen.carCard(car, "carListContainer");
+
+        /*
         const carDiv = document.createElement('div');
         carDiv.classList.add('car-item');
 
@@ -145,6 +151,7 @@ function displayCars(cars) {
         carDiv.appendChild(carInfo);
 
         container.appendChild(carDiv);
+        */
     });
     }
 }
