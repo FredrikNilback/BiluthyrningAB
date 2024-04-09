@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/General.css">
     <title>Profil - Biluthyrning AB</title>
 </head>
 <body>
@@ -27,15 +28,17 @@
            <h1>Välkommen till din profil!</h1>
            <div class="profil-info">
               <h2>Användaruppgifter:</h2>
-              <form id="updateNameForm">
-                <input type="text" id="nameInput" placeholder="Nytt namn">
-                <button type="submit">Ändra Namn</button>
-              </form>
+              <div class="info-item">
+                <p>Namn: <span id="userName"></span></p>
+                <p>E-post: <span id="userEmail"></span></p>
+                <button id=""editUserInfo>Ändra</button>
+              </div>
             </div>
         </div>
-        <div id="updateForm" style="display:none;">
-            <input type="text" id="updateValue"/>
-            <button onclick="updateInfo()">Spara</button>
+        <div id="editUserForm" style="display:none;">
+            <input type="text" id="newUserName" placeholder="Nytt namn"/>
+            <input type="text" id="newUserEmail" placeholder=""Ny e-post>
+            <button onclick="updateUserInfo()">Spara</button>
             <button onclick="cancelUpdate()">Avbryt</button>
         </div>
     </div>
