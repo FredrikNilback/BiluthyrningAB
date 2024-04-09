@@ -20,7 +20,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getId() + ".png");
+        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getLicensePlate() + ".png");
         productPictureContainer.appendChild(productPicture);
 
 
