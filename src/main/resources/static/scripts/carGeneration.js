@@ -50,7 +50,7 @@ for(let i in cars){
     productInfoContainer.appendChild(productPrice);
 
 
-class CarGeneration{
+export class CarGeneration{
     
     constructor()
     {
@@ -71,7 +71,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getId() + ".png");
+        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getLicensePlate() + ".png");
         productPictureContainer.appendChild(productPicture);
 
 
@@ -100,8 +100,9 @@ class CarGeneration{
         productContainer.addEventListener("mouseenter",() =>{
             const infoPanel = document.getElementById("fullInfoPanel");
             const parentRect = productContainer.getBoundingClientRect();
-            infoPanel.style.top = (parentRect.top+parentRect.height)+"px";
-            infoPanel.style.left = (parentRect.left-40)+"px";
+            const adjustedTop = parentRect.top + window.scrollY;
+            infoPanel.style.top = (adjustedTop+parentRect.height-20)+"px";
+            infoPanel.style.left = (parentRect.left-66)+"px";
             this.showFullInfo(car);
             onProductPanel = true;
             onInfoPanel = false;
@@ -165,6 +166,56 @@ class CarGeneration{
         fullInfoPanel.appendChild(milage);
         fullInfoPanel.appendChild(automatic);
         fullInfoPanel.appendChild(price);
+
+        //Kolla ifall man är inloggad Kanske? Isåfall se köp knappar
+        //Buy Container
+        const rentContainer = document.createElement("div");
+        fullInfoPanel.appendChild(rentContainer);
+        rentContainer.style.display = "flex";
+        rentContainer.style.flexDirection = "row";
+        rentContainer.style.justifyContent = "space-between";
+
+        //StartDate input
+        const startDateDiv = document.createElement("div");
+        rentContainer.appendChild(startDateDiv);
+
+        const startDateLabel = document.createElement("p");
+        startDateLabel.textContent = "Uthämtnings Datum";
+        startDateDiv.appendChild(startDateLabel);
+        startDateLabel.setAttribute("class","datelabel");
+
+        const startDateInput = document.createElement("input");
+        startDateInput.setAttribute("type","date");
+        startDateInput.setAttribute("name","startdate");
+        startDateInput.setAttribute("id","startdate");
+        startDateDiv.appendChild(startDateInput);
+        startDateInput.style.backgroundColor = "beige";
+
+        //EndDate input
+        const endDateDiv = document.createElement("div");
+        rentContainer.appendChild(endDateDiv);
+
+        const endDateLabel = document.createElement("p");
+        endDateLabel.textContent = "Slut Datum";
+        endDateDiv.appendChild(endDateLabel);
+        endDateLabel.setAttribute("class","datelabel");
+
+        const endDateInput = document.createElement("input");
+        endDateInput.setAttribute("type","date");
+        endDateInput.setAttribute("name","enddate");
+        endDateInput.setAttribute("id","enddate");
+        endDateDiv.appendChild(endDateInput);
+        endDateInput.style.backgroundColor = "beige";
+        
+
+        const rentButton = document.createElement("input");
+        fullInfoPanel.appendChild(rentButton);
+        rentButton.setAttribute("type","button");
+        rentButton.setAttribute("value","Hyr!");
+        rentButton.style.padding="3px 14px";
+        rentButton.style.display="block";
+        rentButton.style.margin="10px auto";
+        rentButton.style.backgroundColor = "beige";
     }
 
     showFullInfo(car){
