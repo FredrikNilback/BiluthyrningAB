@@ -70,6 +70,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("getUser")
+    public ResponseEntity<User> getUser(@RequestBody ReqUser req) {
+        String email = req.email;
+        User requestedUser = userService.getUserByEmail(email);
+
+        return new ResponseEntity<>(requestedUser, HttpStatus.OK);
+    }
+
     @PutMapping("updateUserName")
     public ResponseEntity<User> updateUserName(@RequestBody ReqUser req) {
 
