@@ -50,7 +50,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("loginUser")
+    @PostMapping("loginUser")
     public ResponseEntity<User> loginUser(@RequestBody ReqUser req) {
         String email = req.email;
         String password = req.password;
