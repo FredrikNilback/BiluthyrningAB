@@ -28,9 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
             if (response.ok) {
                 response.json().then(user =>{
-                    localStorage.setItem("userEmail", JSON.stringify(user));
-                alert("Inloggningen lyckades! Välkommen.");
-                window.location.href = "/src/main/resources/templates/profile.html"; 
+                    console.log("User logged in:", user);                    
+                    localStorage.setItem("userDetails", JSON.stringify(user));
+                    alert("Inloggningen lyckades! Välkommen.");
+                    window.location.href = "/src/main/resources/templates/profile.html"; 
                 });
             } else {
                 response.text().then(text => alert(text)); 
