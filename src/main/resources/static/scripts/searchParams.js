@@ -120,40 +120,74 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
 function displayCars(cars) {
-
-    let carGen = new CarGeneration();
     const container = document.getElementById('carListContainer');
+    container.innerHTML = ''; // Clear the container
 
-    container.innerHTML = ''; //Rensar containern
+    if (cars.size == 0) {
+        const emptyText = document.createElement('p');
+        emptyText.textContent = 'Found Nothing Matching The Criteria';
+        container.appendChild(emptyText);
+    } else {
+        cars.forEach(car => {
+            const productContainer = document.createElement("div");
+            container.appendChild(productContainer);
+            productContainer.setAttribute("class", "productcontainer");
 
-    if (cars.size == 0){
-    const emptyText = document.createElement('p');
-    emptyText.textContent = 'Found Nothing Matching The Criteria';
-    container.appendChild(emptyText);
-    }
-    else{
-    cars.forEach(car => {
+            // Add event listeners to handle hover events
+            productContainer.addEventListener("mouseenter", () => {
+                this.showFullInfo(car, productContainer);
+            });
+            productContainer.addEventListener("mouseleave", () => {
+                hideFullInfo(infoPanel);
+            });
 
-        carGen.carCard(car, "carListContainer");
+            // Your existing code to create car elements goes here...
+            const productPictureContainer = document.createElement("div");
+            productPictureContainer.setAttribute("class", "imgcontainer");
+            productContainer.appendChild(productPictureContainer);
 
-        /*
-        const carDiv = document.createElement('div');
-        carDiv.classList.add('car-item');
+            //Picture
+            const productPicture = document.createElement("img");
+            productPicture.setAttribute("class", "carimg");
+            productPicture.setAttribute("src", "images/car" + car.licensePlate + ".png");
+            productPictureContainer.appendChild(productPicture);
 
-        const image = document.createElement('img');
-        image.src = `http://your-server.com/getImage?licensePlate=${car.licensePlate}`;
-        image.alt = `${car.carBrand} ${car.carName}`;
-        carDiv.appendChild(image);
-
-        const carInfo = document.createElement('p');
-        carInfo.textContent = `Car: ${car.carBrand} ${car.carName}, Year: ${car.carYear}, Price per day: ${car.pricePerDay}`;
-        carDiv.appendChild(carInfo);
-
-        container.appendChild(carDiv);
-        */
-    });
+            // Create the description panel for each car
+            const infoPanel = document.createElement("div");
+            infoPanel.setAttribute("class", "info-panel");
+            productContainer.appendChild(infoPanel);
+        });
     }
 }
+
+function showFullInfo(car, productContainer) {
+    const infoPanel = productContainer.querySelector(".info-panel");
+    // Display the info panel
+    infoPanel.innerHTML = `
+        <p>Märke: ${car.getCarBrand()}</p>
+        <p>Pris: ${car.getPricePerDay()} kr/Dag</p>
+        <p>RegNr: ${car.licensePlate}</p>
+        <p>Modell: ${car.getCarName()}</p>
+        <p>Miltal: ${car.getMilage()}</p>
+        <p>Växellåda: ${car.getAutomatic()}</p>
+        <p>Säten: ${car.getCarSeats()}</p>
+        <p>Modell År: ${car.getCarYear()}</p>
+    `;
+    infoPanel.style.display = "block";
+    infoPanel.style.top = productContainer.offsetHeight + "px"; // Position info panel underneath product container
+}
+
+
+
+
+
+function hideFullInfo(infoPanel) {
+    // Hide the info panel
+    infoPanel.style.display = "none";
+}
+
+
 
 

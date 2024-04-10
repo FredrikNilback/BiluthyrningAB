@@ -21,10 +21,10 @@ class car{
     getPrice(){
         return this.price;
     }
-
+/*
     getLicensePlate(){
         return this.licensePlate;
-    }
+    }*/
     getModel(){
         return this.model;
     }

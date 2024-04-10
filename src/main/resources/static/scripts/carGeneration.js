@@ -1,56 +1,5 @@
 
-
-let cars = [];
-cars.push(new car("Volkswagen",105));
-cars.push(new car("Toyota",160));
-cars.push(new car("Stellantis",120));
-cars.push(new car("Mercedes",130));
-cars.push(new car("Ford",80));
-cars.push(new car("BMW",100));
-cars.push(new car("Honda",120));
-
-const productscontainer = document.getElementById("productdealscontainer");
-console.log("I RUN")
-
-for(let i in cars){
-    const car = cars[i];
-
-    console.log("I RUN2")
-    const productContainer = document.createElement("div");
-    document.getElementById("productdealscontainer").appendChild(productContainer);
-    productContainer.setAttribute("class","productcontainer");
-
-    //PictureContainer
-    const productPictureContainer = document.createElement("div");
-    productPictureContainer.setAttribute("class","imgcontainer");
-    productContainer.appendChild(productPictureContainer);
-
-    const productPicture = document.createElement("img");
-    productPicture.setAttribute("class","carimg");
-    productPicture.setAttribute("src","/BiluthyrningAB/src/main/resources/static/images/car" + (i) + ".png");
-    productPictureContainer.appendChild(productPicture);
-
-
-
-    //ProductInfoContainer
-    const productInfoContainer = document.createElement("div");
-    productInfoContainer.setAttribute("class","productinfocontainer");
-    productContainer.appendChild(productInfoContainer);
-
-    //Model
-    const productModel = document.createElement("p");
-    productModel.setAttribute("class","productname");
-    productModel.textContent = car.getModel();
-    productInfoContainer.appendChild(productModel);
-
-    //Price
-    const productPrice = document.createElement("p");
-    productPrice.setAttribute("class","productprice");
-    productPrice.textContent = car.getPrice()+"kr/Dag";
-    productInfoContainer.appendChild(productPrice);
-
-
-export class CarGeneration{
+class CarGeneration{
     
     constructor()
     {
@@ -62,6 +11,8 @@ export class CarGeneration{
         const productContainer = document.createElement("div");
         document.getElementById(locDivParentId).appendChild(productContainer);
         productContainer.setAttribute("class","productcontainer");
+
+
 
         //PictureContainer
         const productPictureContainer = document.createElement("div");
@@ -90,7 +41,7 @@ export class CarGeneration{
         //Price
         const productPrice = document.createElement("p");
         productPrice.setAttribute("class","productprice");
-        productPrice.textContent = car.getPrice()+"kr/Dag";
+        productPrice.textContent = car.getPricePerDay()+"kr/Dag";
         productInfoContainer.appendChild(productPrice);
 
         let onProductPanel = false;
@@ -157,7 +108,7 @@ export class CarGeneration{
         carYear.setAttribute("id","infoCarYear");
 
         document.getElementById(ParentId).appendChild(fullInfoPanel);
-        fullInfoPanel.appendChild(id);
+
         fullInfoPanel.appendChild(carBrand);
         fullInfoPanel.appendChild(model);
         fullInfoPanel.appendChild(carYear);
@@ -219,11 +170,11 @@ export class CarGeneration{
     }
 
     showFullInfo(car){
-        document.getElementById("infoId").textContent = "Id: "+car.getId();
+
         document.getElementById("infoCarBrand").textContent = "Märke: "+car.getCarBrand();
-        document.getElementById("infoPrice").textContent = "Pris: "+car.getPrice()+"kr/Dag";
+        document.getElementById("infoPrice").textContent = "Pris: "+car.getPricePerDay()+"kr/Dag";
         document.getElementById("infoLicensePlate").textContent = "RegNr: "+car.getLicensePlate();
-        document.getElementById("infoModel").textContent = "Modell: "+car.getModel();
+        document.getElementById("infoModel").textContent = "Modell: "+car.getCarName();
         document.getElementById("infoMilage").textContent = "Miltal: "+car.getMilage();
         document.getElementById("infoAutomatic").textContent = "Växellåda: "+car.getAutomatic();
         document.getElementById("infoCarSeats").textContent = "Säten: "+car.getCarSeats();

@@ -93,7 +93,7 @@ public class Car {
     }
     public enum CarBrand{
         Volvo, Fiat, Ford, Bentley, Porsche, Audi, Volkswagen, Bugatti, Königsegg,Toyota, Kia, BMW, Renault, Peugot,
-        Hyundai, Nissan, Opel, Mazda, SEAT, Honda, Tesla, Suzuki, Jeep, Lexus, Chrysler, MercedezBenz,
+        Hyundai, Nissan, Opel, Mazda, SEAT, Honda, Tesla, Suzuki, Jeep, Lexus, Chrysler, MercedezBenz
     }
     public enum CarType{
         Combi, Convertible, Coupe, SUV, Sedan, Truck, Minivan, SportsCar, Hybrid, Crossover
