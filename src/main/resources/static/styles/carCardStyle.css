@@ -6,11 +6,11 @@
     padding: 10px 10px;
     border-radius: 5px;
     transition: background-color 0.1s;
-    transition: height 0.s;
+    transition: height 0.1s;
 }
 
 .productcontainer:hover{
-    background-color: rgb(172, 86, 37);
+    background-image: linear-gradient(rgb(165, 101, 46),rgb(192, 117, 50));
     height: 150px;
     cursor: pointer;
 }
@@ -42,15 +42,15 @@
 #fullInfoPanel{
     opacity: 0;
     display: block;
-    background-image: url("/src/main/resources/static/images/Paper.png");
-    background-size: 220px 350px;
+    background-image: url("/images/Paper.png");
+    background-size: 300px 480px;
     background-position-x: 50%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 150px;
-    height: 350px;
+    width: 200px;
+    height: 480px;
     overflow: hidden;
-    padding: 50px 50px;
+    padding: 80px 60px;
     transition: all 0.25s;
 }
 
@@ -58,4 +58,12 @@
 #fullInfoPanel p{
     color: rgb(61, 61, 61);
     font-size: 10px;
+}
+#enddate, #startdate{
+    width: 70px;
+}
+
+
+#fullInfoPanel div div p{
+    font-size: 12px;
 }
