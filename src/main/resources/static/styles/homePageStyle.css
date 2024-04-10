@@ -3,6 +3,8 @@ body{
     background-size:cover;
     background-repeat:no-repeat;
     background-position-x: 50%;
+    overflow: hidden;
+    
 }
 #main{
     display: flex;
