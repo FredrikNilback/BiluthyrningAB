@@ -11,22 +11,27 @@ public class WebController {
         return "homepage";
     }
 
-    @GetMapping("Om oss")
+    @GetMapping("cars")
+    public String goCar() {
+        return "car";
+    }
+
+    @GetMapping("about")
     public String goAbout() {
         return "about";
     }
 
-    @GetMapping("Varukorg")
+    @GetMapping("cart")
     public String goCart() {
         return "cart";
     }
 
-    @GetMapping("Ny användare")
+    @GetMapping("register")
     public String goRegister() {
         return "register";
     }
 
-    @GetMapping("Profil")
+    @GetMapping("profile")
     public String goProfile() {
         return "profile";
     }
