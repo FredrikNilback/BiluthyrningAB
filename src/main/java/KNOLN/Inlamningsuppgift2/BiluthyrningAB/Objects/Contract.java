@@ -4,40 +4,78 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
+import java.util.Date;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "Contracts")
+@Table(name = "Contract")
 public class Contract {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int contractId;
+    private Long contractNumber;
 
-    @OneToOne(targetEntity = Car.class, cascade = CascadeType.ALL)
-    private String licensePlate;
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    private User user;
 
-    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "license_plate", referencedColumnName = "licensePlate")
+    private Car car;
 
-    @Column(nullable = false,name = "Start Date")
-    private LocalDate startDate;
+    @Column(name = "start_date")
+    private Date startDate;
 
-    @Column(nullable = false, name = "End Date")
-    private LocalDate endDate;
+    @Column(name = "end_date")
+    private Date endDate;
 
-    @Column(nullable = false, name = "Total Cost")
-    private int totalCost;
+    @Column(name = "total_cost")
+    private Double totalCost;
 
-    public Contract(int contractId, String licensePlate, String email, LocalDate startDate, LocalDate endDate, int totalCost) {
-        this.contractId = contractId;
-        this.licensePlate = licensePlate;
-        this.email = email;
+    public Long getContractNumber() {
+        return contractNumber;
+    }
+
+
+    //Getters & Setters
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(Double totalCost) {
         this.totalCost = totalCost;
     }
 }
-

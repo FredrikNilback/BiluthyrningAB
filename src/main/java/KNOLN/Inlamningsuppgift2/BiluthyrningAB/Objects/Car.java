@@ -103,6 +103,48 @@ public class Car {
         Automatic, Manual
     }
 
+//getters & setters
+
+
+    public void setAutomatic(Automatic automatic) {
+        this.automatic = automatic;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setCarBrand(CarBrand carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public void setCarSeats(Integer carSeats) {
+        this.carSeats = carSeats;
+    }
+
+    public void setCarType(CarType carType) {
+        this.carType = carType;
+    }
+
+    public void setCarYear(Integer carYear) {
+        this.carYear = carYear;
+    }
+
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
+    }
+
+    public void setMilage(Integer milage) {
+        this.milage = milage;
+    }
+
+    public void setPricePerDay(Double pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
 
 
 }
