@@ -30,4 +30,7 @@ public class ContractService {
     public List<Contract> getContractByUserEmail(String email) {
         return repo.findByUserEmail(email);
     }
+    public List<Contract> getContractByLicensePlate(String licensePlate) {
+        return repo.findByLicensePlate(licensePlate);
+    }
 }
