@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("Car")
 public class CarController {
 
     @Autowired
@@ -25,9 +26,11 @@ public class CarController {
 
 
     @PostMapping("addCar")
-    public String addCar(String licensePlate, String carName, Car.CarBrand carBrand,
-                         int milage, Car.Automatic automatic, int carSeats, int carYear,
-                         Car.EngineType engineType, Car.CarType carType, Double pricePerDay){
+    public String addCar(@RequestParam String licensePlate, @RequestParam String carName,
+                         @RequestParam Car.CarBrand carBrand, @RequestParam int milage,
+                         @RequestParam Car.Automatic automatic, @RequestParam int carSeats,
+                         @RequestParam int carYear, @RequestParam Car.EngineType engineType,
+                         @RequestParam Car.CarType carType, @RequestParam Double pricePerDay){
 
         Car car = new Car();
         car.setLicensePlate(licensePlate); // Set licensePlate

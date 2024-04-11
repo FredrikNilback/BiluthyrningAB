@@ -1,6 +1,7 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
+import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.User;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Repositories.CarRepository;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class CarService {
     @Autowired
     private CarRepository repo;
+
+    public Car getCarByLicensePlate(String licensePlate){
+        return repo.findByLicensePlate(licensePlate);
+    }
 
     public List<Car> getCarsByCarName(String carName){return repo.getCarsByName(carName);}
     public List<Car> getCarsByCarBrand(Car.CarBrand carBrand){return repo.getCarsByCarBrand(carBrand);}

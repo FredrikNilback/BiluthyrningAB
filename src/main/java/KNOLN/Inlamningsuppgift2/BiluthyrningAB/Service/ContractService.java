@@ -13,11 +13,17 @@ public class ContractService {
     @Autowired
     private ContractRepository repo;
 
-    public Contract addContract(Contract contract) {return repo.save(contract);}
-    public void deleteContract(Contract contract) {repo.delete(contract);}
+    public Contract addContract(Contract contract) {
+        return repo.save(contract);
+    }
+    public void deleteContract(Contract contract) {
+        repo.delete(contract);
+    }
     public List<Contract> getContracts(){
         return repo.findAll();
     }
 
-    public Contract getContractById(int Id) {return repo.findById(Id);}
+    public Contract getContractById(long id) {
+        return repo.findByContractNumber(id);
+    }
 }
