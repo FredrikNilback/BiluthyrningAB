@@ -52,12 +52,15 @@ public class ContractController {
 
         double totalCost = (car.getPricePerDay().intValue() * daysDiff);
         newContract.setTotalCost(totalCost);
-
-        // Add the new contract
         Contract savedContract = contractService.addContract(newContract);
 
-        // Return ResponseEntity with the newly created contract and status code
         return new ResponseEntity<>(savedContract, HttpStatus.CREATED);
+    }
+
+    @GetMapping("getContract")
+    public ResponseEntity<List<Contract>> getContract(@RequestBody ReqContract reqContract) {
+        List<Contract> contractList = contractService.getContractByUserEmail(reqContract.getEmail());
+        return new ResponseEntity<>(contractList, HttpStatus.OK);
     }
 
 }
