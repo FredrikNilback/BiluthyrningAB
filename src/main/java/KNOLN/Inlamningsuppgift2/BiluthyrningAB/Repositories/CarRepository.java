@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository <Car, String> {
 
+    Car findByLicensePlate(String licensePlate);
     @Query(value = "SELECT car FROM Car car WHERE carName = ?1")
     public ArrayList<Car> getCarsByName(String carName);
 
