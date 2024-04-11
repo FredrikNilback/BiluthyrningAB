@@ -41,8 +41,9 @@
 
 #fullInfoPanel{
     opacity: 0;
+    pointer-events: none;
     display: block;
-    background-image: url("/images/Paper.png");
+    background-image: url("/src/main/resources/static/images/Paper.png");
     background-size: 300px 480px;
     background-position-x: 50%;
     background-repeat: no-repeat;

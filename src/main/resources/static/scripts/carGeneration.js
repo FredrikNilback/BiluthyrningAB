@@ -22,7 +22,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","images/car" + car.getLicensePlate() + ".png");
+        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getLicensePlate() + ".png");
         productPictureContainer.appendChild(productPicture);
 
 
@@ -54,6 +54,7 @@ class CarGeneration{
             const adjustedTop = parentRect.top + window.scrollY;
             infoPanel.style.top = (adjustedTop+parentRect.height-20)+"px";
             infoPanel.style.left = (parentRect.left-66)+"px";
+            infoPanel.style.pointerEvents ="auto";
             this.showFullInfo(car);
             onProductPanel = true;
             onInfoPanel = false;
@@ -67,7 +68,9 @@ class CarGeneration{
             onProductPanel = false;
             setTimeout(()=>{
                 if(onInfoPanel != true){
-                    document.getElementById("fullInfoPanel").style.opacity = 0;
+                    const infoPanel = document.getElementById("fullInfoPanel");
+                    infoPanel.style.pointerEvents ="none";
+                    infoPanel.style.opacity = 0;
                 }
             },1);
         });
@@ -79,7 +82,9 @@ class CarGeneration{
             onInfoPanel = false;
             setTimeout(()=>{
                 if(onProductPanel != true){
-                    document.getElementById("fullInfoPanel").style.opacity = 0;
+                    const infoPanel = document.getElementById("fullInfoPanel");
+                    infoPanel.style.pointerEvents ="none";
+                    infoPanel.style.opacity = 0;
                 }
             },1);
         })

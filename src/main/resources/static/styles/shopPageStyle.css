@@ -1,4 +1,21 @@
+
+#page-layout{
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+}
+#main{
+    justify-self: center;
+}
+#searchForm{
+display: block;
+}
+
 #shopgrid{
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-columns: 180px 180px 180px 180px 180px 180px 180px;
+    column-gap: 10px;
+    margin: 0px 100px 0px 100px;
+
+    
 }
