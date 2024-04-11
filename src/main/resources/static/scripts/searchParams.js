@@ -175,10 +175,14 @@ function showFullInfo(car, productContainer) {
         <p>Säten: ${car.getCarSeats()}</p>
         <p>Modell År: ${car.getCarYear()}</p>
     `;
+    // Set background image for the info panel
+    infoPanel.style.backgroundImage = "url('images/Paper.png')";
+    infoPanel.style.backgroundSize = "cover"; // Adjust as needed
+    infoPanel.style.backgroundPosition = "center"; // Adjust as needed
+    infoPanel.style.backgroundRepeat = "no-repeat"; // Adjust as needed
     infoPanel.style.display = "block";
     infoPanel.style.top = productContainer.offsetHeight + "px"; // Position info panel underneath product container
 }
-
 
 
 
