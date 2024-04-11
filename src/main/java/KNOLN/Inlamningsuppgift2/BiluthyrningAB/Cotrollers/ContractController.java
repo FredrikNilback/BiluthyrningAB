@@ -104,7 +104,17 @@ public class ContractController {
 
     @GetMapping("getContract")
     public ResponseEntity<List<Contract>> getContract(@RequestBody ReqContract reqContract) {
-        List<Contract> contractList = contractService.getContractByUserEmail(reqContract.getEmail());
+        List<Contract> contractList;
+        if (reqContract.getEmail() != null) {
+            contractList = contractService.getContractByUserEmail(reqContract.getEmail());
+        }
+        else if (reqContract.getLicensePlate() != null) {
+            contractList = contractService.getContractByLicensePlate(reqContract.getLicensePlate());
+        }
+        else {
+            contractList = new ArrayList<>();
+        }
+        
         for (int i = 0; i < contractList.size(); i++) {
             Contract contract = contractList.get(i);
             Date startDate = contract.getStartDate();
@@ -116,7 +126,7 @@ public class ContractController {
                 contractService.updateContract(contract);
             }
         }
-        
+
         return new ResponseEntity<>(contractList, HttpStatus.OK);
     }
 
