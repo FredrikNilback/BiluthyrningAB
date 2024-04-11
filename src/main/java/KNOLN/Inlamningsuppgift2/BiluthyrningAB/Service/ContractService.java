@@ -26,4 +26,11 @@ public class ContractService {
     public Contract getContractById(long id) {
         return repo.findByContractNumber(id);
     }
+
+    public List<Contract> getContractByUserEmail(String email) {
+        return repo.findByUserEmail(email);
+    }
+    public List<Contract> getContractByLicensePlate(String licensePlate) {
+        return repo.findByLicensePlate(licensePlate);
+    }
 }
