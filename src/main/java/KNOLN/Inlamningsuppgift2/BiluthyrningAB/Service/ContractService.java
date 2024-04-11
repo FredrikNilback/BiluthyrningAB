@@ -19,9 +19,6 @@ public class ContractService {
     public void deleteContract(Contract contract) {
         repo.delete(contract);
     }
-    public List<Contract> getContracts(){
-        return repo.findAll();
-    }
 
     public Contract getContractById(long id) {
         return repo.findByContractNumber(id);
@@ -32,5 +29,9 @@ public class ContractService {
     }
     public List<Contract> getContractByLicensePlate(String licensePlate) {
         return repo.findByLicensePlate(licensePlate);
+    }
+
+    public Contract updateContract(Contract contract) {
+        return repo.save(contract);
     }
 }

@@ -33,6 +33,9 @@ public class Contract {
     @Column(name = "total_cost")
     private Double totalCost;
 
+    @Column(name = "expired")
+    private boolean expired;
+
     public Long getContractNumber() {
         return contractNumber;
     }
@@ -77,5 +80,9 @@ public class Contract {
 
     public void setTotalCost(Double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public void setExpired(boolean expired) {
+        this.expired = expired;
     }
 }
