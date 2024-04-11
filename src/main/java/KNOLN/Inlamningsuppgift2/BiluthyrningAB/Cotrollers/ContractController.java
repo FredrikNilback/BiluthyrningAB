@@ -25,8 +25,8 @@ public class ContractController {
     }
 
     @PostMapping("createContract")
-    public String createContract (Car car, User user, LocalDate startDate, LocalDate endDate, int totalCost){
-        Contract contract = new Contract(car.getLicensePlate(), user.getEmail(), startDate,endDate,totalCost);
+    public String createContract (String licensePlate, String email, LocalDate startDate, LocalDate endDate, int totalCost){
+        Contract contract = new Contract(licensePlate, email, startDate,endDate,totalCost);
         contractService.addContract(contract);
         return "createContract";
     }
