@@ -92,11 +92,15 @@ aside{
 
 
 /*profile*/
+.profil_info{
+    margin-top: 10px;
+}
 .profil-info h2{
-    margin-left: 500px;
+    margin-left: 700px;
+    
 }
 .info-item{
-    margin-left: 500px;
+    margin-left: 700px;
     
 }
 
