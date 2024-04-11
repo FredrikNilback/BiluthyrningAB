@@ -132,36 +132,36 @@ class CarGeneration{
         rentContainer.style.justifyContent = "space-between";
 
         //StartDate input
-        const startDateDiv = document.createElement("div");
-        rentContainer.appendChild(startDateDiv);
-
-        const startDateLabel = document.createElement("p");
-        startDateLabel.textContent = "Uthämtnings Datum";
-        startDateDiv.appendChild(startDateLabel);
-        startDateLabel.setAttribute("class","datelabel");
-
-        const startDateInput = document.createElement("input");
-        startDateInput.setAttribute("type","date");
-        startDateInput.setAttribute("name","startdate");
-        startDateInput.setAttribute("id","startdate");
-        startDateDiv.appendChild(startDateInput);
-        startDateInput.style.backgroundColor = "beige";
-
-        //EndDate input
-        const endDateDiv = document.createElement("div");
-        rentContainer.appendChild(endDateDiv);
-
-        const endDateLabel = document.createElement("p");
-        endDateLabel.textContent = "Slut Datum";
-        endDateDiv.appendChild(endDateLabel);
-        endDateLabel.setAttribute("class","datelabel");
-
-        const endDateInput = document.createElement("input");
-        endDateInput.setAttribute("type","date");
-        endDateInput.setAttribute("name","enddate");
-        endDateInput.setAttribute("id","enddate");
-        endDateDiv.appendChild(endDateInput);
-        endDateInput.style.backgroundColor = "beige";
+        //const startDateDiv = document.createElement("div");
+        //rentContainer.appendChild(startDateDiv);
+//
+        //const startDateLabel = document.createElement("p");
+        //startDateLabel.textContent = "Uthämtnings Datum";
+        //startDateDiv.appendChild(startDateLabel);
+        //startDateLabel.setAttribute("class","datelabel");
+//
+        //const startDateInput = document.createElement("input");
+        //startDateInput.setAttribute("type","date");
+        //startDateInput.setAttribute("name","startdate");
+        //startDateInput.setAttribute("id","startdate");
+        //startDateDiv.appendChild(startDateInput);
+        //startDateInput.style.backgroundColor = "beige";
+//
+        ////EndDate input
+        //const endDateDiv = document.createElement("div");
+        //rentContainer.appendChild(endDateDiv);
+//
+        //const endDateLabel = document.createElement("p");
+        //endDateLabel.textContent = "Slut Datum";
+        //endDateDiv.appendChild(endDateLabel);
+        //endDateLabel.setAttribute("class","datelabel");
+//
+        //const endDateInput = document.createElement("input");
+        //endDateInput.setAttribute("type","date");
+        //endDateInput.setAttribute("name","enddate");
+        //endDateInput.setAttribute("id","enddate");
+        //endDateDiv.appendChild(endDateInput);
+        //endDateInput.style.backgroundColor = "beige";
         
 
         const rentButton = document.createElement("input");
