@@ -1,4 +1,4 @@
-package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Cotrollers;
+package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

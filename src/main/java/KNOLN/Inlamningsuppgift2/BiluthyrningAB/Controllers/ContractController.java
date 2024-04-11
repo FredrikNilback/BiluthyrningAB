@@ -1,4 +1,4 @@
-package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Cotrollers;
+package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Controllers;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Contract;

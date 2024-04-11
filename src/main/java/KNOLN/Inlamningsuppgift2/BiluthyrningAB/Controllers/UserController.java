@@ -1,18 +1,15 @@
-package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Cotrollers;
+package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Controllers;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.ReqUser;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.UserService;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.User;
 import java.util.Random;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 @RestController
 @RequestMapping("users")

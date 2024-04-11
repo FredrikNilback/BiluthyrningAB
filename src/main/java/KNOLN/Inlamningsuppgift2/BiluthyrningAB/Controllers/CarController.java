@@ -1,14 +1,10 @@
-package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Cotrollers;
+package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Controllers;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
