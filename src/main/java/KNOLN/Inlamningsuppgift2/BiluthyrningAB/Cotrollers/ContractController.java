@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +44,7 @@ public class ContractController {
 
         List<Contract> contractsOnCar = contractService.getContractByLicensePlate(reqContract.getLicensePlate());
 
-        if(contractsOnCar.size() == 0) {
+        if(contractsOnCar.isEmpty()) {
             Contract newContract = new Contract();
             newContract.setUser(user);
             newContract.setCar(car);
@@ -114,10 +113,9 @@ public class ContractController {
         else {
             contractList = new ArrayList<>();
         }
-        
+
         for (int i = 0; i < contractList.size(); i++) {
             Contract contract = contractList.get(i);
-            Date startDate = contract.getStartDate();
             Date endDate = contract.getEndDate();
             if (endDate.before(new Date())) {
                 contract.setExpired(true);
