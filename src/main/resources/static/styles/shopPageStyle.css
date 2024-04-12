@@ -4,9 +4,14 @@
     flex-direction: row;
 }
 #searchForm{
+    padding-top: 20px;
     margin-top: 70px;
     background-color: rgb(231, 226, 196);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.541);
+}
+#searchheader{
+    margin: 0px auto 5px;
+    text-align: center;
 }
 #searchinputs{
     display: flex;

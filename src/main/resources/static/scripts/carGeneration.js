@@ -21,7 +21,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getLicensePlate() + ".png");
+        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getCarBrand() + ".png");
         productPictureContainer.appendChild(productPicture);
 
 
@@ -171,10 +171,7 @@ class CarGeneration{
         fullInfoPanel.appendChild(rentButton);
         rentButton.setAttribute("type","button");
         rentButton.setAttribute("value","Hyr!");
-        rentButton.style.padding="3px 14px";
-        rentButton.style.display="block";
-        rentButton.style.margin="10px auto";
-        rentButton.style.backgroundColor = "beige";
+        rentButton.setAttribute("id","rentbutton");
     }
 
     showFullInfo(car){
