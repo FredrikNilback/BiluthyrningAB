@@ -4,7 +4,6 @@ class CarGeneration{
     constructor(infoPanelParentID)
     {
         this.createFullInfo(infoPanelParentID);
-        console.log("I run constructor")
     }
     carCard(car,locDivParentId)
     {
@@ -93,8 +92,6 @@ class CarGeneration{
     createFullInfo(ParentId){
         const fullInfoPanel = document.createElement("div");
         fullInfoPanel.setAttribute("id","fullInfoPanel");
-        const id = document.createElement("p");
-        id.setAttribute("id","infoId");
         const carBrand = document.createElement("p");
         carBrand.setAttribute("id","infoCarBrand");
         const price = document.createElement("p");
@@ -111,12 +108,18 @@ class CarGeneration{
         carSeats.setAttribute("id","infoCarSeats");
         const carYear = document.createElement("p");
         carYear.setAttribute("id","infoCarYear");
+        const carType = document.createElement("p");
+        carType.setAttribute("id","infoCarType");
+        const engineType = document.createElement("p");
+        engineType.setAttribute("id","infoEngineType");
 
         document.getElementById(ParentId).appendChild(fullInfoPanel);
 
         fullInfoPanel.appendChild(carBrand);
         fullInfoPanel.appendChild(model);
         fullInfoPanel.appendChild(carYear);
+        fullInfoPanel.appendChild(carType);//SKA ADDAS
+        fullInfoPanel.appendChild(engineType);//SKA ADDAS
         fullInfoPanel.appendChild(carSeats);
         fullInfoPanel.appendChild(licensePlate);
         fullInfoPanel.appendChild(milage);
@@ -184,5 +187,7 @@ class CarGeneration{
         document.getElementById("infoAutomatic").textContent = "Växellåda: "+car.getAutomatic();
         document.getElementById("infoCarSeats").textContent = "Säten: "+car.getCarSeats();
         document.getElementById("infoCarYear").textContent = "Modell År: "+car.getCarYear();
+        document.getElementById("infoEngineType").textContent = "Motortyp: "+car.getEngineType();
+        document.getElementById("infoCarType").textContent = "Biltyp: "+car.getCarType();
     }
 }

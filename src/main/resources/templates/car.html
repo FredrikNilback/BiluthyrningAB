@@ -56,45 +56,120 @@
           <div id="searchinputs">
             <div class="searchfields">
               <div class="searchcontainer">
-                <label for="carBrand">Car Brand:</label>
-                <input type="text" id="carBrand" name="carBrand" /><br />
+                <label for="carBrand">Märke:</label>
+                <select name="carBrand" id="carBrand" class="dropbox">
+                  <option value=""></option>
+                  <option value="Audi">Audi</option>
+                  <option value="Bentley">Bentley</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Bugatti">Bugatti</option>
+                  <option value="Chrysler">Chrysler</option>
+                  <option value="Fiat">Fiat</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Hyundai">Hyundai</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Kia">Kia</option>
+                  <option value="Lexus">Lexus</option>
+                  <option value="Mazda">Mazda</option>
+                  <option value="MercedezBenz">MercedezBenz</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Opel">Opel</option>
+                  <option value="Peugot">Peugot</option>
+                  <option value="Porsche">Porsche</option>
+                  <option value="Renault">Renault</option>
+                  <option value="SEAT">SEAT</option>
+                  <option value="Suzuki">Suzuki</option>
+                  <option value="Tesla">Tesla</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Volkswagen">Volkswagen</option>
+                  <option value="Volvo">Volvo</option>
+                </select>
               </div>
               <div class="searchcontainer">
-                <label for="carName">Car Name:</label>
-                <input type="text" id="carName" name="carName" /><br />
+                <label for="carName">Modell:</label>
+                <input
+                  type="text"
+                  id="carName"
+                  name="carName"
+                  class="searchinput"
+                /><br />
               </div>
               <div class="searchcontainer">
-                <label for="carType">Car Type:</label>
-                <input type="text" id="carType" name="carType" /><br />
+                <label for="carType">Biltyp:</label>
+                <select name="carType" id="carType" class="dropbox">
+                  <option value=""></option>
+                  <option value="Combi">Combi</option>
+                  <option value="Convertible">Convertible</option>
+                  <option value="Coupe">Coupe</option>
+                  <option value="Crossover">Crossover</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Minivan">Minivan</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SportsCar">SportsCar</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Truck">Truck</option>
+                </select>
               </div>
               <button id="searchCarsButton" type="submit">Search</button>
             </div>
             <div class="searchfields">
               <div class="searchcontainer">
-                <label for="carSeats">Car Seats:</label>
-                <input type="text" id="carSeats" name="carSeats" /><br />
+                <label for="carSeats">Säten:</label>
+                <input
+                  type="text"
+                  id="carSeats"
+                  name="carSeats"
+                  class="searchinput"
+                /><br />
               </div>
               <div class="searchcontainer">
-                <label for="automatic">Automatic:</label>
-                <input type="text" id="automatic" name="automatic" /><br />
+                <label for="automatic">Växellåda:</label>
+                <select name="automatic" id="automatic" class="dropbox">
+                  <option value=""></option>
+                  <option value="Automatic">Automatic</option>
+                  <option value="Manual">Manual</option>
+                </select>
               </div>
               <div class="searchcontainer">
-                <label for="engineType">Engine Type:</label>
-                <input type="text" id="engineType" name="engineType" /><br />
+                <label for="engineType">Motortyp:</label>
+                <select name="engineType" id="engineType" class="dropbox">
+                  <option value=""></option>
+                  <option value="Gasoline">Gasoline</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="Electric">Electric</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="CNG">CNG</option>
+                </select>
               </div>
             </div>
             <div class="searchfields">
               <div class="searchcontainer">
-                <label for="milage">Milage:</label>
-                <input type="text" id="milage" name="milage" /><br />
+                <label for="milage">Miltal:</label>
+                <input
+                  type="text"
+                  id="milage"
+                  name="milage"
+                  class="searchinput"
+                /><br />
               </div>
               <div class="searchcontainer">
-                <label for="carYear">Car Year:</label>
-                <input type="text" id="carYear" name="carYear" /><br />
+                <label for="carYear">Bilår:</label>
+                <input
+                  type="text"
+                  id="carYear"
+                  name="carYear"
+                  class="searchinput"
+                /><br />
               </div>
               <div class="searchcontainer">
-                <label for="pricePerDay">Price Per Day:</label>
-                <input type="text" id="pricePerDay" name="pricePerDay" /><br />
+                <label for="pricePerDay">Kronor/Dag:</label>
+                <input
+                  type="text"
+                  id="pricePerDay"
+                  name="pricePerDay"
+                  class="searchinput"
+                /><br />
               </div>
             </div>
           </div>
@@ -104,10 +179,10 @@
     </div>
 
     <script src="/src/main/resources/static/scripts/login.js"></script>
-    <script src="/src/main/resources/"></script>
-    <script src="/src/main/resources/static/scripts/car.js"></script>
+    <script src="/src/main/resources/static/scripts/carClass.js"></script>
     <script src="/src/main/resources/static/scripts/carsTemp.js"></script>
     <script src="/src/main/resources/static/scripts/carGeneration.js"></script>
     <script src="/src/main/resources/static/scripts/searchParams.js"></script>
+    <script src="/src/main/resources/static/styles/General.css"></script>
   </body>
 </html>

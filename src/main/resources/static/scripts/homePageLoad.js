@@ -1,15 +1,4 @@
 let cars = [];
-//OLDCAR CLASS
-//cars.push(new Car(0,"Volkswagen",105,"XYZ001","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(1,"Toyota",160,"XYZ002","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(2,"Stellantis",120,"XYZ003","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(3,"Mercedes",130,"XYZ004","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(4,"Ford",80,"XYZ005","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(5,"BMW",100,"XYZ006","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(6,"Honda",120,"XYZ007","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(7,"Tesla",130,"XYZ008","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(8,"Lamborghini",155,"XYZ009","XSupraV2",9053,"Automatic",4,2012));
-//cars.push(new Car(9,"Lotus",78,"XYZ010","XSupraV2",9053,"Automatic",4,2012));
 
 cars.push(new Car("XYZ001","XSupraV1","Volkswagen",5000,"Automatic",4, 2012,"Gasoline","SportsCar",205));
 cars.push(new Car("XYZ002","XSupraV2","Mercedes",5000,"Automatic",4, 2012,"Gasoline","SportsCar",105));
