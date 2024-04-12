@@ -5,28 +5,48 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("userAddress").textContent = userDetails.address;
         document.getElementById("userTelephoneNumber").textContent = userDetails.telephoneNumber;
 
-        document.getElementById("userName").parentNode.addEventListener("click", function() {
-            enableEditing("userName", userDetails.userName);
-        });
-        document.getElementById("userAddress").parentNode.addEventListener("click", function() {
-            enableEditing("userAddress", userDetails.address);
-        });
-        document.getElementById("userTelephoneNumber").parentNode.addEventListener("click", function() {
-            enableEditing("userTelephoneNumber", userDetails.telephoneNumber);
-        });
+        document.getElementById("userName").parentNode.addEventListener("click", enableUserNameEditing);
+        document.getElementById("userAddress").parentNode.addEventListener("click", enableUserAddressEditing);
+        document.getElementById("userTelephoneNumber").parentNode.addEventListener("click", enableUserNumberEditing);
 
     }else{
         console.log("Användariformation saknas i localstorage");
     }
 });
 
+function enableUserNameEditing() {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    enableEditing("userName", userDetails.userName);
+}
+function enableUserAddressEditing() {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    enableEditing("userAddress", userDetails.address);
+}
+function enableUserNumberEditing() {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    enableEditing("userTelephoneNumber", userDetails.telephoneNumber);
+}
+
 function enableEditing(field, currentValue) {
+    console.log("Enabling Editing!");
     const parent = document.getElementById(field).parentNode;
+    switch (field) {
+        case "userName":
+            parent.removeEventListener("click", enableUserNameEditing);
+            break;
+        case "userAddress":
+            parent.removeEventListener("click", enableUserAddressEditing);
+            break;
+        case "userTelephoneNumber":
+            parent.removeEventListener("click", enableUserNumberEditing);
+            break;    
+    }
     parent.innerHTML = `<input type="text" id="input_${field}" value="${currentValue}">
     <button onclick="saveChanges('${field}')">Spara</button>`;
 }
 function saveChanges(field) {
     const newValue = document.getElementById(`input_${field}`).value;
+    console.log("New Value: " + newValue);
     switch(field) {
         case "userName":
             updateUserName(newValue);
@@ -86,6 +106,7 @@ function handleResponse(response) {
 }
 
 function updateLocalAndUI(field, newValue) {
+    console.log("How is life?");
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     userDetails[field] = newValue;
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
@@ -101,14 +122,19 @@ function updateLocalAndUI(field, newValue) {
     }
 
     // Skapa en ny HTML-sträng för span-elementet och knappen
-    const parent = document.getElementById(field).parentNode;
-    parent.innerHTML = `<p>${label}: <span id="${field}">${newValue}</span></p>
-                        <button id="edit${field}Button">Ändra</button>`;
+    const parent = document.getElementById(`input_${field}`).parentNode;
+    parent.innerHTML = `<p>${label}: <span id="${field}">${newValue}</span></p>`;
 
-    // Lägg till eventlyssnare till den nya Ändra-knappen
-    document.getElementById(`edit${field}Button`).addEventListener('click', function() {
-        enableEditing(field, newValue);
-    });
+    if (field === 'userName') {
+        document.getElementById("userName").parentNode.addEventListener("click", enableUserNameEditing);
+    } else if (field === 'userAddress') {
+        document.getElementById("userAddress").parentNode.addEventListener("click", enableUserAddressEditing);
+    } else if (field === 'userTelephoneNumber') {
+        document.getElementById("userTelephoneNumber").parentNode.addEventListener("click", enableUserNumberEditing);
+
+    }
+    
+
 
     // Uppdatera visningen för att visa den nya värdet
     document.getElementById(field).textContent = newValue;

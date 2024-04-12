@@ -10,6 +10,7 @@ header{
     width: 100%;
     text-align: left;
     font-family: "RetroVintage",serif;
+    
     border: 3px solid rgb(110, 72, 39);
     
 }
@@ -92,18 +93,25 @@ aside{
 
 
 /*profile*/
-.profil_info{
-    margin-top: 10px;
-}
-.profil-info h2{
-    margin-left: 700px;
-    
-}
-.info-item{
-    margin-left: 700px;
-    
+.profile h1{
+    text-align: center;
+    text-decoration: underline;
 }
 
+
+/*contract*/
+.contract-container{
+    background-color:whitesmoke; 
+    padding: 20px; 
+    margin-top: 20px;
+    border: 3px solid grey; 
+    box-shadow: 0 px 0 px 5 px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    width: 800px;
+    height: 600px;
+  
+  }
 
 /*login*/
 #email{

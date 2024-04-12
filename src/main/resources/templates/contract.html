@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/styles/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/styles/General.css">
+    <title>Kontrakt - Biluthyrning AB</title>
+</head>
+<body>
+    <header>
+        <h1>Kontrakt - Biluthyrning AB</h1>
+    </header>
+    <div class="page-layout">
+        <aside>
+            <div class="content">
+                <p class="menu-title">Menyval</p>
+            </div>
+            <h2 id="meny"></h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hem</a></li>
+                    <li><a href="car.html">Våra bilar</a></li>
+                    <li><a href="about.html">Om oss</a></li>
+                    <li><a href="cart.html">Varukorg</a></li>
+                </ul>
+                <button id="logoutButton">Logga ut</button>    
+            </nav>
+        </aside>
+        <div id="contract" class="contract-container" style="display: block;">
+            <h2>Hyreskontrakt</h2>
+            <p>-----------------------------------------------</p>
+            <p><strong>Namn:</strong> <span id="userName"></span></p>
+            <p><strong>Telefonnummer:</strong> <span id="userTelephoneNumber"></span></p>
+            <p><strong>Adress:</strong> <span id="userAddress"></span></p>
+        </br>
+            <p>------------------------------------------------</p>
+            <p><strong>Registreringsnummer:</strong> <span id="carReg"></span></p>
+            <p><strong>Modell:</strong> <span id="carModel"></span></p>
+            <p><strong>Startmil:</strong> <span id="startMileage"></span></p>
+            <p><strong>Slutmil:</strong> <span id="endMileage"></span></p>
+            <p><strong>Total kostnad:</strong> <span id="totalCost"></span> SEK</p>
+        </div>
+        <script src="/src/main/resources/static/scripts/contract.js"></script>
+    </div>
+</body>
+</html>
