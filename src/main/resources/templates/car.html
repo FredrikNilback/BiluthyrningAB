@@ -34,7 +34,11 @@
         <main>
 
             <h1>Våra Bilar</h1>
+
             <form id="searchForm" th:action="@{/searchAllCars}" method="get">
+
+
+
                 <label for="carName">Car Name:</label>
                 <input type="text" id="carName" name="carName"><br>
 
@@ -65,10 +69,20 @@
                 <button id="searchCarsButton" type="submit">Search</button>
             </form>
 
+            <form id="rentalDatesForm" th:action="@{getAllContracts}" method="get">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate">
+                <button type="submit">Submit</button>
+            </form>
+
             <div id="carListContainer"></div>
         </main>
     </div>
     </div>
+
+    <script src="scripts/contract.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/car.js"></script>
     <script src="scripts/cart.js"></script>

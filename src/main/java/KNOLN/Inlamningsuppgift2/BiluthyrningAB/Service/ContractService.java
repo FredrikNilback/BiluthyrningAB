@@ -6,6 +6,7 @@ import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Repositories.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +34,9 @@ public class ContractService {
 
     public Contract updateContract(Contract contract) {
         return repo.save(contract);
+    }
+
+    public List<Contract> getAllContracts(){
+        return (ArrayList<Contract>) repo.findAll();
     }
 }

@@ -68,19 +68,12 @@
     font-size: 12px;
 }
 
-/*
-.info-panel {
-     opacity: 0;
-        display: block;
-        background-image: url("/images/Paper.png");
-        background-size: 300px 480px;
-        background-position-x: 50%;
-        background-repeat: no-repeat;
-        position: absolute;
-        width: 200px;
-        height: 480px;
-        overflow: hidden;
-        padding: 80px 60px;
-        transition: all 0.25s;
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align forms at the top */
 }
-*/
+
+#searchForm, #rentalDatesForm {
+    width: 45%; /* Adjust width as needed */
+}

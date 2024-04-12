@@ -1,4 +1,4 @@
-
+let carList = [];
 //Funktion för att ta bort parametrar i URLen som är tomma, detta så att man kan få en korrekt
 //lista med bilar man söker för.
 function removeEmptyParamsFromURL(formData) {
@@ -26,6 +26,8 @@ function removeEmptyParamsFromURL(formData) {
 // searchCars.html. Initierar en formData som skapar ett objekt av formen och sparar alla värden man skrivit in.
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
+     const rentalDatesForm = document.getElementById('rentalDatesForm');
+
     if (searchForm) {
         searchForm.addEventListener('submit', function(event) {
             console.log('Form submitted');
@@ -105,8 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     );
                                 });
 
-                               //Just nu så visas bilarna enbart i konsolen.
-                                displayCars(cars);
+
+
+                                carList = cars;
                             })
                             .catch(error => {
                                 console.error('Error fetching data:', error);
@@ -115,22 +118,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
         });
     }
+
+    if (rentalDatesForm) {
+            rentalDatesForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const startDate = new Date(document.getElementById('startDate').value.trim());
+                const endDate = new Date(document.getElementById('endDate').value.trim());
+
+
+                fetch(`${location.origin}/getAllContracts`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const contracts = data.map(contractData => {
+                            return new Contract(contractData.car, contractData.startDate, contractData.endDate);
+                        });
+                        calculateAvailableCars(carList, contracts, startDate, endDate);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching contracts data:', error);
+                    });
+            });
+        }
 });
 
+function calculateAvailableCars(carList, contracts, startDate, endDate) {
+    const availableCars = [];
+
+    for (let i = 0; i < carList.length; i++) {
+        let car = carList[i];
+        let available = true;
+        for (let j = 0; j < contracts.length; j++) {
+            let contract = contracts[j];
+            if (contract.getLicensePlate() == car.licensePlate) {
+                if ((startDate < contract.endDate || startDate == contract.getStartDate()) &&
+                    (endDate > contract.startDate || endDate == contract.getEndDate())) {
+                    available = false;
+                    break;
+                }
+            }
+        }
+        if (available) {
+            availableCars.push(car);
+        }
+    }
+
+    displayCars(availableCars);
+}
 
 
-
-
-function displayCars(cars) {
+function displayCars(carList) {
     const container = document.getElementById('carListContainer');
     container.innerHTML = ''; // Clear the container
 
-    if (cars.size == 0) {
+    if (carList.size == 0) {
         const emptyText = document.createElement('p');
         emptyText.textContent = 'Found Nothing Matching The Criteria';
         container.appendChild(emptyText);
     } else {
-        cars.forEach(car => {
+        carList.forEach(car => {
             const productContainer = document.createElement("div");
             container.appendChild(productContainer);
             productContainer.setAttribute("class", "productcontainer");

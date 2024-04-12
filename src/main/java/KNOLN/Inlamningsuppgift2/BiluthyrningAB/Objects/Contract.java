@@ -33,7 +33,7 @@ public class Contract {
     @Column(name = "total_cost")
     private Double totalCost;
 
-    @Column(name = "expired")
+    @Column(name = "expired", nullable = true)
     private boolean expired;
 
     public Long getContractNumber() {
