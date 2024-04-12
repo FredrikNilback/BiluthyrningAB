@@ -6,11 +6,13 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" type="text/css" href="styles/General.css">
     <link rel="stylesheet" type="text/css" href="styles/carCardStyle.css">>
+
     <style>#carListContainer {display: flex;flex-wrap: wrap;}</style>
     <title>Våra Bilar - Biluthyrning AB</title>
 </head>
 <body>
 <div class="page-layout">
+
     <aside>
         <div class="content">
             <p class="menu-title">Menyval</p>
@@ -35,9 +37,9 @@
 
             <h1>Våra Bilar</h1>
 
+            <div class="forms-container">
+                <div class="form-wrapper">
             <form id="searchForm" th:action="@{/searchAllCars}" method="get">
-
-
 
                 <label for="carName">Car Name:</label>
                 <input type="text" id="carName" name="carName"><br>
@@ -45,7 +47,7 @@
                 <label for="carBrand">Car Brand:</label>
                 <input type="text" id="carBrand" name="carBrand"><br>
 
-                <label for="milage">Milage:</label>
+                <label for="milage">Max Mileage:</label>
                 <input type="text" id="milage" name="milage"><br>
 
                 <label for="automatic">Automatic:</label>
@@ -63,22 +65,31 @@
                 <label for="carType">Car Type:</label>
                 <input type="text" id="carType" name="carType"><br>
 
-                <label for="pricePerDay">Price Per Day:</label>
+                <label for="pricePerDay">Max Cost/Day:</label>
                 <input type="text" id="pricePerDay" name="pricePerDay"><br>
 
                 <button id="searchCarsButton" type="submit">Search</button>
             </form>
-
+            </div>
+                    <div class="form-wrapper">
             <form id="rentalDatesForm" th:action="@{getAllContracts}" method="get">
                 <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate" name="startDate">
+                <input type="date" id="startDate" name="startDate" required><br><br>
                 <label for="endDate">End Date:</label>
-                <input type="date" id="endDate" name="endDate">
+                <input type="date" id="endDate" name="endDate" required><br>
+                <div id="dateErrorContainer" style="color: red;"></div>
+                <br>
                 <button type="submit">Submit</button>
-            </form>
+                <br>
 
+            </form>
+                    </div>
+            </div>
+
+            <br><br>
             <div id="carListContainer"></div>
         </main>
+
     </div>
     </div>
 

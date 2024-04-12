@@ -129,13 +129,13 @@ public class SearchCarsController{
         for (Car car : carService.getCars()) {
             boolean match = true;
 
-            if (carName != null && !carName.equals(car.getCarName())) {
+            if (carName != null && !car.getCarName().toLowerCase().contains(carName.toLowerCase())) {
                 match = false;
             }
             if (carBrand != null && !carBrand.equals(car.getCarBrand())) {
                 match = false;
             }
-            if (milage != null && !milage.equals(car.getMilage())) {
+            if (milage != null && milage > car.getMilage()) {
                 match = false;
             }
             if (carSeats != null && !carSeats.equals(car.getCarSeats())) {
@@ -150,7 +150,7 @@ public class SearchCarsController{
             if (carType != null && !carType.equals(car.getCarType())) {
                 match = false;
             }
-            if (pricePerDay != null && !pricePerDay.equals(car.getPricePerDay())) {
+            if (pricePerDay != null && pricePerDay > car.getPricePerDay()) {
                 match = false;
             }
             if (automatic != null && !automatic.equals(car.getAutomatic())) {

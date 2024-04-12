@@ -1,7 +1,7 @@
 class Contract {
     constructor(car, startDate, endDate) {
         this.car = car;
-        this.startDate = new Date(startDate); 
+        this.startDate = new Date(startDate);
         this.endDate = new Date(endDate);
     }
 
