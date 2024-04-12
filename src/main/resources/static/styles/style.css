@@ -122,4 +122,12 @@ aside{
 }
 
 
+.forms-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
 
+.form-wrapper {
+    width: calc(50% - 10px);
+}

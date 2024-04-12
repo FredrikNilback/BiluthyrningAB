@@ -12,6 +12,7 @@ searchForm.addEventListener('submit', (event)=> {
     const engineType = document.getElementById("engineType").value.trim();
     const carType = document.getElementById("carType").value.trim();
     const pricePerDay = document.getElementById("pricePerDay").value.trim();
+
     let newParamsString = '';
     if (carName !== '') {
         newParamsString += `carName=${carName}&`;
@@ -69,4 +70,54 @@ searchForm.addEventListener('submit', (event)=> {
           carGen.carCard(car,"shopgrid");
         });
       });
+
+    //See if date matches
+    const startDate = new Date(document.getElementById('startDate').value.trim());
+    const endDate = new Date(document.getElementById('endDate').value.trim());
+    const dateErrorContainer = document.getElementById('dateErrorContainer');
+    dateErrorContainer.innerHTML = '';
+    console.log(startDate);
+    console.log(endDate);
+    if (!startDate || !endDate) {
+        dateErrorContainer.textContent = 'Please Choose a Start Date and End Date'; // Display error message
+        return;
+    }else {
+    dateErrorContainer.textContent = '';
+    fetch(`http://localhost:8080/getAllContracts`)
+        .then(response => response.json())
+        .then(data => {
+            const contracts = data.map(contractData => {
+                return new Contract(contractData.car, contractData.startDate, contractData.endDate);
+            });
+
+            calculateAvailableCars(cars, contracts, startDate, endDate);
+        })
+        .catch(error => {
+            console.error('Error fetching contracts data:', error);
+        });
+    }
 });
+
+calculateAvailableCars(carList, contracts, startDate, endDate) 
+{
+    const availableCars = [];
+
+    for (let i in carList) {
+        let car = carList[i];
+        let available = true;
+        for (let j in contracts) {
+            let contract = contracts[j];
+            if (contract.getLicensePlate() == car.licensePlate) {
+                if ((startDate < contract.endDate || startDate == contract.getStartDate()) &&
+                    (endDate > contract.startDate || endDate == contract.getEndDate())) {
+                    available = false;
+                    break;
+                }
+            }
+        }
+        if (available) {
+            availableCars.push(car);
+        }
+    }
+    return availableCars;
+};

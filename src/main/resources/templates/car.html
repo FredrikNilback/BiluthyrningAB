@@ -181,6 +181,21 @@
         </form>
         <div id="shopgrid"></div>
       </main>
+      <form id="rentalDatesForm" th:action="@{getAllContracts}" method="get">
+        <label for="startDate">Start Date:</label>
+        <input
+          type="date"
+          id="startDate"
+          name="startDate"
+          required
+        /><br /><br />
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required /><br />
+        <div id="dateErrorContainer" style="color: red"></div>
+        <br />
+        <button type="submit">Submit</button>
+        <br />
+      </form>
     </div>
 
     <script src="/src/main/resources/static/scripts/login.js"></script>

@@ -1,13 +1,18 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Controllers;
 
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
+import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Contract;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.CarService;
+import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
@@ -16,8 +21,12 @@ import java.util.*;
 @Controller
 public class SearchCarsController{
 
+
+
     @Autowired
     private CarService carService;
+    @Autowired
+    private ContractService contractService;
 
 
     @GetMapping("/carName")
@@ -65,6 +74,7 @@ public class SearchCarsController{
     //Här är funktionen som används då man vill söka igenom bilar genom att använda sig av alla kriterierna.
     @GetMapping("/searchAllCars")
     public ResponseEntity<List<Car>> searchCars(
+
             @RequestParam(value = "carName", required = false) String carName,
             @RequestParam(value = "carBrand", required = false) Car.CarBrand carBrand,
             @RequestParam(value = "milage", required = false) Integer milage,
@@ -78,7 +88,11 @@ public class SearchCarsController{
         List<Car> filteredCars = new ArrayList<>();
 
 
+
+
+
         Map<String, Object> queryParams = new HashMap<>();
+
         if (carName != null && !carName.isEmpty()) {
             queryParams.put("carName", carName);
         }
@@ -108,47 +122,47 @@ public class SearchCarsController{
         }
 
 
-
         //Loopar igenom alla billar i databasen som hämtas via getAllCars(). Lägger in en boolean match
         // som är true i början av loopen. Logiken bakom är för om vi söker efter bilar utan att fylla i några
         //kriterier (alltså att värdena är null) så ska man få med hela listan.
 
-        for (Car car : carService.getCars()){
+        for (Car car : carService.getCars()) {
             boolean match = true;
 
-            if(carName != null && !carName.equals(car.getCarName())){
+            if (carName != null && !car.getCarName().toLowerCase().contains(carName.toLowerCase())) {
                 match = false;
             }
-            if(carBrand != null && !carBrand.equals(car.getCarBrand())){
+            if (carBrand != null && !carBrand.equals(car.getCarBrand())) {
                 match = false;
             }
-            if(milage != null && !milage.equals(car.getMilage())){
+            if (milage != null && milage > car.getMilage()) {
                 match = false;
             }
-            if(carSeats != null && !carSeats.equals(car.getCarSeats())){
+            if (carSeats != null && !carSeats.equals(car.getCarSeats())) {
                 match = false;
             }
-            if(carYear != null && !carYear.equals(car.getCarYear())){
+            if (carYear != null && !carYear.equals(car.getCarYear())) {
                 match = false;
             }
-            if(engineType != null && !engineType.equals(car.getEngineType())){
+            if (engineType != null && !engineType.equals(car.getEngineType())) {
                 match = false;
             }
-            if(carType != null && !carType.equals(car.getCarType())){
+            if (carType != null && !carType.equals(car.getCarType())) {
                 match = false;
             }
-            if(pricePerDay != null && !pricePerDay.equals(car.getPricePerDay())){
+            if (pricePerDay != null && pricePerDay > car.getPricePerDay()) {
                 match = false;
             }
-            if(automatic != null && !automatic.equals(car.getAutomatic())){
+            if (automatic != null && !automatic.equals(car.getAutomatic())) {
                 match = false;
             }
 
-            if (match){
+            if (match) {
                 filteredCars.add(car);
             }
 
-        }
+            }
+
         return new ResponseEntity<>(filteredCars, HttpStatus.OK);
     }
 
@@ -156,6 +170,13 @@ public class SearchCarsController{
     @GetMapping("/searchCars")
     public String showSearchPage(Model model) {
         return "searchCars";
+    }
+
+    @GetMapping("getAllContracts")
+    ResponseEntity<List<Contract>> getAllContracts(Model model){
+        List<Contract> contracts = contractService.getAllContracts();
+        model.addAttribute("contracts", contracts);
+        return ResponseEntity.ok(contracts);
     }
 
 
