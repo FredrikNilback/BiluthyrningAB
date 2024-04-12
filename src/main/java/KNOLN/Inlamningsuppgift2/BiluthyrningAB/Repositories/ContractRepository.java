@@ -13,9 +13,9 @@ public interface ContractRepository extends JpaRepository <Contract, Long> {
 
     Contract findByContractNumber(long id);
 
-    @Query(value = "SELECT * FROM Contract c WHERE c.email = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Contract c WHERE c.email = ?1 AND c.expired = false", nativeQuery = true)
     List<Contract> findByUserEmail(String email);
 
-    @Query(value = "SELECT * FROM Contract c WHERE c.license_plate = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Contract c WHERE c.license_plate = ?1 AND c.expired = false", nativeQuery = true)
     List<Contract> findByLicensePlate(String license_plate);
 }
