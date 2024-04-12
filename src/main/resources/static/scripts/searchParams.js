@@ -1,11 +1,9 @@
 let carList = [];
-//Funktion för att ta bort parametrar i URLen som är tomma, detta så att man kan få en korrekt
-//lista med bilar man söker för.
+
 function removeEmptyParamsFromURL(formData) {
     const urlParams = new URLSearchParams(window.location.search);
     let newParamsString = '';
-//Man tar den URLen som skapas och loopar igenom alla keys. Kollar ifall varje key har en value och isåfall
-//lägger till den i en ny String newParamsString.
+
     for (const [key, value] of urlParams.entries()) {
         if (value.trim() !== '') {
             if (newParamsString !== '') {
@@ -15,15 +13,13 @@ function removeEmptyParamsFromURL(formData) {
         }
     }
 
-    //Sätter in den nya Stringen i URLen så man får den fri ifrån tomma parametrar.
     const newUrl = `${location.origin}/searchAllCars?${newParamsString}`;
 
 
     window.location.href = newUrl;
 }
 
-//Här kopplar man så att funktonen ovan körs när man klickar på knappen som hör till formen searchForm på
-// searchCars.html. Initierar en formData som skapar ett objekt av formen och sparar alla värden man skrivit in.
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
     const rentalDatesForm = document.getElementById('rentalDatesForm');
@@ -33,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Form submitted');
             event.preventDefault();
 
+            const startDate = document.getElementById("startDate").value.trim();
+            const endDate = document.getElementById("endDate").value.trim();
             const carName = document.getElementById("carName").value.trim();
             const carBrand = document.getElementById("carBrand").value.trim();
             const milage = document.getElementById("milage").value.trim();
@@ -44,6 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const pricePerDay = document.getElementById("pricePerDay").value.trim();
 
             let newParamsString = '';
+            if (startDate !== '') {
+                newParamsString += `startDate=${startDate}&`;
+            }
+            if (endDate !== '') {
+                 newParamsString += `endDate=${endDate}&`;
+               }
             if (carName !== '') {
                 newParamsString += `carName=${carName}&`;
             }
@@ -96,43 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         );
                     });
                     carList = cars;
+                    displayCars(cars);
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
                 });
-        });
-    }
-
-    if (rentalDatesForm) {
-        rentalDatesForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const startDate = new Date(document.getElementById('startDate').value.trim());
-            const endDate = new Date(document.getElementById('endDate').value.trim());
-            const dateErrorContainer = document.getElementById('dateErrorContainer');
-            dateErrorContainer.innerHTML = '';
-            console.log(startDate);
-            console.log(endDate);
-            if (!startDate || !endDate) {
-                dateErrorContainer.textContent = 'Please Choose a Start Date and End Date'; // Display error message
-                return;
-            }
-
-            else {
-            dateErrorContainer.textContent = '';
-            fetch(`${location.origin}/getAllContracts`)
-                .then(response => response.json())
-                .then(data => {
-                    const contracts = data.map(contractData => {
-                        return new Contract(contractData.car, contractData.startDate, contractData.endDate);
-                    });
-
-                    calculateAvailableCars(carList, contracts, startDate, endDate);
-                })
-                .catch(error => {
-                    console.error('Error fetching contracts data:', error);
-                });
-            }
         });
     }
 });
@@ -163,21 +135,21 @@ function calculateAvailableCars(carList, contracts, startDate, endDate) {
 }
 
 
-function displayCars(carList) {
+function displayCars(cars) {
     const container = document.getElementById('carListContainer');
-    container.innerHTML = ''; // Clear the container
+    container.innerHTML = '';
 
-    if (carList.size == 0) {
+    if (cars.size == 0) {
         const emptyText = document.createElement('p');
         emptyText.textContent = 'Found Nothing Matching The Criteria';
         container.appendChild(emptyText);
     } else {
-        carList.forEach(car => {
+        cars.forEach(car => {
             const productContainer = document.createElement("div");
             container.appendChild(productContainer);
             productContainer.setAttribute("class", "productcontainer");
 
-            // Add event listeners to handle hover events
+
             productContainer.addEventListener("mouseenter", () => {
                 this.showFullInfo(car, productContainer);
             });
@@ -185,18 +157,18 @@ function displayCars(carList) {
                 hideFullInfo(infoPanel);
             });
 
-            // Your existing code to create car elements goes here...
+
             const productPictureContainer = document.createElement("div");
             productPictureContainer.setAttribute("class", "imgcontainer");
             productContainer.appendChild(productPictureContainer);
 
-            //Picture
+
             const productPicture = document.createElement("img");
             productPicture.setAttribute("class", "carimg");
             productPicture.setAttribute("src", "images/car" + car.licensePlate + ".png");
             productPictureContainer.appendChild(productPicture);
 
-            // Create the description panel for each car
+
             const infoPanel = document.createElement("div");
             infoPanel.setAttribute("class", "info-panel");
             productContainer.appendChild(infoPanel);
@@ -206,7 +178,7 @@ function displayCars(carList) {
 
 function showFullInfo(car, productContainer) {
     const infoPanel = productContainer.querySelector(".info-panel");
-    // Display the info panel
+
     infoPanel.innerHTML = `
         <p>Märke: ${car.getCarBrand()}</p>
         <p>Pris: ${car.getPricePerDay()} kr/Dag</p>
@@ -217,13 +189,13 @@ function showFullInfo(car, productContainer) {
         <p>Säten: ${car.getCarSeats()}</p>
         <p>Modell År: ${car.getCarYear()}</p>
     `;
-    // Set background image for the info panel
+
     infoPanel.style.backgroundImage = "url('images/Paper.png')";
-    infoPanel.style.backgroundSize = "cover"; // Adjust as needed
-    infoPanel.style.backgroundPosition = "center"; // Adjust as needed
-    infoPanel.style.backgroundRepeat = "no-repeat"; // Adjust as needed
+    infoPanel.style.backgroundSize = "cover";
+    infoPanel.style.backgroundPosition = "center";
+    infoPanel.style.backgroundRepeat = "no-repeat";
     infoPanel.style.display = "block";
-    infoPanel.style.top = productContainer.offsetHeight + "px"; // Position info panel underneath product container
+    infoPanel.style.top = productContainer.offsetHeight + "px";
 }
 
 

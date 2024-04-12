@@ -4,6 +4,7 @@ import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Contract;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.CarService;
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Service.ContractService;
+import org.hibernate.annotations.DialectOverride;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -74,7 +77,8 @@ public class SearchCarsController{
     //Här är funktionen som används då man vill söka igenom bilar genom att använda sig av alla kriterierna.
     @GetMapping("/searchAllCars")
     public ResponseEntity<List<Car>> searchCars(
-
+            @RequestParam(value = "startDate", required = false) String startDateStr,
+            @RequestParam(value = "endDate", required = false) String endDateStr,
             @RequestParam(value = "carName", required = false) String carName,
             @RequestParam(value = "carBrand", required = false) Car.CarBrand carBrand,
             @RequestParam(value = "milage", required = false) Integer milage,
@@ -85,85 +89,29 @@ public class SearchCarsController{
             @RequestParam(value = "carType", required = false) Car.CarType carType,
             @RequestParam(value = "pricePerDay", required = false) Double pricePerDay) {
 
+
         List<Car> filteredCars = new ArrayList<>();
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = null;
+        Date endDate = null;
 
-
-
-
-        Map<String, Object> queryParams = new HashMap<>();
-
-        if (carName != null && !carName.isEmpty()) {
-            queryParams.put("carName", carName);
-        }
-        if (carBrand != null) {
-            queryParams.put("carBrand", carBrand);
-        }
-        if (milage != null) {
-            queryParams.put("milage", milage);
-        }
-        if (automatic != null) {
-            queryParams.put("automatic", automatic);
-        }
-        if (carSeats != null) {
-            queryParams.put("carSeats", carSeats);
-        }
-        if (carYear != null) {
-            queryParams.put("carYear", carYear);
-        }
-        if (engineType != null) {
-            queryParams.put("engineType", engineType);
-        }
-        if (carType != null) {
-            queryParams.put("carType", carType);
-        }
-        if (pricePerDay != null) {
-            queryParams.put("pricePerDay", pricePerDay);
+        try {
+            if (startDateStr != null) {
+                startDate = dateFormat.parse(startDateStr);
+            }
+            if (endDateStr != null) {
+                endDate = dateFormat.parse(endDateStr);
+            }
+        } catch (ParseException e) {
+            // Handle parsing exception
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+        List<Car> carList = carService.searchCars(startDate,endDate,carName,carBrand,milage,automatic,carSeats,carYear,engineType,carType,pricePerDay);
 
-        //Loopar igenom alla billar i databasen som hämtas via getAllCars(). Lägger in en boolean match
-        // som är true i början av loopen. Logiken bakom är för om vi söker efter bilar utan att fylla i några
-        //kriterier (alltså att värdena är null) så ska man få med hela listan.
-
-        for (Car car : carService.getCars()) {
-            boolean match = true;
-
-            if (carName != null && !car.getCarName().toLowerCase().contains(carName.toLowerCase())) {
-                match = false;
-            }
-            if (carBrand != null && !carBrand.equals(car.getCarBrand())) {
-                match = false;
-            }
-            if (milage != null && milage > car.getMilage()) {
-                match = false;
-            }
-            if (carSeats != null && !carSeats.equals(car.getCarSeats())) {
-                match = false;
-            }
-            if (carYear != null && !carYear.equals(car.getCarYear())) {
-                match = false;
-            }
-            if (engineType != null && !engineType.equals(car.getEngineType())) {
-                match = false;
-            }
-            if (carType != null && !carType.equals(car.getCarType())) {
-                match = false;
-            }
-            if (pricePerDay != null && pricePerDay > car.getPricePerDay()) {
-                match = false;
-            }
-            if (automatic != null && !automatic.equals(car.getAutomatic())) {
-                match = false;
-            }
-
-            if (match) {
-                filteredCars.add(car);
-            }
-
-            }
-
-        return new ResponseEntity<>(filteredCars, HttpStatus.OK);
+        return new ResponseEntity<>(carList, HttpStatus.OK);
     }
 
 

@@ -7,6 +7,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class CarService {
     public List<Car> getCarsByPricePerDay(Integer pricePerDay){return repo.getCarsByPricePerDay(pricePerDay);}
 
 
-    public List<Car> searchCars(String carName, Car.CarBrand carBrand,
+    public List<Car> searchCars(Date startDate, Date endDate, String carName, Car.CarBrand carBrand,
                                 Integer milage, Car.Automatic automatic, Integer carSeats, Integer carYear,
                                 Car.EngineType engineType, Car.CarType carType, Double pricePerDay) {
-        return repo.searchCar(carName,  carBrand,
+        return repo.searchCar(startDate, endDate, carName,  carBrand,
                 milage,  automatic,  carSeats,  carYear,
                 engineType,  carType, pricePerDay);
     }
