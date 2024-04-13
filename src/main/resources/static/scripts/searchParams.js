@@ -51,7 +51,6 @@ searchForm.addEventListener('submit', (event)=> {
     fetch(newUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("Loading" + data);
         searchedCars = data.map(carData => {
           return new Car(
             carData.licensePlate,
@@ -66,8 +65,7 @@ searchForm.addEventListener('submit', (event)=> {
             carData.pricePerDay
           );
         });
-        console.log("got: " + searchedCars);
-
+        
         // See if date matches
         const startDate = new Date(document.getElementById('startDate').value.trim());
         const endDate = new Date(document.getElementById('endDate').value.trim());
@@ -96,7 +94,6 @@ searchForm.addEventListener('submit', (event)=> {
 
 function calculateAvailableCars(carList, contracts, startDate, endDate, carListOutput) 
 {
-    console.log(carList);
     for (let i in carList) {
         let car = carList[i];
         let available = true;
