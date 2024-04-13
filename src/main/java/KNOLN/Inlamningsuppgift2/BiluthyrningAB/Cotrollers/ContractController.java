@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/Contract")
 public class ContractController {
@@ -127,5 +128,32 @@ public class ContractController {
 
         return new ResponseEntity<>(contractList, HttpStatus.OK);
     }
+    @GetMapping("getContractByEmail")
+    public ResponseEntity<List<Contract>> getContractByEmail(String email){
+        List<Contract> contractList;
+        if (email != null) {
+            contractList = contractService.getContractByUserEmail(email);
+        }
+        else {
+            contractList = new ArrayList<>();
+        }
+
+        for (int i = 0; i < contractList.size(); i++) {
+            Contract contract = contractList.get(i);
+            Date endDate = contract.getEndDate();
+            if (endDate.before(new Date())) {
+                contract.setExpired(true);
+                contractList.remove(contract);
+                i--;
+                contractService.updateContract(contract);
+            }
+        }
+
+        return new ResponseEntity<>(contractList, HttpStatus.OK);
+    
+
+    }
+        
+
 
 }

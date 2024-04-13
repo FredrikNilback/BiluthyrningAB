@@ -39,6 +39,13 @@ aside{
     height: 100vh;
     border: 3px solid rgb(110, 72, 39);
 }
+#logoutButton{
+    margin-left: 40px;
+}
+#deleteButton{
+    margin-left: 40px;
+    margin-top: 15px;
+}
 
 /*cars*/
 .ourCars h1{
@@ -97,6 +104,14 @@ aside{
     text-align: center;
     text-decoration: underline;
 }
+.user-info{
+    margin-left: 250px;
+    margin-top: 50px;
+}
+#infoText{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 30px;
+}
 
 
 /*contract*/
@@ -109,8 +124,11 @@ aside{
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
     width: 800px;
-    height: 600px;
-  
+    height: auto;
+    overflow: visible;
+  }
+  .userInfo{
+    text-decoration: underline;
   }
 
 /*login*/
@@ -128,10 +146,7 @@ aside{
     margin-top: 5px;
 }
 
-/*logout*/
-#logoutButton{
-    margin-left: 40px;
-}
+
 
 
 

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 response.json().then(user =>{
                     console.log("User logged in:", user);                    
                     localStorage.setItem("userDetails", JSON.stringify(user));
+                    localStorage.setItem("userEmail", user.email);
                     alert("Inloggningen lyckades! Välkommen.");
                     window.location.href = "/src/main/resources/templates/profile.html"; 
                 });
