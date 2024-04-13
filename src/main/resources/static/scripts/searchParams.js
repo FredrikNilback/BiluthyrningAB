@@ -1,5 +1,5 @@
 const searchForm = document.getElementById('searchForm');
-const carGen = new CarGeneration("page-layout");
+const carGen = new CarGeneration("page-layout", true);
 searchForm.addEventListener('submit', (event)=> {
     console.log('Form submitted');
     event.preventDefault();
@@ -81,10 +81,14 @@ searchForm.addEventListener('submit', (event)=> {
             calculateAvailableCars(searchedCars, contracts, startDate, endDate, datedCars);
 
             // Wipe shopgrid and load the searched cars
-            document.getElementById("shopgrid").innerHTML = "";
-            datedCars.forEach(car => {
-              carGen.carCard(car, "shopgrid");
-            });
+            if(startDate.getTime() > endDate.getTime()){
+                alert("Upphämtningsdatum kan inte vara efter Inlämningsdatum!");
+            }else{
+                document.getElementById("shopgrid").innerHTML = "";
+                datedCars.forEach(car => {
+                    carGen.carCard(car, "shopgrid");
+                });
+            }
           })
           .catch(error => {
             console.error('Error fetching contracts data:', error);
@@ -99,7 +103,6 @@ function calculateAvailableCars(carList, contracts, startDate, endDate, carListO
         let available = true;
         for (let j in contracts) {
             let contract = contracts[j];
-            console.log(contract);
             if (contract.getLicensePlate() == car.licensePlate) {
                 if ((startDate < contract.endDate || startDate == contract.getStartDate()) &&
                     (endDate > contract.startDate || endDate == contract.getEndDate())) {

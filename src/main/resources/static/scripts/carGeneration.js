@@ -1,9 +1,8 @@
 
 class CarGeneration{
-    
-    constructor(infoPanelParentID)
+    constructor(infoPanelParentID,showRentButton)
     {
-        this.createFullInfo(infoPanelParentID);
+        this.createFullInfo(infoPanelParentID,showRentButton);
     }
     carCard(car,locDivParentId)
     {
@@ -89,7 +88,7 @@ class CarGeneration{
         })
     }
 
-    createFullInfo(ParentId){
+    createFullInfo(ParentId, showRentButton){
         const fullInfoPanel = document.createElement("div");
         fullInfoPanel.setAttribute("id","fullInfoPanel");
         const carBrand = document.createElement("p");
@@ -127,55 +126,77 @@ class CarGeneration{
         fullInfoPanel.appendChild(price);
 
         //Kolla ifall man är inloggad Kanske? Isåfall se köp knappar
-        //Buy Container
-        const rentContainer = document.createElement("div");
-        fullInfoPanel.appendChild(rentContainer);
-        rentContainer.style.display = "flex";
-        rentContainer.style.flexDirection = "row";
-        rentContainer.style.justifyContent = "space-between";
+        if(showRentButton == true){
+            //Buy Button
+            const rentButton = document.createElement("button");
+            fullInfoPanel.appendChild(rentButton);
+            rentButton.textContent ="Hyr!";
+            rentButton.setAttribute("id","rentbutton");
 
-        //StartDate input
-        //const startDateDiv = document.createElement("div");
-        //rentContainer.appendChild(startDateDiv);
-//
-        //const startDateLabel = document.createElement("p");
-        //startDateLabel.textContent = "Uthämtnings Datum";
-        //startDateDiv.appendChild(startDateLabel);
-        //startDateLabel.setAttribute("class","datelabel");
-//
-        //const startDateInput = document.createElement("input");
-        //startDateInput.setAttribute("type","date");
-        //startDateInput.setAttribute("name","startdate");
-        //startDateInput.setAttribute("id","startdate");
-        //startDateDiv.appendChild(startDateInput);
-        //startDateInput.style.backgroundColor = "beige";
-//
-        ////EndDate input
-        //const endDateDiv = document.createElement("div");
-        //rentContainer.appendChild(endDateDiv);
-//
-        //const endDateLabel = document.createElement("p");
-        //endDateLabel.textContent = "Slut Datum";
-        //endDateDiv.appendChild(endDateLabel);
-        //endDateLabel.setAttribute("class","datelabel");
-//
-        //const endDateInput = document.createElement("input");
-        //endDateInput.setAttribute("type","date");
-        //endDateInput.setAttribute("name","enddate");
-        //endDateInput.setAttribute("id","enddate");
-        //endDateDiv.appendChild(endDateInput);
-        //endDateInput.style.backgroundColor = "beige";
-        
+            rentButton.addEventListener("click", (event)=>{
+                //Get Licence Plate of car
+                const infoPanel = event.target.parentNode;
+                const licencePlateObj = infoPanel.querySelector("#infoLicensePlate");
+                const licencePlate = licencePlateObj.textContent.substring(licencePlateObj.textContent.length - 6);
+                console.log("Got Licence Plate: "+licencePlate);
 
-        const rentButton = document.createElement("input");
-        fullInfoPanel.appendChild(rentButton);
-        rentButton.setAttribute("type","button");
-        rentButton.setAttribute("value","Hyr!");
-        rentButton.setAttribute("id","rentbutton");
+                //Get current signed in
+                const userEmail = localStorage.getItem("userEmail");
+                console.log(userEmail+" is requesting to buy");
+
+                //Get start and end date
+                const startDate = new Date(document.getElementById("startDate").value);
+                console.log("Got Start Date: "+ startDate);
+
+                const endDate = new Date(document.getElementById("endDate").value);
+                console.log("Got End Date: "+ endDate);
+
+                //Get daily price
+                const price = parseInt(infoPanel.querySelector("#infoPrice").textContent.replace(/\D/g, ''));
+
+                //Calculate total price
+                const days = (endDate-startDate)/(1000*60*60*24)+1;// +1 for the current day morning to night
+                const totalPrice = days*price;
+                console.log(totalPrice);
+
+                //Create contract
+                const contractData = {
+                    email: userEmail,
+                    licencePlate: licencePlate,
+                    startDate: startDate,
+                    endDate: endDate,
+                    totalCost: totalPrice,
+                };
+
+                if(confirm("Är du helt säker på köpet?")){
+                    const apiUrl = 'http://localhost:8080';
+                    fetch(apiUrl + '/Contract/addContract', { // HÄR SÄTT IN POSTMAPPEN FÖR SKAPA CONTRAKT
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(contractData),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Nätverkssvar var inte ok!");
+                        }
+                        return response.json(); 
+                    })
+                    .then(data => {
+                        window.alert("Köp gick igenom!");
+                        console.log(data);
+                    })
+                    .catch((error) => {
+                        console.error('Fel:', error);
+                        window.alert("Köp misslyckades!");
+                    });
+                }
+            });
+        }
     }
 
     showFullInfo(car){
-
         document.getElementById("infoCarBrand").textContent = "Märke: "+car.getCarBrand();
         document.getElementById("infoPrice").textContent = "Pris: "+car.getPricePerDay()+"kr/Dag";
         document.getElementById("infoLicensePlate").textContent = "RegNr: "+car.getLicensePlate();
@@ -187,4 +208,16 @@ class CarGeneration{
         document.getElementById("infoEngineType").textContent = "Motortyp: "+car.getEngineType();
         document.getElementById("infoCarType").textContent = "Biltyp: "+car.getCarType();
     }
+    
 }
+
+if(document.getElementById("rentbutton") != null){
+    document.getElementById("rentbutton").addEventListener("click", (event)=>{
+        infoPanel = event.target.parentNode;
+        licencePlateObj = infoPanel.querySelector("#infoLicensePlate");
+
+        licencePlate = licencePlateObj.textContent;
+        console.log(licencePlate);
+    });
+}
+

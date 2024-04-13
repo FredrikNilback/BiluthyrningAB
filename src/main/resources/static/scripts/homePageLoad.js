@@ -12,7 +12,7 @@ cars.push(new Car("XYZ009","V60","Honda",5000,"Automatic",4, 2012,"Gasoline","Sp
 cars.push(new Car("XYZ010","JUIV90","Lamborghini",5000,"Automatic",4, 2012,"Gasoline","SportsCar",225));
 
 
-const carGen = new CarGeneration("main");
+const carGen = new CarGeneration("main", false);
 
 
 
