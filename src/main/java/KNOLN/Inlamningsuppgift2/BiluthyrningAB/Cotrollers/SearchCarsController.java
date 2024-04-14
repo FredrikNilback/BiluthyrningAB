@@ -90,8 +90,6 @@ public class SearchCarsController{
             @RequestParam(value = "pricePerDay", required = false) Double pricePerDay) {
 
 
-        List<Car> filteredCars = new ArrayList<>();
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date startDate = null;
         Date endDate = null;
@@ -104,7 +102,7 @@ public class SearchCarsController{
                 endDate = dateFormat.parse(endDateStr);
             }
         } catch (ParseException e) {
-            // Handle parsing exception
+
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
