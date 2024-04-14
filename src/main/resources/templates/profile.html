@@ -8,48 +8,49 @@
     <title>Profil - Biluthyrning AB</title>
 </head>
 <body>
-    <header>
+    <div class="content-wraper">
+      <header>
         <h1>Biluthyrning AB</h1>
-    </header>
-    <div class="page-layout">
-        <aside>
-            <div class="content">
-                <p class="menu-title">Menyval</p>
-            </div>
-            <h2 id="meny"></h2>
-            <nav>
-                <ul>
-                    <li><a href="homepage.html">Hem</a></li>
-                    <li><a href="car.html">Våra bilar</a></li>
-                    <li><a href="about.html">Om oss</a></li>
-                    <li><a href="cart.html">Varukorg</a></li>
-                    <li><a href="contract.html">Mina kontrakt</a></li>
-                </ul>
-                <button id="logoutButton">Logga ut</button>   
-                <button id="deleteAccountButton">Radera användare</button> 
-            </nav>
-        </aside>
-        <div class="profile">
-            <h1>Din profilsida!</h1>
+      </header>
+        <div class="page-layout">
+            <aside>
+                <div class="content">
+                    <p class="menu-title">Menyval</p>
+                </div>
+                <h2 id="meny"></h2>
+                <nav>
+                    <ul>
+                        <li><a href="homepage.html">Hem</a></li>
+                        <li><a href="car.html">Våra bilar</a></li>
+                        <li><a href="about.html">Om oss</a></li>
+                        <li><a href="cart.html">Varukorg</a></li>
+                        <li><a href="contract.html">Mina kontrakt</a></li>
+                    </ul>
+                    <button id="logoutButton">Logga ut</button>   
+                    <button id="deleteAccountButton">Radera användare</button> 
+                </nav>
+            </aside>
+            <main>
+            <div class="profile">
+                <h1>Din profilsida!</h1>
                 <div class="user-info">
-                   <h2>Användaruppgifter:</h2>
-                   <p id="infoText">(Behöver du ändra dina uppgifter?Klicka på raden du vill ändra)</p>
-                   <div class="info-item">
-                       <p id="editName">Namn: <span id="userName" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
-                       <p id="editAddress">Adress: <span id="userAddress" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
-                       <p id="editTelephoneNumber">Telephonenumber: <span id="userTelephoneNumber" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
+                    <h2>Användaruppgifter:</h2>
+                    <p id="infoText">(Behöver du ändra dina uppgifter?Klicka på raden du vill ändra)</p>
+                    <div class="info-item">
+                        <p id="editName">Namn: <span id="userName" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
+                        <p id="editAddress">Adress: <span id="userAddress" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
+                        <p id="editTelephoneNumber">Telephonenumber: <span id="userTelephoneNumber" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></span></p>
                     </div>
                     <button type="button" onclick="location.href='contract.html';">Kontrakt</button>
-                    
                 <div>
-         </div>
+            </div>
+        </main>
+        </div>
     </div>
     <footer>
-        <div class="container">
-          <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
-          <p>Kontakta oss: info@biluthyrningab.se</p>
-        </div>
-      </footer>
+        <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
+        <p>Kontakta oss: info@biluthyrningab.se</p>
+    </footer>
     <script src="/src/main/resources/static/scripts/login.js"></script>
     <script src="/src/main/resources/static/scripts/profile.js"></script>
     <script src="/src/main/resources/static/scripts/contract.js"></script>

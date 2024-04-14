@@ -150,8 +150,6 @@ public class ContractController {
         }
 
         return new ResponseEntity<>(contractList, HttpStatus.OK);
-    
-
     }
         
 
