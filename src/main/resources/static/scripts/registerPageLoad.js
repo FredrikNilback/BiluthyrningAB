@@ -1,3 +1,4 @@
+const Asidemenu = new menu("page-layout");
 const apiUrl = 'http://localhost:8080';
 
 document.querySelector('.registrationForm form').addEventListener('submit', function(event) {

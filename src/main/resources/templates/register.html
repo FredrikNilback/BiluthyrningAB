@@ -1,72 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/General.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/General.css"
+    />
     <title>Registrera dig - Biluthyrning AB</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Biluthyrning AB</h1>
+      <h1>Biluthyrning AB</h1>
     </header>
-<div class="page-layout">
-    <aside>
-        <div class="content">
-            <p class="menu-title">Menyval</p>
-        </div>
-        <h2 id="meny"></h2>
-        <nav>
-            <ul>
-                <li><a href="homepage.html">Hem</a></li>
-                <li><a href="car.html">Våra bilar</a></li>
-                <li><a href="about.html">Om oss</a></li>
-                <li><a href="cart.html">Varukorg</a></li>
-                <li><a href="#" id="loginLink">Login</a></li>
-                <div id="loginForm" style="display: none;">
-                    <input type="text" placeholder="Email" id="loginEmail">
-                    <input type="password" placeholder="Password" id="loginPassword">
-                    <button id="loginButton">Logga in</button>
-                </div>
-            </ul>
-        </nav>
-    </aside>
-    <div class="registrationForm">
+    <div id="page-layout">
+      <div class="registrationForm">
         <h1>Registrera dig</h1>
         <form action="/users/addUser" method="post">
-            <div class="input-grid">
-                <label for="email">E-post:</label>
-                <input type="text" name="email" id="email" required>
-            </div>
-            <div class="input-grid">
-                <label for="password">Lösenord:</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <div class="input-grid">
-                <label for="confirmPassword">Repetera Lösenord:</label>
-                <input type="password" name="confirmPassword" id="confirmPassword" required>
-            </div>
-            <div class="input-grid">
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" required>
-            </div>
-            <div class="input-grid">
-                <label for="telephoneNumber">Telefonnr:</label>
-                <input type="text" name="t" id="telephoneNumber">
-            </div>
-            <div class="input-grid">
-                <label for="address">Adress:</label>
-                <input type="text" name="address" id="address">
-            </div>
-            <div class="buttonContainer">
-                <button type="submit">Registrera!</button>
-            </div>
+          <div class="input-grid">
+            <label for="email">E-post:</label>
+            <input type="text" name="email" id="email" required />
+          </div>
+          <div class="input-grid">
+            <label for="password">Lösenord:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div class="input-grid">
+            <label for="confirmPassword">Repetera Lösenord:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              required
+            />
+          </div>
+          <div class="input-grid">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="input-grid">
+            <label for="telephoneNumber">Telefonnr:</label>
+            <input type="text" name="t" id="telephoneNumber" />
+          </div>
+          <div class="input-grid">
+            <label for="address">Adress:</label>
+            <input type="text" name="address" id="address" />
+          </div>
+          <div class="buttonContainer">
+            <button type="submit">Registrera!</button>
+          </div>
         </form>
-    </div> 
-</div>
-<script src="/src/main/resources/static/scripts/register.js"></script>
-<script src="/src/main/resources/static/scripts/login.js"></script>
-<script src="/src/main/resources/static/scripts/homePageLoad.js"></script>
-</body>
+      </div>
+    </div>
+    <script src="/src/main/resources/static/scripts/menuClass.js"></script>
+    <script src="/src/main/resources/static/scripts/registerPageLoad.js"></script>
+  </body>
 </html>

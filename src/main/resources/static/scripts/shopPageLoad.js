@@ -1,4 +1,5 @@
 const searchForm = document.getElementById('searchForm');
+const Asidemenu = new menu("page-layout");
 const carGen = new CarGeneration("page-layout", true);
 searchForm.addEventListener('submit', (event)=> {
     console.log('Form submitted');

@@ -1,3 +1,4 @@
+const Asidemenu = new menu("page-layout");
 document.addEventListener("DOMContentLoaded", function(){
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if(userDetails){

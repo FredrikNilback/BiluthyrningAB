@@ -26,7 +26,7 @@ html, body{
     text-align: left;
     font-weight: bold;
 }
-.page-layout{
+#page-layout{
     display: flex;
     min-width: 100vh;
     width: 100%;
