@@ -30,7 +30,8 @@ document.querySelector('.registrationForm form').addEventListener('submit', func
     .then(data => {
         console.log('Success:', data);
         window.alert("Du är registrerad!");
-    })
+        window.location.href = "/src/main/resources/templates/homepage.html"; 
+        })
     .catch((error) => {
         console.error('Error:', error);
         window.alert("Registrering misslyckades, användaren finns redan");

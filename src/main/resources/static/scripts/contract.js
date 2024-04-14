@@ -18,17 +18,12 @@ class Contract {
     }
 }
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if(userDetails){
         document.getElementById("userName").textContent = userDetails.userName;
         document.getElementById("userAddress").textContent = userDetails.address;
         document.getElementById("userTelephoneNumber").textContent = userDetails.telephoneNumber;
-
-        
-
     }else{
         console.log("Användariformation saknas i localstorage");
     }
@@ -40,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    
     fetch(`http://localhost:8080/Contract/getContractByEmail?email=${encodeURIComponent(userEmail)}`)
         .then(response => {
             if (!response.ok) {
@@ -72,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Failed to fetch contracts:", error);
         });
 });
-
+// Logout and go back to "startpage"
 document.addEventListener("DOMContentLoaded", function(){
    const logoutButton = document.getElementById("logoutButton");
    if(logoutButton){
@@ -81,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log("User is logging out");
 
         alert("Du har loggats ut");
-        window.location.href = "/src/main/resources/templates/index.html"; 
+        window.location.href = "/src/main/resources/templates/homepage.html"; 
         
       });
     }else{

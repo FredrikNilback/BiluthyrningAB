@@ -53,15 +53,19 @@ document.addEventListener("DOMContentLoaded", function(){
    const logoutButton = document.getElementById("logoutButton");
    if(logoutButton){
       logoutButton.addEventListener("click", function(){
-
-        console.log("User is logging out");
-
-        alert("Du har loggats ut");
-        window.location.href = "/src/main/resources/templates/index.html"; 
-        
+        const userDetails = localStorage.getItem("userDetails");
+        if(userDetails){
+            console.log("user is logging out");
+            localStorage.clear();
+            alert("Du har loggats ut");
+            window.location.href = "/src/main/resources/templates/homepage.html"; 
+        }else{
+            console.log("No user logged in .....")
+            alert("Ingen användare är inloggad");
+        }
       });
     }else{
-        console.log("utloggningsknappen hittades inte");
+        console.log("Utloggningsknappen hittades inte");
     }
 });
 

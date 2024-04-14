@@ -61,6 +61,7 @@ function saveChanges(field) {
             console.log("Okänt fält: " + field);
     }
 }
+
 function updateUserName(newUserName) {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     const apiURL = "http://localhost:8080"; 
@@ -73,6 +74,7 @@ function updateUserName(newUserName) {
     .then(() => updateLocalAndUI("userName", newUserName))
     .catch(error => console.error("Error updating username:", error));
 }
+
 function updateUserAddress(newUserAddress) {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     const apiURL = "http://localhost:8080"; 
@@ -85,6 +87,7 @@ function updateUserAddress(newUserAddress) {
     .then(() => updateLocalAndUI("userAddress", newUserAddress))
     .catch(error => console.error("Error updating address:", error));
 }
+
  function updateUserTelephoneNumber(newUserTelephoneNumber) {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     const apiURL = "http://localhost:8080"; 
@@ -111,7 +114,7 @@ function updateLocalAndUI(field, newValue) {
     userDetails[field] = newValue;
     localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
-    // Bestäm vilken label som ska användas baserat på vilket fält som uppdateras
+    // Choose wich label to update
     let label = '';
     if (field === 'userName') {
         label = 'Namn';
@@ -121,7 +124,7 @@ function updateLocalAndUI(field, newValue) {
         label = 'Telephonenumber';
     }
 
-    // Skapa en ny HTML-sträng för span-elementet och knappen
+    // Find the 'parentfield' and update the field with the new value.(name, adress or telephoneNumber)
     const parent = document.getElementById(`input_${field}`).parentNode;
     parent.innerHTML = `<p>${label}: <span id="${field}">${newValue}</span></p>`;
 
@@ -131,12 +134,46 @@ function updateLocalAndUI(field, newValue) {
         document.getElementById("userAddress").parentNode.addEventListener("click", enableUserAddressEditing);
     } else if (field === 'userTelephoneNumber') {
         document.getElementById("userTelephoneNumber").parentNode.addEventListener("click", enableUserNumberEditing);
-
     }
-    
 
-
-    // Uppdatera visningen för att visa den nya värdet
+    // shows the new updated value
     document.getElementById(field).textContent = newValue;
 }
 
+//Getting the logged in user from localStorage
+document.addEventListener("DOMContentLoaded", function() {
+    let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    if(userDetails){
+        document.getElementById("userName").textContent = userDetails.userName;
+        document.getElementById("userAddress").textContent = userDetails.address;
+        document.getElementById("userTelephoneNumber").textContent = userDetails.telephoneNumber;
+    }else{
+        console.log("Användariformation saknas i localstorage");
+    }
+    const deleteAccountButton = document.getElementById("deleteAccountButton");
+    if(deleteAccountButton) {
+        deleteAccountButton.addEventListener("click", function(){
+            const userEmail = localStorage.getItem("userEmail");
+            if(userEmail && confirm("Är du säker på att du vill radera ditt konto?")){
+                fetch(`http://localhost:8080/users/deleteUser?email=${encodeURIComponent(userEmail)}`,{
+                    method:"DELETE"
+
+                })
+                .then(response => {
+                    if(response.ok){
+                        alert("Dittkonto har tagits bort");
+                        localStorage.clear();
+                        window.location.href = "homepage.html";
+                    }else{
+                        alert("Kunde inte radera konto");
+                        return response.text();
+                    }
+                })
+                .catch(error =>{
+                    console.error("Error:", error);
+                    alert("Ett fel har inträffat. Försök igen.");
+                })
+            }
+        });
+    }
+});
