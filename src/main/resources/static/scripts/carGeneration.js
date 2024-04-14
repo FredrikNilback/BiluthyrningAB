@@ -162,15 +162,15 @@ class CarGeneration{
                 //Create contract
                 const contractData = {
                     email: userEmail,
-                    licencePlate: licencePlate,
+                    licensePlate: licencePlate,
                     startDate: startDate,
                     endDate: endDate,
-                    totalCost: totalPrice,
+                    totalCost: totalPrice
                 };
 
                 if(confirm("Är du helt säker på köpet?")){
                     const apiUrl = 'http://localhost:8080';
-                    fetch(apiUrl + '/Contract/addContract', { // HÄR SÄTT IN POSTMAPPEN FÖR SKAPA CONTRAKT
+                    fetch(apiUrl + '/Contract/addContract?', { // HÄR SÄTT IN POSTMAPPEN FÖR SKAPA CONTRAKT
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
