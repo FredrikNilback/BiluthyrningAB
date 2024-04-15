@@ -55,7 +55,7 @@ public class ContractController {
 
 
             long timeDiff = reqContract.getEndDate().getTime() - reqContract.getStartDate().getTime();
-            int daysDiff = (int)(timeDiff / (1000 * 60 * 60 * 24));
+            int daysDiff = (int)((timeDiff / (1000 * 60 * 60 * 24)) + 1);
 
             double totalCost = (car.getPricePerDay().intValue() * daysDiff);
             newContract.setTotalCost(totalCost);

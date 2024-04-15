@@ -86,7 +86,6 @@ class menu{
     nav.appendChild(loginForm);
 
     if(window.location.href == "http://127.0.0.1:5500/src/main/resources/templates/profile.html"){
-      console.log("On profile");
       const deleteAcc = document.createElement("button");
       deleteAcc.setAttribute("id","deleteAccountButton");
       deleteAcc.textContent = "Radera användare";
@@ -107,7 +106,6 @@ class menu{
       const loginLink = document.getElementById("loginLink");
       loginLink.addEventListener('click', function(event) {
         event.preventDefault();
-        console.log("Clicked LoginLink");
         if(loginForm.style.display == "none"){
           loginForm.style.display = "block";
         }else{

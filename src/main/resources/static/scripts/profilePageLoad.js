@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .then(response => {
                     if(response.ok){
-                        alert("Dittkonto har tagits bort");
+                        alert("Ditt konto har tagits bort");
                         localStorage.clear();
                         window.location.href = "homepage.html";
                     }else{
