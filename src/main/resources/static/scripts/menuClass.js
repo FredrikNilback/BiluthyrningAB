@@ -39,7 +39,7 @@ class menu{
         { text: "Hem", href: "homepage.html" },
         { text: "Våra bilar", href: "car.html" },
         { text: "Om oss", href: "about.html" },
-        { text: "Ny användare(registrering)", href: "register.html" },
+        { text: "Ny användare?", href: "register.html" },
         { text: "Logga in", id: "loginLink" }
       ];
     }
@@ -92,7 +92,6 @@ class menu{
       deleteAcc.textContent = "Radera användare";
       aside.appendChild(deleteAcc);
     }
-
     if(localStorage.getItem("userEmail") != null){
       //Functionality of Log out Link
       const logoutLink = document.getElementById("logoutLink");

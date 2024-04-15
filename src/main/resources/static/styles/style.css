@@ -10,7 +10,9 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 }
+
 html, body{
     margin: 0;
     height: 100%;
@@ -34,9 +36,9 @@ html, body{
 
 }
 header{
-    padding: 20px;
+    padding: 2.5%;
     background-color:rgb(180, 117, 62);
-    width: 100%;
+    width: 94.6%;
     text-align: left;
     font-family: "RetroVintage",serif;
     border: 3px solid rgb(110, 72, 39);
@@ -57,14 +59,29 @@ header{
     width: 100%;
 }
 
-
 /*menu*/
 aside{
     background-color: rgb(175, 132, 94);
     width: 215px;
-    height: 100vh;
-    border: 3px solid rgb(110, 72, 39);
+    height: 100%;
+    border-right: 3px solid rgb(110, 72, 39);
+    border-left: 3px solid rgb(110, 72, 39);
+   
 }
+
+#menulist li a:hover{
+    color: beige;
+}
+#menulist li a{
+    color: black;
+    transition: color 0.25s;
+}
+
+#contract-body{
+    display: flex;
+    flex-direction: column;
+}
+
 #logoutButton{
     margin-left: 40px;
 }
@@ -74,11 +91,14 @@ aside{
 }
 
 /*about*/
-main h4{
+#about-us{
     margin-left: 50px;
     margin-bottom: 50px;
     font-size: 1cm;
     text-decoration: underline;
+}
+#text-about{
+    margin-left: 50px;
 }
 
 /*cars*/

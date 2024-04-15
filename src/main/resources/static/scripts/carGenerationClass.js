@@ -20,7 +20,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","/src/main/resources/static/images/car" + car.getCarBrand() + ".png");
+        productPicture.setAttribute("src","/src/main/resources/static/images/cars/" + car.getCarBrand() + ".webp");
         productPictureContainer.appendChild(productPicture);
 
 
@@ -111,6 +111,7 @@ class CarGeneration{
         carType.setAttribute("id","infoCarType");
         const engineType = document.createElement("p");
         engineType.setAttribute("id","infoEngineType");
+
         const totalPrice = document.createElement("p");
         totalPrice.setAttribute("id","infoTotalPrice");
         totalPrice.style.textAlign = "center";
