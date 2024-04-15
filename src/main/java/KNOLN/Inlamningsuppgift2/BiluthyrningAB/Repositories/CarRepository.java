@@ -53,7 +53,7 @@ public interface CarRepository extends JpaRepository <Car, String> {
             "AND (:carYear IS NULL OR car.carYear = :carYear) " +
             "AND (:engineType IS NULL OR car.engineType = :engineType) " +
             "AND (:carType IS NULL OR car.carType = :carType) " +
-            "AND (:pricePerDay IS NULL OR car.pricePerDay = :pricePerDay) " +
+            "AND (:pricePerDay IS NULL OR car.pricePerDay <= :pricePerDay) " +
             "AND NOT EXISTS (" +
             "    SELECT 1 FROM Contract contract " +
             "    WHERE contract.car = car " +
