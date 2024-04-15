@@ -111,6 +111,11 @@ class CarGeneration{
         carType.setAttribute("id","infoCarType");
         const engineType = document.createElement("p");
         engineType.setAttribute("id","infoEngineType");
+        const totalPrice = document.createElement("p");
+        totalPrice.setAttribute("id","infoTotalPrice");
+        totalPrice.style.textAlign = "center";
+        totalPrice.style.marginTop = "20px";
+        totalPrice.style.fontSize = "12px";
 
         document.getElementById(ParentId).appendChild(fullInfoPanel);
 
@@ -124,6 +129,7 @@ class CarGeneration{
         fullInfoPanel.appendChild(milage);
         fullInfoPanel.appendChild(automatic);
         fullInfoPanel.appendChild(price);
+        fullInfoPanel.appendChild(totalPrice);
 
         //Kolla ifall man är inloggad Kanske? Isåfall se köp knappar
         if(showRentButton == true){
@@ -198,6 +204,15 @@ class CarGeneration{
 
     showFullInfo(car){
         document.getElementById("infoCarBrand").textContent = "Märke: "+car.getCarBrand();
+        const infoTotalPrice = document.getElementById("infoTotalPrice");
+        if(window.location.href == "http://127.0.0.1:5500/src/main/resources/templates/car.html"){
+            const startDate = new Date(document.getElementById("startDate").value);
+            const endDate = new Date(document.getElementById("endDate").value);
+            const totalPrice = car.getPricePerDay()*((endDate-startDate)/(1000*60*60*24)+1);
+            infoTotalPrice.textContent = ("Totalkostnad: " + totalPrice+" kr");
+        }else{
+            infoTotalPrice.textContent = "";
+        }
         document.getElementById("infoPrice").textContent = "Pris: "+car.getPricePerDay()+"kr/Dag";
         document.getElementById("infoLicensePlate").textContent = "RegNr: "+car.getLicensePlate();
         document.getElementById("infoModel").textContent = "Modell: "+car.getCarName();

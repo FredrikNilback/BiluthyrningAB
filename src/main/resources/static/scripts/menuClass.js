@@ -85,6 +85,14 @@ class menu{
     loginForm.appendChild(loginButton);
     nav.appendChild(loginForm);
 
+    if(window.location.href == "http://127.0.0.1:5500/src/main/resources/templates/profile.html"){
+      console.log("On profile");
+      const deleteAcc = document.createElement("button");
+      deleteAcc.setAttribute("id","deleteAccountButton");
+      deleteAcc.textContent = "Radera användare";
+      aside.appendChild(deleteAcc);
+    }
+
     if(localStorage.getItem("userEmail") != null){
       //Functionality of Log out Link
       const logoutLink = document.getElementById("logoutLink");

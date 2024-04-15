@@ -150,10 +150,10 @@ public class SearchCarsController{
             if (carType != null && !carType.equals(car.getCarType())) {
                 match = false;
             }
-            if (pricePerDay != null && pricePerDay > car.getPricePerDay()) {
+            if (pricePerDay != null && pricePerDay < car.getPricePerDay()) {
                 match = false;
             }
-            if (automatic != null && !automatic.equals(car.getAutomatic())) {
+            if (automatic != null && !automatic.equals(car.isAutomatic())) {
                 match = false;
             }
 

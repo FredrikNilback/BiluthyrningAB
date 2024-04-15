@@ -1,6 +1,5 @@
 package KNOLN.Inlamningsuppgift2.BiluthyrningAB.Repositories;
 
-
 import KNOLN.Inlamningsuppgift2.BiluthyrningAB.Objects.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,47 +10,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public interface CarRepository extends JpaRepository <Car, String> {
+public interface CarRepository extends JpaRepository<Car, String> {
 
-    Car findByLicensePlate(String licensePlate);
-    @Query(value = "SELECT car FROM Car car WHERE carName = ?1")
-    public ArrayList<Car> getCarsByName(String carName);
+        Car findByLicensePlate(String licensePlate);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByCarBrand(Car.CarBrand carBrand);
+        @Query(value = "SELECT car FROM Car car WHERE carName = ?1")
+        public ArrayList<Car> getCarsByName(String carName);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByMilage(Integer milage);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByCarBrand(Car.CarBrand carBrand);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByAutomatic(Car.Automatic automatic);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByMilage(Integer milage);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsBySeats(Integer carSeats);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByAutomatic(Car.Automatic automatic);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByCarYear(Integer carYear);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsBySeats(Integer carSeats);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByEngineType(Car.EngineType engineType);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByCarYear(Integer carYear);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByCarType(Car.CarType carType);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByEngineType(Car.EngineType engineType);
 
-    @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
-    public ArrayList<Car> getCarsByPricePerDay(Integer pricePerDay);
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByCarType(Car.CarType carType);
 
+        @Query(value = "SELECT car FROM Car car WHERE carSeats = ?1")
+        public ArrayList<Car> getCarsByPricePerDay(Integer pricePerDay);
 
-    @Query("SELECT car FROM Car car WHERE (:carName IS NULL OR car.carName = :carName) " +
-            "AND (:carBrand IS NULL OR car.carBrand = :carBrand) " +
-            "AND (:milage IS NULL OR car.milage = :milage) " +
-            "AND (:automatic IS NULL OR car.automatic = :automatic) " +
-            "AND (:carSeats IS NULL OR car.carSeats = :carSeats) " +
-            "AND (:carYear IS NULL OR car.carYear = :carYear) " +
-            "AND (:engineType IS NULL OR car.engineType = :engineType) " +
-            "AND (:carType IS NULL OR car.carType = :carType) " +
-            "AND (:pricePerDay IS NULL OR car.pricePerDay = :pricePerDay) ")
-    List<Car> searchCar(@Param("carName") String carName,
+        @Query("SELECT car FROM Car car WHERE (:carName IS NULL OR car.carName = :carName) " +
+                        "AND (:carBrand IS NULL OR car.carBrand = :carBrand) " +
+                        "AND (:milage IS NULL OR car.milage = :milage) " +
+                        "AND (:automatic IS NULL OR car.automatic = :automatic) " +
+                        "AND (:carSeats IS NULL OR car.carSeats = :carSeats) " +
+                        "AND (:carYear IS NULL OR car.carYear = :carYear) " +
+                        "AND (:engineType IS NULL OR car.engineType = :engineType) " +
+                        "AND (:carType IS NULL OR car.carType = :carType) " +
+                        "AND (:pricePerDay IS NULL OR car.pricePerDay <= :pricePerDay) ")
+        List<Car> searchCar(@Param("carName") String carName,
                         @Param("carBrand") Car.CarBrand carBrand,
                         @Param("milage") Integer milage,
                         @Param("automatic") Car.Automatic automatic,
