@@ -141,7 +141,7 @@ function updateLocalAndUI(field, newValue) {
 }
 
 //Getting the logged in user from localStorage
-document.addEventListener("DOMContentLoaded", function() {
+//document.addEventListener("DOMContentLoaded", function() {
     let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     if(userDetails){
         document.getElementById("userName").textContent = userDetails.userName;
@@ -176,4 +176,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-});
+//});

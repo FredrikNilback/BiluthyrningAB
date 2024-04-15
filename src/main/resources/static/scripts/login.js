@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function(){
+//document.addEventListener("DOMContentLoaded", function(){
    const logoutButton = document.getElementById("logoutButton");
    if(logoutButton){
       logoutButton.addEventListener("click", function(){
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }else{
         console.log("Utloggningsknappen hittades inte");
     }
-});
+;
 
 
 
