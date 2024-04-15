@@ -30,31 +30,6 @@
       <h1>Biluthyrning AB</h1>
     </header>
     <div id="page-layout">
-      <aside>
-        <div class="content">
-          <p class="menu-title">Menyval</p>
-        </div>
-        <nav>
-          <ul id="menulist">
-            <li><a style="cursor: pointer" href="homepage.html">Hem</a></li>
-            <li><a href="car.html">Våra bilar</a></li>
-            <li><a href="about.html">Om oss</a></li>
-            <li><a href="cart.html">Varukorg</a></li>
-            <li><a href="profile.html">Profil</a></li>
-            <li><a href="register.html">Ny användare(registrering)</a></li>
-            <li><a href="#" id="loginLink">Login</a></li>
-            <div id="loginForm" style="display: none">
-              <input type="text" placeholder="Email" id="loginEmail" />
-              <input
-                type="password"
-                placeholder="Password"
-                id="loginPassword"
-              />
-              <button id="loginButton">Logga in</button>
-            </div>
-          </ul>
-        </nav>
-      </aside>
       <main id="main">
         <form id="searchForm" th:action="@{/searchAllCars}" method="get">
           <h2 id="searchheader">Sök efter din dröm bil!</h2>
@@ -189,11 +164,11 @@
     <footer>
       <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
       <p>Kontakta oss: info@biluthyrningab.se</p>
-  </footer>
-    <script src="/src/main/resources/static/scripts/login.js"></script>
+    </footer>
+    <script src="/src/main/resources/static/scripts/menuClass.js"></script>
     <script src="/src/main/resources/static/scripts/carClass.js"></script>
-    <script src="/src/main/resources/static/scripts/contract.js"></script>
-    <script src="/src/main/resources/static/scripts/carGeneration.js"></script>
-    <script src="/src/main/resources/static/scripts/searchParams.js"></script>
+    <script src="/src/main/resources/static/scripts/contractClass.js"></script>
+    <script src="/src/main/resources/static/scripts/carGenerationClass.js"></script>
+    <script src="/src/main/resources/static/scripts/shopPageLoad.js"></script>
   </body>
 </html>

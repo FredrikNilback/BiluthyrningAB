@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/General.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/General.css"
+    />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Biluthyrning AB</h1>
+      <h1>Biluthyrning AB</h1>
     </header>
-    <div class="page-layout">
-    <aside>
-        <div class="content">
-            <p class="menu-title">Menyval</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="homepage.html">Hem</a></li>
-                <li><a href="car.html">Våra bilar</a></li>
-                <li><a href="cart.html">Varukorg</a></li>
-                <li><a href="profile.html">Profil</a></li>
-                <li><a href="register.html">Ny användare(registrering)</a></li>
-                <li><a href="#" id="loginLink">Login</a></li>
-                <li id="loginMenuItem"><a href="login.html">Logga in</a></li>
-                <li id="logoutMenuItem" style="display: none;"><button id="logoutButton">Logga ut</button></li>
-            </ul>
-            <div id="loginForm" style="display: none;">
-                <input type="text" placeholder="Email" id="loginEmail">
-                <input type="password" placeholder="Password" id="loginPassword">
-                <button id="loginButton">Logga in</button>
-            </div>
-        </nav>
-    </aside>
-<main>
-    <head>
-        <h4>Om oss</h4>
-    </head>
-    <section class="text-about-us">
-        <p>Välkommen till Biluthyrning AB, Halmstads främsta destination för unika och lyxiga bilupplevelser till överkomliga priser</p>
-        <p>Vi är inte den vanliga biluthyrningsfirman, vi har specialiserat oss på att erbjuda samling noga utvalda bilar till rimliga priser.</p>
-        <p>Vår passion för alla sorters bilar och en kundservice utöver det vanliga gör oss till det själklara valet.</p>
-        <br>
-        <p>I vårt utbud hittar du allt från den lilla stadsbilen till de mer eleganta och lyxiga sportbilarna eller SUV:ar</p>
-        <p>perfekta för såväl den adrenalinsökande äventyraren som för familjens lyxiga weekendresa.</p>
-        <p>Varje bil underhålls med största noggrannhet för att försäkra om en säker och njutbar körupplevelse.</p>
-        <p>Hos Biluthyrning AB förstår vi att förtroende och tydlighet ligger till grund för en bra upplevelse.</p>
-        <p>Så därför har vi tydliga hyresvillkor, inga dolda avgifter och en kundtjänst som står till ditt förfogande före, under och efter din hyresperiod.</p>
-        <br>
-        <p>Vare sig du behöver en imponerande bil till ett speciellt tillfälle, eller du vill skämma bort dig själv med en lyxig körupplevelse.</p>
-        <p>så löser vi det! Låt oss överträffa dina förväntningar och göra din nästa hyrbilsupplevelse till en oförglömlig resa.</p>
-        <br>
-        <p>Upptäck skillnaden - ditt äventyr börjar här hos oss!</p>
-    </section>
-</main>
-</div> <footer>
-    <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
-    <p>Kontakta oss: info@biluthyrningab.se</p>
-</footer>
-<script src="/src/main/resources/static/scripts/login.js"></script>
-<script src="/src/main/resources/static/scripts/homePageLoad.js"></script>
-</body>
+    <div id="page-layout">
+      <main>
+          <h4 id="about-us">Om oss</h4>
+        <section id="text-about">
+          <p>
+            Välkommen till Biluthyrning AB, Halmstads främsta destination för
+            unika och lyxiga bilupplevelser till överkomliga priser
+          </p>
+          <p>
+            Vi är inte den vanliga biluthyrningsfirman, vi har specialiserat oss
+            på att erbjuda samling noga utvalda bilar till rimliga priser.
+          </p>
+          <p>
+            Vår passion för alla sorters bilar och en kundservice utöver det
+            vanliga gör oss till det själklara valet.
+          </p>
+          <br />
+          <p>
+            I vårt utbud hittar du allt från den lilla stadsbilen till de mer
+            eleganta och lyxiga sportbilarna eller SUV:ar
+          </p>
+          <p>
+            perfekta för såväl den adrenalinsökande äventyraren som för
+            familjens lyxiga weekendresa.
+          </p>
+          <p>
+            Varje bil underhålls med största noggrannhet för att försäkra om en
+            säker och njutbar körupplevelse.
+          </p>
+          <p>
+            Hos Biluthyrning AB förstår vi att förtroende och tydlighet ligger
+            till grund för en bra upplevelse.
+          </p>
+          <p>
+            Så därför har vi tydliga hyresvillkor, inga dolda avgifter och en
+            kundtjänst som står till ditt förfogande före, under och efter din
+            hyresperiod.
+          </p>
+          <br />
+          <p>
+            Vare sig du behöver en imponerande bil till ett speciellt tillfälle,
+            vill skämma bort dig själv med en lyxig körupplevelse.
+          </p>
+          <p>
+            så löser vi det! Låt oss överträffa dina förväntningar och göra din
+            nästa hyrbilsupplevelse till en oförglömlig resa.
+          </p>
+          <br />
+          <p>Upptäck skillnaden - ditt äventyr börjar här hos oss!</p>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
+      <p>Kontakta oss: info@biluthyrningab.se</p>
+    </footer>
+    <script src="/src/main/resources/static/scripts/menuClass.js"></script>
+    <script src="/src/main/resources/static/scripts/aboutPageLoad.js"></script>
+  </body>
 </html>
+

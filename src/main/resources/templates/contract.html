@@ -7,27 +7,11 @@
     <link rel="stylesheet" href="/src/main/resources/static/styles/General.css">
     <title>Kontrakt - Biluthyrning AB</title>
 </head>
-<body>
+<body id="contract-body">
     <header>
         <h1>Biluthyrning AB</h1>
     </header>
-    <div class="page-layout">
-        <aside>
-            <div class="content">
-                <p class="menu-title">Menyval</p>
-            </div>
-            <h2 id="meny"></h2>
-            <nav>
-                <ul>
-                    <li><a href="homepage.html">Hem</a></li>
-                    <li><a href="car.html">Våra bilar</a></li>
-                    <li><a href="about.html">Om oss</a></li>
-                    <li><a href="profile.html">Profil</a></li>
-                    <li><a href="cart.html">Varukorg</a></li>
-                </ul>
-                <button id="logoutButton">Logga ut</button>    
-            </nav>
-        </aside>
+    <div id="page-layout">
         <div id="contract" class="contract-container" style="display: block;">
             <h2>KONTRAKT</h2>
             <p>-----------------------------------------------</p>
@@ -69,7 +53,7 @@
         <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
         <p>Kontakta oss: info@biluthyrningab.se</p>
     </footer>
-    <script src="/src/main/resources/static/scripts/contract.js"></script>
-    <script src="/src/main/resources/static/scripts/login.js"></script>
+    <script src="/src/main/resources/static/scripts/menuClass.js"></script>
+    <script src="/src/main/resources/static/scripts/contractLoad.js"></script>
 </body>
 </html>

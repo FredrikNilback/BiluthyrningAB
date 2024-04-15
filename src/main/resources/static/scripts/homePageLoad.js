@@ -11,7 +11,7 @@ cars.push(new Car("XYZ008","JULMFV9","Bentley",5000,"Automatic",4, 2012,"Gasolin
 cars.push(new Car("XYZ009","V60","Nissan",5000,"Automatic",4, 2012,"Gasoline","SportsCar",125));
 cars.push(new Car("XYZ010","JUIV90","Suzuki",5000,"Automatic",4, 2012,"Gasoline","SportsCar",225));
 
-
+const Asidemenu = new menu("main");
 const carGen = new CarGeneration("main", false);
 
 
