@@ -41,8 +41,9 @@
 
 #fullInfoPanel{
     opacity: 0;
+    pointer-events: none;
     display: block;
-    background-image: url("/images/Paper.png");
+    background-image: url("/src/main/resources/static/images/Paper.png");
     background-size: 300px 480px;
     background-position-x: 50%;
     background-repeat: no-repeat;
@@ -68,12 +69,16 @@
     font-size: 12px;
 }
 
-.form-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align forms at the top */
+#rentbutton{
+    padding: 3px 14px;
+    display: block;
+    margin: 10px auto;
+    border-style:inset;
+    border-width: 1px;
+    background-color: rgb(243, 216, 158);
+    border-color: rgb(233, 173, 123);
+    border-radius: 3px;
 }
-
-#searchForm, #rentalDatesForm {
-    width: 45%; /* Adjust width as needed */
+#rentbutton:hover{
+    cursor: pointer;
 }

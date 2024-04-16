@@ -1,99 +1,176 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <link rel="stylesheet" type="text/css" href="styles/General.css">
-    <link rel="stylesheet" type="text/css" href="styles/carCardStyle.css">>
-
-    <style>#carListContainer {display: flex;flex-wrap: wrap;}</style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/General.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/main/resources/static/styles/carCardStyle.css"
+    />
+    >
+    <link
+      rel="stylesheet"
+      href="/src/main/resources/static/styles/shopPageStyle.css"
+    />
     <title>Våra Bilar - Biluthyrning AB</title>
-</head>
-<body>
-<div class="page-layout">
-
-    <aside>
-        <div class="content">
-            <p class="menu-title">Menyval</p>
-        </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Hem</a></li>
-            <li><a href="cars">Våra bilar</a></li>
-            <li><a href="about.html">Om oss</a></li>
-            <li><a href="cart.html">Varukorg</a></li>
-            <li><a href="register.html">Ny användare(registrering)</a></li>
-            <li><a href="#" id="loginLink">Login</a></li>
-            <div id="loginForm" style="display: none;">
-                <input type="text" placeholder="Email" id="loginEmail">
-                <input type="password" placeholder="Password" id="loginPassword">
-                <button id="loginButton">Logga in</button>
-            </div>
-        </ul>
-    </nav>
-</aside>
-        <main>
-
-            <h1>Våra Bilar</h1>
-
-            <div class="forms-container">
-                <div class="form-wrapper">
-            <form id="searchForm" th:action="@{/searchAllCars}" method="get">
-
-                <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate" name="startDate" required><br><br>
-                <label for="endDate">End Date:</label>
-                <input type="date" id="endDate" name="endDate" required><br>
-
-                <label for="carName">Car Name:</label>
-                <input type="text" id="carName" name="carName"><br>
-
-                <label for="carBrand">Car Brand:</label>
-                <select name="carBrand" id="carBrand">
-                    <option value="">Choose Brand</option>
-                    <option value="Volvo">Volvo</option>
+  </head>
+  <body>
+    <header>
+      <h1>Biluthyrning AB</h1>
+    </header>
+    <div id="page-layout">
+      <main id="main">
+        <form id="searchForm" th:action="@{/searchAllCars}" method="get">
+          <h2 id="searchheader">Sök efter din dröm bil!</h2>
+          <div id="searchinputs">
+            <div class="searchfields">
+              <div class="searchcontainer">
+                <label for="carBrand">Märke:</label>
+                <select name="carBrand" id="carBrand" class="dropbox">
+                  <option value=""></option>
+                  <option value="Audi">Audi</option>
+                  <option value="Bentley">Bentley</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Bugatti">Bugatti</option>
+                  <option value="Chrysler">Chrysler</option>
+                  <option value="Fiat">Fiat</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Hyundai">Hyundai</option>
+                  <option value="Jeep">Jeep</option>
+                  <option value="Kia">Kia</option>
+                  <option value="Lexus">Lexus</option>
+                  <option value="Mazda">Mazda</option>
+                  <option value="MercedezBenz">MercedezBenz</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Opel">Opel</option>
+                  <option value="Peugot">Peugot</option>
+                  <option value="Porsche">Porsche</option>
+                  <option value="Renault">Renault</option>
+                  <option value="SEAT">SEAT</option>
+                  <option value="Suzuki">Suzuki</option>
+                  <option value="Tesla">Tesla</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Volkswagen">Volkswagen</option>
+                  <option value="Volvo">Volvo</option>
                 </select>
-
-                <label for="milage">Max Mileage:</label>
-                <input type="text" id="milage" name="milage"><br>
-
-                <label for="automatic">Automatic:</label>
-                <input type="text" id="automatic" name="automatic"><br>
-
-                <label for="carSeats">Car Seats:</label>
-                <input type="text" id="carSeats" name="carSeats"><br>
-
-                <label for="carYear">Car Year:</label>
-                <input type="text" id="carYear" name="carYear"><br>
-
-                <label for="engineType">Engine Type:</label>
-                <input type="text" id="engineType" name="engineType"><br>
-
-                <label for="carType">Car Type:</label>
-                <input type="text" id="carType" name="carType"><br>
-
-                <label for="pricePerDay">Max Cost/Day:</label>
-                <input type="text" id="pricePerDay" name="pricePerDay"><br>
-
-                <button id="searchCarsButton" type="submit">Search</button>
-            </form>
+              </div>
+              <div class="searchcontainer">
+                <label for="carName">Modell:</label>
+                <input
+                  type="text"
+                  id="carName"
+                  name="carName"
+                  class="searchinput"
+                /><br />
+              </div>
+              <div class="searchcontainer">
+                <label for="carType">Biltyp:</label>
+                <select name="carType" id="carType" class="dropbox">
+                  <option value=""></option>
+                  <option value="Combi">Combi</option>
+                  <option value="Convertible">Convertible</option>
+                  <option value="Coupe">Coupe</option>
+                  <option value="Crossover">Crossover</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Minivan">Minivan</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SportsCar">SportsCar</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Truck">Truck</option>
+                </select>
+              </div>
+              <button id="searchCarsButton" type="submit">Sök</button>
             </div>
+
+            <div class="searchfields">
+              <div class="searchcontainer">
+                <label for="carSeats">Säten:</label>
+                <input
+                  type="text"
+                  id="carSeats"
+                  name="carSeats"
+                  class="searchinput"
+                /><br />
+              </div>
+              <div class="searchcontainer">
+                <label for="automatic">Växellåda:</label>
+                <select name="automatic" id="automatic" class="dropbox">
+                  <option value=""></option>
+                  <option value="Automatic">Automatic</option>
+                  <option value="Manual">Manual</option>
+                </select>
+              </div>
+              <div class="searchcontainer">
+                <label for="engineType">Motortyp:</label>
+                <select name="engineType" id="engineType" class="dropbox">
+                  <option value=""></option>
+                  <option value="Gasoline">Gasoline</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="Electric">Electric</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="CNG">CNG</option>
+                </select>
+              </div>
+              <label for="startDate">Datum för upphämtning</label>
+              <input type="date" id="startDate" name="startDate" required />
             </div>
+            <div class="searchfields">
+              <div class="searchcontainer">
+                <label for="milage">Miltal:</label>
+                <input
+                  type="text"
+                  id="milage"
+                  name="milage"
+                  class="searchinput"
+                /><br />
+              </div>
+              <div class="searchcontainer">
+                <label for="carYear">Bilår:</label>
+                <input
+                  type="text"
+                  id="carYear"
+                  name="carYear"
+                  class="searchinput"
+                /><br />
+              </div>
+              <div class="searchcontainer">
+                <label for="pricePerDay">Kronor/Dag:</label>
+                <input
+                  type="text"
+                  id="pricePerDay"
+                  name="pricePerDay"
+                  class="searchinput"
+                /><br />
+              </div>
+              <label for="endDate">Datum för inlämning</label>
+              <input type="date" id="endDate" name="endDate" />
 
-            <br><br>
-            <div id="carListContainer"></div>
-        </main>
-
+            </div>
+          </div>
+        </form>
+        <div id="shopgrid"></div>
+      </main>
     </div>
-    </div>
-
-    <script src="scripts/contract.js"></script>
-    <script src="scripts/login.js"></script>
-    <script src="scripts/car.js"></script>
-    <script src="scripts/cart.js"></script>
-    <script src="scripts/carsTemp.js"></script>
-    <script src="scripts/carGeneration.js"></script>
-    <script src="scripts/searchParams.js"></script>
-</body>
+    <footer>
+      <p>© 2024 Biluthyrning AB. Alla rättigheter förbehållna.</p>
+      <p>Kontakta oss: info@biluthyrningab.se</p>
+    </footer>
+    <script src="/src/main/resources/static/scripts/menuClass.js"></script>
+    <script src="/src/main/resources/static/scripts/carClass.js"></script>
+    <script src="/src/main/resources/static/scripts/contract.js"></script>
+    <script src="/src/main/resources/static/scripts/carGenerationClass.js"></script>
+    <script src="/src/main/resources/static/scripts/shopPageLoad.js"></script>
+  </body>
 </html>

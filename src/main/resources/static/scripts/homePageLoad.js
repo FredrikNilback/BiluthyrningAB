@@ -1,16 +1,18 @@
 let cars = [];
-cars.push(new car(0,"Volkswagen",105,"XYZ001","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(1,"Toyota",160,"XYZ002","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(2,"Stellantis",120,"XYZ003","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(3,"Mercedes",130,"XYZ004","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(4,"Ford",80,"XYZ005","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(5,"BMW",100,"XYZ006","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(6,"Honda",120,"XYZ007","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(7,"Tesla",130,"XYZ008","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(8,"Lamborghini",155,"XYZ009","XSupraV2",9053,"Automatic",4,2012));
-cars.push(new car(9,"Lotus",78,"XYZ010","XSupraV2",9053,"Automatic",4,2012));
 
-const carGen = new CarGeneration();
+cars.push(new Car("XYZ001","XSupraV1","Volkswagen",5000,"Automatic",4, 2012,"Gasoline","SportsCar",115));
+cars.push(new Car("XYZ002","XSupraV2","Honda",5000,"Automatic",4, 2012,"Gasoline","SportsCar",105));
+cars.push(new Car("XYZ003","XSupraV5","Toyota",5000,"Manual",4, 2012,"Gasoline","SportsCar",105));
+cars.push(new Car("XYZ004","YUTI5","Jeep",5000,"Automatic",4, 2012,"Gasoline","SportsCar",120));
+cars.push(new Car("XYZ005","XSupraV7","Ford",5000,"Manual",4, 2012,"Diesel","SUV",106));
+cars.push(new Car("XYZ006","GGAG1","Volvo",5000,"Automatic",4, 2012,"Gasoline","SportsCar",165));
+cars.push(new Car("XYZ007","GALENIV","Lexus",5000,"Automatic",4, 2012,"Gasoline","SUV",160));
+cars.push(new Car("XYZ008","JULMFV9","Bentley",5000,"Automatic",4, 2012,"Gasoline","SportsCar",525));
+cars.push(new Car("XYZ009","V60","Nissan",5000,"Automatic",4, 2012,"Gasoline","SportsCar",125));
+cars.push(new Car("XYZ010","JUIV90","Suzuki",5000,"Automatic",4, 2012,"Gasoline","SportsCar",225));
+
+const Asidemenu = new menu("main");
+const carGen = new CarGeneration("main", false);
 
 
 
