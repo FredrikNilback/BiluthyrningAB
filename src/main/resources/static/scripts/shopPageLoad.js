@@ -4,6 +4,8 @@ const carGen = new CarGeneration("page-layout", true);
 searchForm.addEventListener('submit', (event)=> {
     console.log('Form submitted');
     event.preventDefault();
+    const startDate = document.getElementById('startDate').value.trim();
+    const endDate = document.getElementById('endDate').value.trim();
     const carName = document.getElementById("carName").value.trim();
     const carBrand = document.getElementById("carBrand").value.trim();
     const milage = document.getElementById("milage").value.trim();
@@ -42,6 +44,12 @@ searchForm.addEventListener('submit', (event)=> {
     if (pricePerDay !== '') {
         newParamsString += `pricePerDay=${pricePerDay}&`;
     }
+    if (startDate !== ''){
+        newParamsString += `startDate=${startDate}&`;
+    }
+    if (endDate !== ''){
+            newParamsString += `endDate=${endDate}&`;
+        }
     if (newParamsString.endsWith('&')) {
         newParamsString = newParamsString.slice(0, -1);
     }
@@ -49,53 +57,40 @@ searchForm.addEventListener('submit', (event)=> {
     let searchedCars = [];
 
     const newUrl = `http://localhost:8080/searchAllCars?${newParamsString}`;
-    fetch(newUrl)
-      .then(response => response.json())
-      .then(data => {
-        searchedCars = data.map(carData => {
-          return new Car(
-            carData.licensePlate,
-            carData.carName,
-            carData.carBrand,
-            carData.milage,
-            carData.automatic,
-            carData.carSeats,
-            carData.carYear,
-            carData.engineType,
-            carData.carType,
-            carData.pricePerDay
-          );
-        });
-        
-        // See if date matches
-        const startDate = new Date(document.getElementById('startDate').value.trim());
-        const endDate = new Date(document.getElementById('endDate').value.trim());
-
-        const datedCars = [];
-        fetch(`http://localhost:8080/getAllContracts`)
+        fetch(newUrl)
           .then(response => response.json())
           .then(data => {
-            const contracts = data.map(contractData => {
-              return new Contract(contractData.car, contractData.startDate, contractData.endDate);
+            searchedCars = data.map(carData => {
+              return new Car(
+                carData.licensePlate,
+                carData.carName,
+                carData.carBrand,
+                carData.milage,
+                carData.automatic,
+                carData.carSeats,
+                carData.carYear,
+                carData.engineType,
+                carData.carType,
+                carData.pricePerDay
+              );
             });
 
-            calculateAvailableCars(searchedCars, contracts, startDate, endDate, datedCars);
+            // See if date matches
+            const startDate = new Date(document.getElementById('startDate').value.trim());
+            const endDate = new Date(document.getElementById('endDate').value.trim());
 
-            // Wipe shopgrid and load the searched cars
             if(startDate.getTime() > endDate.getTime()){
                 alert("Upphämtningsdatum kan inte vara efter Inlämningsdatum!");
             }else{
                 document.getElementById("shopgrid").innerHTML = "";
-                datedCars.forEach(car => {
+                searchedCars.forEach(car => {
                     carGen.carCard(car, "shopgrid");
                 });
             }
-          })
-          .catch(error => {
-            console.error('Error fetching contracts data:', error);
-          });
+
+        });
+
     });
-});
 
 function calculateAvailableCars(carList, contracts, startDate, endDate, carListOutput) 
 {
