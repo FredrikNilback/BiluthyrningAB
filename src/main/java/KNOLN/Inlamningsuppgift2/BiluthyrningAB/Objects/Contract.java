@@ -24,9 +24,11 @@ public class Contract {
     @JoinColumn(name = "license_plate", referencedColumnName = "licensePlate")
     private Car car;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
     private Date startDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
     private Date endDate;
 
