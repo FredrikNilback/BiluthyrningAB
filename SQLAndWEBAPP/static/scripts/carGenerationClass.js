@@ -20,7 +20,7 @@ class CarGeneration{
         //Picture
         const productPicture = document.createElement("img");
         productPicture.setAttribute("class","carimg");
-        productPicture.setAttribute("src","/SQLAndWEBAPP/static/images/cars/" + car.getCarBrand() + ".webp");
+        productPicture.setAttribute("src","/static/images/cars/" + car.getCarBrand() + ".webp");
         productPictureContainer.appendChild(productPicture);
 
 
@@ -206,7 +206,7 @@ class CarGeneration{
     showFullInfo(car){
         document.getElementById("infoCarBrand").textContent = "Märke: "+car.getCarBrand();
         const infoTotalPrice = document.getElementById("infoTotalPrice");
-        if(window.location.href == "http://127.0.0.1:5500/SQLAndWEBAPP/templates/car.html"){
+        if(window.location.href == "http://127.0.0.1:5500/templates/car.html"){
             const startDate = new Date(document.getElementById("startDate").value);
             const endDate = new Date(document.getElementById("endDate").value);
             const totalPrice = car.getPricePerDay()*((endDate-startDate)/(1000*60*60*24)+1);

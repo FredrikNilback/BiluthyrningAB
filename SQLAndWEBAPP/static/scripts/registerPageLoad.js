@@ -31,7 +31,7 @@ document.querySelector('.registrationForm form').addEventListener('submit', func
     .then(data => {
         console.log('Success:', data);
         window.alert("Du är registrerad!");
-        window.location.href = "/SQLAndWEBAPP/templates/homepage.html"; 
+        window.location.href = "/templates/homepage.html"; 
         })
     .catch((error) => {
         console.error('Error:', error);

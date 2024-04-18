@@ -2,6 +2,7 @@
 -- CREATE DATABASE FIRST
 CREATE DATABASE BiluthyrningAB;
 -- START API SERVER
+-- THEN OPEN SQLAndWEBAPP folder on vscode and open homepage.html in Live Server.
 -- THEN RUN THE REST:
 USE BiluthyrningAB;
 

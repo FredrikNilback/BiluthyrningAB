@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log("User is logging out");
 
         alert("Du har loggats ut");
-        window.location.href = "/SQLAndWEBAPP/templates/homepage.html"; 
+        window.location.href = "/templates/homepage.html"; 
         
       });
     }else{

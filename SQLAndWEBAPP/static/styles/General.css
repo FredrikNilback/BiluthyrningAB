@@ -1,4 +1,4 @@
-@font-face { font-family: RetroVintage; src: url("/SQLAndWEBAPP/static/Fonts/RetroVintage-Regular.otf"); }
+@font-face { font-family: RetroVintage; src: url("/static/Fonts/RetroVintage-Regular.otf"); }
 
 body{
     font-family: RetroVintage;

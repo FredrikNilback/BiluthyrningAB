@@ -85,7 +85,7 @@ class menu{
     loginForm.appendChild(loginButton);
     nav.appendChild(loginForm);
 
-    if(window.location.href == "http://127.0.0.1:5500/SQLAndWEBAPP/templates/profile.html"){
+    if(window.location.href == "http://127.0.0.1:5500/templates/profile.html"){
       const deleteAcc = document.createElement("button");
       deleteAcc.setAttribute("id","deleteAccountButton");
       deleteAcc.textContent = "Radera användare";
@@ -99,7 +99,7 @@ class menu{
         //Clear storage and go home
         localStorage.removeItem("userDetails",null);
         localStorage.removeItem("userEmail",null);
-        window.location.href = "/SQLAndWEBAPP/templates/homepage.html"; 
+        window.location.href = "/templates/homepage.html"; 
       });
     } else{
       //Functionality of Log in Link
@@ -132,7 +132,7 @@ class menu{
                   localStorage.setItem("userDetails", JSON.stringify(user));
                   localStorage.setItem("userEmail", user.email);
                   alert("Inloggningen lyckades! Välkommen.");
-                  window.location.href = "/SQLAndWEBAPP/templates/profile.html"; 
+                  window.location.href = "/templates/profile.html"; 
               });
           } else {
               response.text().then(text => alert(text)); 
